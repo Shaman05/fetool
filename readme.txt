@@ -6,3 +6,5 @@
   $db['default']['username'] = 'mysql用户名';
   $db['default']['password'] = 'mysql登录密码';
   $db['default']['database'] = '步骤1中新建的数据库名:fetool';
+
+前端助手使用说明：
