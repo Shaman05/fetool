@@ -5,11 +5,6 @@
 <title><?php echo $title;?></title>
 <link rel="stylesheet" type="text/css" href="static/css/fetool.css">
 <link rel="stylesheet" type="text/css" href="static/jq-ui/css/ui-darkness/jquery-ui-1.8.16.custom.css">
-<script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script type="text/javascript" src="static/edit_area/edit_area/edit_area_full.js"></script>
-<script type="text/javascript" src="static/codeHighlight/jquery.syntax.min.js"></script>
-<script type="text/javascript" src="static/js/fetool.ui.js"></script>
-<script type="text/javascript" src="static/js/fetool.action.js"></script>
 </head>
 
 <body>
@@ -30,28 +25,38 @@
             	<ul id="member_setting" class="member_setting">
                     <li><a href="#">基本资料</a></li>
                     <li><a href="#">我的仓库</a></li>
-                    <li><a href="#">账号安全</a></li>
                 </ul>
             </div>
             <a href="index.php/login" style="float:right; margin-right:-30px">退出</a>
         </div>
         <?php } ?>
     </div>
-    <?php if(!$isLogin){ ?>
+    
     <div class="nav">
-    	<a class="current" href="javascript:feLoad('module_list')" title="module list">模块列表</a>
-        <a href="index.php/login" title="my module">我的模块</a>
-        <a href="index.php/login" title="add module">新增模块</a>
-        <a href="javascript:feLoad('flatten')" title="diy page by yourself">页面拼合</a>
+        <ul>
+        	<li>
+            	<a href="javascript:feLoad('project')">项目管理</a>
+            </li>
+        	<li>
+            	<a href="javascript:">模块库</a>
+                <ul class="sub_nav">
+                	<?php if(!$isLogin){ ?>
+                	<li><a href="javascript:feLoad('module_list')">模块列表</a></li>
+                    <!--<li><a href="javascript:feLoad('flatten')" title="diy page by yourself">页面拼合</a></li>-->
+                    <?php }else{ ?>
+                    <li><a href="javascript:feLoad('module_list')" title="module list">模块列表</a></li>
+                    <li><a href="javascript:feLoad('my_module')" title="my module">我的模块</a></li>
+                    <li><a href="javascript:feLoad('add_module')" title="add module">新增模块</a></li>
+                    <!--<li><a href="javascript:feLoad('flatten')" title="diy page by yourself">页面拼合</a>-->
+                    <?php } ?>
+                </ul>
+            </li>
+            <li>
+            	<a href="javascript:feLoad('flatten')">页面拼合</a>
+            </li>
+        </ul>
     </div>
-    <?php }else{ ?>
-    <div class="nav">
-    	<a href="javascript:feLoad('module_list')" title="module list">模块列表</a>
-        <a class="current" href="javascript:feLoad('my_module')" title="my module">我的模块</a>
-        <a href="javascript:feLoad('add_module')" title="add module">新增模块</a>
-        <a href="javascript:feLoad('flatten')" title="diy page by yourself">页面拼合</a>
-    </div>
-    <?php } ?>
+    
     <div class="htool" id="htool">
         <?php if(!$isLogin){ ?>
     	<div class="search_tool">

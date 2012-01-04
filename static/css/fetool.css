@@ -10,6 +10,7 @@ ul,ol{list-style-position:inside; list-style:none}
 .header,.footer{box-shadow:0 0 3px #000}
 .clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden}
 .loading{background:url(../image/loading.gif) no-repeat center center}
+.perloading{background:url(../image/spinner.gif) no-repeat center center}
 /*h*/
 .header{position:absolute; left:0; top:0; width:100%; height:90px; border-bottom:1px #222 solid}
 .about{height:60px; line-height:60px; text-align:center; background:#353535; background:-moz-linear-gradient(top,rgba(59,59,59,1),rgba(28,28,28,1)); background:-webkit-gradient(linear,0 0,0 100%,from(rgba(59,59,59,1)),to(rgba(28,28,28,1)))}
@@ -25,12 +26,14 @@ ul,ol{list-style-position:inside; list-style:none}
 .member em.normal{border-width:5px; border-style:solid; border-color:#fff #1f1f1f #1f1f1f #1f1f1f; font-size:0; vertical-align:2px; -moz-transform:rotate(0deg);-moz-transition:all 0.3s ease-in; -webkit-transition:all 0.3s ease-in; margin:0 4px}
 .member em.slideDown{-moz-transform:rotate(-180deg); -webkit-transform:rotate(-180deg); vertical-align:6px}
 .member_setting{position:absolute; top:18px; right:0; z-index:999; width:80px; text-align:center; background:#ccc; display:none; padding:2px; border:1px solid #3F3F3F}
-.member_setting a{display:block; height:20px; line-height:20px; color:#222}
+.member_setting a{display:block; border-radius:4px; height:20px; line-height:20px; color:#222}
+.member_setting a:hover{background:#555; color:#eee}
 .nav{height:30px; background:#4c4c4c}
-.nav a{float:left; height:20px; line-height:20px; padding:0 12px; margin:5px 0 0 10px}
-.nav a.current,.nav a:hover,.member_setting a:hover{ border-radius:4px}
-.nav a:hover,.member_setting a:hover{background:#555; color:#eee}
-.nav a.current{background:#666; color:#fff}
+.nav > ul > li{float:left; line-height:20px; padding:0 12px; margin:5px 0 0 10px; position:relative; z-index:9999}
+.sub_nav{width:78px; position:absolute; top:20px; left:0; padding-left:12px; background:#ebebeb; border:1px #000 solid; display:none}
+.sub_nav li{background:#FFF; height:18px; line-height:18px; padding:1px}
+.sub_nav a{padding:0 6px 0 18px; display:block; color:#3f3f3f; margin-left:-11px}
+.sub_nav a:hover{background:#6c98d9; color:#FFF}
 .htool{position:absolute; bottom:5px; right:16px; height:20px}
 .htool a{float:left; line-height:20px; margin-left:5px}
 .search_tool .ipt{height:12px; line-height:16px; padding:2px; vertical-align:middle; background:#99ccff; border:1px #999 solid}
@@ -48,24 +51,54 @@ ul,ol{list-style-position:inside; list-style:none}
 .box{padding:6px 0; color:#444}
 .colMain .box{padding:6px}
 .box a{color:#3F3F3F}
+.box a.form_btn,.box a.form_btn:hover{color:#FFF; text-decoration:none}
 .box h3{height:24px; line-height:24px; margin-bottom:8px; padding-left:6px; overflow:hidden; border-bottom:1px #d3d3d3 solid; border-top:1px #eee solid; background:#f1f1f1; background:-moz-linear-gradient(top,rgba(250,250,250,1),rgba(230,230,230,1)); background:-webkit-gradient(linear,0 0,0 100%,from(rgba(250,250,250,1)),to(rgba(230,230,230,1)))}
 .module_name_list li{margin-bottom:3px; padding:0 6px}
 .module_name_list li a{display:block; height:20px; line-height:20px; background:#FFC; border:1px #FC9 dotted; padding-left:0.5em; -moz-transition:all 0.3s ease-out; -webkit-transition:all 0.3s ease-out}
 .module_name_list li a:hover{background:#FC6; background:rgba(255,204,102,0.6); padding-left:1em}
 .module_name_list li.current a{background:#FC6; background:rgba(255,204,102,0.8); padding-left:1em}
-.add_row{padding-bottom:8px}
+.add_row,.project_ul{padding-bottom:8px}
 .add_row .ats select,.add_row .ats input{margin:0 0 4px 4px}
+.project_ul li{padding-left:20px}
+.project_list{list-style:inside square}
 .module_list{margin-bottom:10px}
 .module_list_t{height:28px; line-height:28px; overflow:hidden; border:1px #fc9 dotted; padding:0 16px; border-radius:8px}
 .module_list_t:hover{border-color:red}
 .module_list_t_left,.module_list_t_right span,.module_list_t_right a{float:left;}
 .module_list_t_left span{margin-right:12px;}
 .module_list_t_right{float:right; overflow:hidden}
-.module_list_t_right a,.feDialog_b a,.new_code_btns a{line-height:12px; background:#6e6e6e; color:#FFF; padding:2px 4px; font-family:"Lucida Console", Monaco, monospace; border-radius:2px; text-shadow:1px 1px 0 #000}
+.module_list_t_right a,.feDialog_b a,.new_code_btns a,.form_btn{line-height:12px; background:#6e6e6e; color:#FFF; padding:2px 4px; font-family:"Lucida Console", Monaco, monospace; border-radius:2px; text-shadow:1px 1px 0 #000}
 .module_list_t_right a{margin:6px 0 0 6px}
 .module_list_t_right span{margin-left:12px}
 .module_list_c{padding:12px;}
 .module_list_c iframe{height:20px; width:100%; border:0; border:none}
+.projects h4{font-size:14px; padding-left:20px; line-height:26px}
+.projects ul{list-style:disc outside; padding:8px 42px}
+.projects a,.project_details a{color:#2A5685}
+.projects a:hover,.project_details a:hover{color:#006; text-decoration:underline}
+.projects li p{margin:4px 0}
+.project_details{padding:6px 12px}
+.project_details .info{padding:8px 0}
+.project_details dl{border:1px solid #E4E4E4; background:#FCFCFC; padding:6px 12px; margin-bottom:10px}
+.project_details dl dt{font-size:14px}
+.project_details dl dd{padding:4px 12px}
+.project_details .configs p,.project_list .configs p{padding-left:90px}
+.project_details .configs span,.project_list .configs span{float:left; width:85px; margin-left:-90px; text-align:right}
+.project_details .configs em,.project_list .configs em{color:#390}
+.project_edit,div.project_list{padding:8px 0 0 14px}
+.project_edit table td{padding:4px}
+.project_edit .text,.project_edit .textarea{padding:2px; background:#FFC; border:1px #FC6 solid}
+.project_edit .text{height:14px}
+.project_edit .textarea{font-size:12px}
+.project_list table{border-collapse:collapse}
+.project_list table th{background:#69F; color:#FFF}
+.project_list table td,.project_list table th{border:1px #CCC solid; padding:4px}
+.edit_members a{padding:0 16px 0 2px; margin-right:4px}
+.edit_members a:hover{background:url(../image/gif-0634.gif) no-repeat right 0}
+.member_select_list{overflow:hidden; padding:8px 12px}
+.member_select_list li{width:95px; float:left}
+.member_select_list li input{vertical-align:middle}
+.no_result{padding:12px; font-size:16px; font-weight:bold; color:#F00}
 /*f*/
 .footer{padding:10px 0; height:16px; background:#333333; border-top:1px #222222 solid; border-bottom:1px #a0a0a0 solid; width:100%; position:absolute; left:0; bottom:0}
 .footer p{text-indent:10px}

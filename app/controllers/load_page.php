@@ -3,11 +3,12 @@
 class Load_page extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+		$this -> load -> database();
 	}
 	
 	//默认方法
 	function index(){
-		$this->load->view('error_page.php');
+		//$this->load->view('error_page.php');
 	}
 	
 	//工具条
@@ -24,6 +25,23 @@ class Load_page extends CI_Controller {
 	}
 	
 	//左边栏
+	function project_left(){
+		session_start();
+		$page["user_rank"]=1;  //0-管理员 1-普通成员
+		if(isset($_SESSION['user'])){
+			$user=$_SESSION['user'];
+			$sql="select rank from user where name='$user'";
+			$rs=mysql_query($sql);
+			$row=mysql_fetch_array($rs);
+			$page["user_rank"]=$row["rank"];
+		}
+		
+		$this -> load -> model('ProjectsModel');
+		$page['project_list'] = $this -> ProjectsModel -> get_all_projects();
+		
+		$this->load->view('project_left.php',$page);
+	}
+	
 	function module_left($type,$name=NULL){  //我的模块、模块列表、模块搜索
 		session_start();
 		
@@ -55,6 +73,13 @@ class Load_page extends CI_Controller {
 	}
 	
 	//主体内容
+	function project_main(){
+		$this -> load -> model('ProjectsModel');
+		$page['project_list'] = $this -> ProjectsModel -> get_all_projects();
+		
+		$this->load->view('project_main.php',$page);
+	}
+	
 	function my_module_main(){
 		session_start();
 		

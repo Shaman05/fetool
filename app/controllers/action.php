@@ -192,7 +192,56 @@ class Action extends CI_Controller{
 				}
 				echo json_encode($delInfo);
 				break;
+				
+			case "delete_project":  //删除项目	
+				$id=$_GET["pid"];
+				$sql="delete from projects where id='$id'";
+				$delInfo=array();
+				if(mysql_query($sql)){
+					$delInfo["statu"]=true;
+					$delInfo["message"]="删除成功！";
+				}else{
+					$delInfo["statu"]=false;
+					$delInfo["message"]="删除失败 :(";
+				}
+				echo json_encode($delInfo);
+				break;
+				
+			case "get_all_users":  //获取所有用户
+				$users=array();
+				$temp=array();
+				$sql="select * from user";
+				$rs=mysql_query($sql);
+				while($row=mysql_fetch_array($rs)){
+					$temp["id"]=$row["id"];
+					$temp["name"]=$row["name"];
+					array_push($users,$temp);
+				}
+				echo json_encode($users);
+				break;
 			
+			case "edit_project":
+				$id=$_GET["id"];
+				$name=$_GET["name"];
+				$desc=$_GET["desc"];
+				$members=$_GET["members"];
+				$css_path=$_GET["css_path"];
+				$js_path=$_GET["js_path"];
+				$html_path=$_GET["html_path"];
+				$project_static_path=$_GET["project_static_path"];
+				$mark=$_GET["mark"];
+				if(!!$id){
+					$sql="update projects set name='$name',miaoshu='$desc',members='$members',css_path='$css_path',js_path='$js_path',html_path='$html_path',project_static_path='$project_static_path',mark='$mark' where id='$id'";
+				}else{
+					$sql="insert into projects (name,miaoshu,members,css_path,js_path,html_path,project_static_path,mark) values ('$name','$desc','$members','$css_path','$js_path','$html_path','$project_static_path','$mark')";
+				}
+				if(mysql_query($sql)){
+					echo ":)  操作成功！";
+				}else{
+					echo ":(  操作失败！";
+				}
+				break;
+				
 			default:
 				echo "缺少参数 或者 错误的参数类型！";
 				break;

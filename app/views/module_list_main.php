@@ -3,7 +3,7 @@
     <div class="module_list">
         <div class="module_list_t">
             <div class="module_list_t_left">
-                <span>模块基类：<em class="base_module"><?php echo $list['name'];?></em></span>
+                <span>模块基类：<strong class="base_module"><?php echo $list['name'];?></strong></span>
                 <span>编号：<?php echo $list['id'];?></span>
             </div>
             <div class="module_list_t_right">

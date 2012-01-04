@@ -4,11 +4,13 @@
  *
  */
 ;$(function(){
+	var s=window.localStorage;
 	$("#login_form").submit(function(){  //登录
 		var _name=$("#name").val(),
 			_pwd=$("#pwd").val();
 		$.getJSON("action",{action:"login",name:_name,pwd:_pwd},function(data){
 			if(data.statu){
+				s.setItem("isLogin",true);
 				window.top.location.href=data.siteUrl;
 			}else{
 				$("#error_tips").text(data.message).fadeIn(300);

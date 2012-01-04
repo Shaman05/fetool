@@ -3,5 +3,10 @@
     <span id="status" class="status"></span>
 </div>
 <div class="feMasklayer"></div>
+<script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script type="text/javascript" src="static/edit_area/edit_area/edit_area_full.js"></script>
+<script type="text/javascript" src="static/codeHighlight/jquery.syntax.min.js"></script>
+<script type="text/javascript" src="static/js/fetool.ui.js"></script>
+<script type="text/javascript" src="static/js/fetool.action.js"></script>
 </body>
 </html>

@@ -15,11 +15,6 @@
         </div>
         <div id="modCont<?php echo $list['id']; ?>" class="module_list_c">
             <iframe src="index.php/module_block/show_block/<?php echo $list['id']?>" class="perloading"></iframe>
-            <div class="html_code" style="display:none">
-                <pre class="syntax brush-html">
-<?php echo trim(htmlspecialchars($list['html']));?>
-                </pre>
-            </div>
         </div>
     </div>
     <?php endforeach; ?>
@@ -29,7 +24,6 @@
             var h=$(this.contentWindow.document.documentElement).outerHeight();
             $(this).removeClass("perloading").css({"height":h});
         })
-        jQuery.syntax();
 		
 		$(".delete_btn").click(function(){  //删除模块
 			var _this=$(this);

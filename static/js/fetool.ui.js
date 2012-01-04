@@ -41,27 +41,39 @@
 			ms.slideUp(300);
 		})
 		
-		$(".nav a").bind({
-			"click":function(){
-				$(this).addClass("current").siblings().removeClass("current");
+		$(".nav > ul > li").hover(
+			function(){
+				$(this).find(".sub_nav").css("display","block");
+			},
+			function(){
+				$(this).find(".sub_nav").css("display","none");
 			}
-		})
+		)
+		
+		$(".nav > ul > li").click(
+			function(){
+				$(this).find(".sub_nav").toggle();
+			}
+		)
 	} 
 	function wResize(){
 		c.css("height",b.outerHeight()-128);
 	} 
-	function _leftHandlClick(cSet){
-		if(c.attr("statu")=="on"){
-			c.attr("statu","off").css("padding-left",cSet.pl);
-			cl.attr("title","收起");
-		}else{
-			c.attr("statu","on").css("padding-left","5px");
-			cl.attr("title","展开");
-		}
-	}
 })
 
 //全局方法
+function _leftHandlClick(cSet){
+	var c=$("#content"),
+		cl=$("#colHandle_left");
+	if(c.attr("statu")=="on"){
+		c.attr("statu","off").css("padding-left",cSet.pl);
+		cl.attr("title","收起");
+	}else{
+		c.attr("statu","on").css("padding-left","5px");
+		cl.attr("title","展开");
+	}
+}
+	
 function filter_module(){
 	$("#filter_module li").not(".none").click(function(){
 		$(this).addClass("current").siblings().removeClass("current");
@@ -89,7 +101,7 @@ function feDialog(options,callback){
 	};
 	var opt=$.extend(setting,options),
 		rid="feDialog"+new Date().getTime(),
-		feDialog_b=opt.button?'<div class="feDialog_b"><span class="edit_error">:( 提交失败，请新尝试！</span><span class="edit_ok">:) 提交成功！</span><span class="edit_tip">正在提交修改</span><a id="editOk" href="javascript:void(0)" title="Determine changes" rel="'+rid+'">提交修改</a></div>':'',
+		feDialog_b=opt.button?'<div class="feDialog_b"><span class="edit_error">:( 提交失败，请新尝试！</span><span class="edit_ok">:) 提交成功！</span><span class="edit_tip">正在提交修改</span><a id="editOk" href="javascript:void(0)" title="Determine changes" rel="'+rid+'">确定</a></div>':'',
 		ch=opt.button?opt.height-50:opt.height-26;
 		dialog='<div id="'+rid+'" class="feDialog" style="width:'+opt.width+'px;height:'+opt.height+'px;margin:-'+opt.height/2+'px 0 0 -'+opt.width/2+'px">'+
 	               '<div class="feDialog_t">'+
@@ -110,6 +122,14 @@ function closeFedialog(rid){
 		$(this).remove();
 		$(".feMasklayer").fadeOut(500);
 	})
+}
+
+function is_in_array(e,arr){
+	for(var i=0; i<arr.length; i++){
+		if(e == arr[i])
+			return true;
+	}
+	return false;
 }
 
 //创建编辑器相关

@@ -5,19 +5,20 @@
  * Last edit by shaman on 2011-12-13
  */
 ;
-var s=window.localStorage;
 var colLeft=null,
 	colMain=null,
 	htool=null,
 	status=null;
 $(function(){
-	//feLoad('module_list');
+	var s=window.localStorage;
 	feInitStorage();
 	
 	colLeft=$("#colLeft"),
 	colMain=$("#colMain"),
 	htool=$("#htool"),
 	status=$("#status");
+	
+	feLoad("project");
 	
 	$("#search_form").live({
 		"submit":function(){
@@ -33,15 +34,19 @@ $(function(){
 })
 
 function feLoad(type){
-	var isHtoolLoad=false,
+	/*var isHtoolLoad=false,
 		isLeftLoad=false,
 		isMainLoad=false;
-	//status.show();
+	status.show();*/
 	
 	var htoolFun="index",
 		leftFun="index",
 		mainFun="index";
 	switch (type){
+		case "project":
+			leftFun="project_left";
+			mainFun="project_main";
+			break;
 		case "module_list":
 			leftFun="module_left/all";
 			mainFun="module_list_main";
@@ -83,6 +88,24 @@ function feLoad(type){
 		},100);*/
 }
 
+function feSingleLoad(url){
+	colMain.load("index.php/"+url,function(){
+		
+	});
+}
+
+function feLoadTemplate(p){
+	colLeft.empty();
+	colMain.load("user_module/mainIframe.php?p="+p,function(){
+		var c=$("#content");
+		var cSet={
+				pl:c.css("padding-left"),
+				pr:c.css("padding-right")
+			};
+		_leftHandlClick(cSet);
+	})
+}
+
 function feInitStorage(){
 	if(window.localStorage){
 		var s=window.localStorage,
@@ -98,4 +121,3 @@ function feInitStorage(){
 		return;
 	}
 }
-
