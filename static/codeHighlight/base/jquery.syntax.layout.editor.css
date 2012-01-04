@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .syntax-container.syntax-theme-base div.editor.syntax {
   background-color: white;
   border: 1px inset #aaaaaa;
@@ -6,3 +7,13 @@
   white-space: pre; }
 .syntax-container.syntax-theme-base div.editor.syntax:focus {
   outline: none; }
+=======
+.syntax-container.syntax-theme-base div.editor.syntax {
+  background-color: white;
+  border: 1px inset #aaaaaa;
+  padding: 0.2em !important;
+  margin: 0 !important;
+  white-space: pre; }
+.syntax-container.syntax-theme-base div.editor.syntax:focus {
+  outline: none; }
+>>>>>>> 84312df732961d9d6bf0b8b3ac301a484c7b3f15

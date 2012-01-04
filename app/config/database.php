@@ -49,7 +49,11 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
+<<<<<<< HEAD
 $db['default']['password'] = '';
+=======
+$db['default']['password'] = '123456';
+>>>>>>> 84312df732961d9d6bf0b8b3ac301a484c7b3f15
 $db['default']['database'] = 'fetool';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
@@ -65,4 +69,8 @@ $db['default']['stricton'] = FALSE;
 
 
 /* End of file database.php */
+<<<<<<< HEAD
 /* Location: ./application/config/database.php */
+=======
+/* Location: ./application/config/database.php */
+>>>>>>> 84312df732961d9d6bf0b8b3ac301a484c7b3f15

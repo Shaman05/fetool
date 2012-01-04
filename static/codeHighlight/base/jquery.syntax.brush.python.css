@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 .syntax-theme-base .syntax .python .decorator {
   color: #ffb600;
   font-weight: bold; }
 .syntax-theme-base .syntax .python .builtin {
   color: #3333ff;
   font-style: italic; }
+=======
+.syntax-theme-base .syntax .python .decorator {
+  color: #ffb600;
+  font-weight: bold; }
+.syntax-theme-base .syntax .python .builtin {
+  color: #3333ff;
+  font-style: italic; }
+>>>>>>> 84312df732961d9d6bf0b8b3ac301a484c7b3f15
