@@ -1,0 +1,45 @@
+/* Reset CSS */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body{font: 12px/1.5em Verdana,Arial,Helvetica,Arial,sans-serif; white-space: normal; color: #000; min-width: 1000px; background: #FFF;}
+table{border-collapse:collapse;border-spacing:0;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}
+del,ins{text-decoration:none;}
+li{list-style:none;}
+caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}
+abbr,acronym{border:0;font-variant:normal;}
+sup,sub{vertical-align:baseline;}
+legend{color:#000;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}
+input,button,textarea,select{*font-size:100%;}
+a{color: #3366CC; text-decoration: none; outline: none;}
+
+/*layout*/
+html{height: 100%; *overflow: auto;}
+body{min-height: 100%; position: relative; _height: 100%;}
+.contentWrap{padding-bottom: 41px;}
+.header,.footer{box-shadow:0 0 3px #000; border-color: #222222; border-style: solid;}
+.header{height:90px; border-width: 0 0 1px;}
+.footer{position: absolute; height: 40px; width: 100%; bottom: 0; background:#4C4C4C; border-width:1px 0 0;}
+.about{height:60px; line-height:60px; text-align:center; background: #1F1F1F;}
+.about h2{color:#EEE; text-shadow:1px 1px 0 #444; font-size: 14px;}
+.logo{position:absolute; top:10px; left:0; height:34px; padding:16px 20px 0; overflow: hidden; background:#4c4c4c; background:-moz-linear-gradient(top,rgba(115,115,115,1),rgba(76,76,76,1)); background:-webkit-gradient(linear,0 0,0 100%,from(rgba(115,115,115,1)),to(rgba(76,76,76,1))); border-radius:6px 6px 0 0;}
+.logo h1{font-size:32px; float:left;}
+.logo h1 span{font-size:12px; margin-left:12px;}
+.logo h1 span,.logo h1 a{font-family:"Comic Sans MS", cursive;}
+nav{height:30px; background:#4C4C4C;}
+
+/*common*/
+.clearfix:before,.clearfix:after{content:"";display:table;}
+.clearfix:after{clear:both;}
+.clearfix{*zoom:1;}
+.footer a,.logo h1 span,.logo h1 a,.login a{color:#7dd0fa}
+.header,.footer,.nav a,.htool a{color:#b2b2b2}
+.footer a:hover{text-decoration: underline;}
+
+/**/
+.footer .clearfix{padding: 12px 20px; height: 16px; overflow: hidden;}
+.rights{float: left;}
+.elapsedTime{float: right;}
