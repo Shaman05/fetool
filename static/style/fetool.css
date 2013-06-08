@@ -31,6 +31,8 @@ body{min-height: 100%; position: relative; _height: 100%;}
 nav{height:30px; background:#4C4C4C; padding-left: 20px;}
 nav a{font-size: 13px; float: left; margin-right: 0.8em; font-weight: bold; padding: 2px 6px; line-height: normal; margin-top: 5px;}
 .content{min-height: 450px; padding: 12px 20px;}
+.left{width: 50%;}
+.right{width: 50%;}
 
 /*common*/
 .fl{float: left;}
@@ -62,6 +64,8 @@ nav a{font-size: 13px; float: left; margin-right: 0.8em; font-weight: bold; padd
 .rights{float: left;}
 .elapsedTime{float: right;}
 .loading{display: none;}
+.codeBox,.codeViewBox{border: 1px solid #000; height: 300px;}
+.codeFrame{height: 100%; width: 100%;}
 
 
 /*plug css*/

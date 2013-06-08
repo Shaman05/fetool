@@ -8,13 +8,24 @@
  * Version 3.7
  */
 
-;seajs.config({
+;(function(){
+    var libPath = '../codemirror-3.13/lib/';
+    var modePath = '../codemirror-3.13/mode/';
 
-    base: 'fe-script/',
+    seajs.config({
 
-    alias: {
-        'jquery': './static/jquery/jquery-1.7.2.min.js'
-    },
+        base: 'fe-script/',
 
-    preload: ['jquery']
-});
+        alias: {
+            'jquery': './static/jquery/jquery-1.7.2.min.js',
+            'codemirror': libPath + 'codemirror.js',
+            'codemirror-css': libPath + 'codemirror.css',
+            'xml': modePath + 'xml/xml.js',
+            'javascript': modePath + 'javascript/javascript.js',
+            'css': modePath + 'css/css.js',
+            'htmlmixed': modePath + 'htmlmixed/htmlmixed.js'
+        },
+
+        preload: ['jquery']
+    });
+})();
