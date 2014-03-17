@@ -1,3 +1,10 @@
-Thumbs.db
+*.log
+*.idea
+*.dll
+*.exe
+*.pak
 *.swp
-.idea
+Thumbs.db
+
+lib/node_modules/
+resource/
