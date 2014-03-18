@@ -35,8 +35,8 @@ module.exports = {
       name: String
       , password: String
       , createTime: {type: Date, default: Date.now}
-      , level: Number
-      , usable: Boolean
+      , level: {type: Number, default: 1}
+      , usable: {type: Boolean, default: true}
     });
   }
 
