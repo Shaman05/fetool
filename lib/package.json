@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "mongoose": "*"
+    "mongoose": "3.6.14"
   }
 }
