@@ -16,13 +16,13 @@ module.exports = {
    */
   cfm: function(){
     return new Schema({
-      title: String
-      , category: Number  //分类 1:html 2:css 3:js 4:其他
+      title: {type: String, default: '未标题'}
+      , category: {type: Number, default: 4}  //分类 1:html 2:css 3:js 4:其他
       , html: String
       , css: String
       , js: String
       , tag: String
-      , heat: Number
+      , heat: {type: Number, default: 0}
     });
   },
 
