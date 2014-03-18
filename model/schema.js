@@ -23,6 +23,7 @@ module.exports = {
       , js: String
       , tag: String
       , heat: {type: Number, default: 0}
+      , createTime: {type: Date, default: Date.now}
     });
   },
 
