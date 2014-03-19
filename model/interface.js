@@ -39,7 +39,8 @@ exports.createModel = function(params){
       var _options = {};
       for(var i = 0; i < fields.length; i++){
         var field = fields[i];
-        _options[field] = _fields[field];
+        var fieldValue = _fields[field];
+        fieldValue && (_options[field] = fieldValue);
       }
       return new Name(_options);
     },
