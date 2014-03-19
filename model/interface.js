@@ -15,7 +15,6 @@ var schema = require('./schema');
  */
 exports.createModel = function(params){
   var name = params.name;
-  var fields = params.fields;
   var methods = params.methods;
   var Schema = schema[name]();
 
@@ -36,13 +35,7 @@ exports.createModel = function(params){
      * @returns {Name}
      */
     create: function(_fields){
-      var _options = {};
-      for(var i = 0; i < fields.length; i++){
-        var field = fields[i];
-        var fieldValue = _fields[field];
-        fieldValue && (_options[field] = fieldValue);
-      }
-      return new Name(_options);
+      return new Name(_fields);
     },
 
     /**

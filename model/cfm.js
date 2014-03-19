@@ -7,12 +7,9 @@
 
 var factory = require('../model/interface');
 
-var fields = ['title', 'category', 'html', 'css', 'js', 'tag', 'heat', 'createTime'];
-
 var methods = {};
 
 module.exports = factory.createModel({
   name: 'cfm', //这里的名称需存在于schema里
-  fields: fields,
   methods: methods
 });

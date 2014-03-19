@@ -7,8 +7,6 @@
 
 var factory = require('../model/interface');
 
-var fields = ['name', 'password', 'level', 'usable'];
-
 var methods = {
   speak: function(){
     console.log('嗨,我是' + (this.name ? this.name : '来自火星的人'));
@@ -17,6 +15,5 @@ var methods = {
 
 module.exports = factory.createModel({
   name: 'user', //这里的名称需存在于schema里
-  fields: fields,
   methods: methods
 });
