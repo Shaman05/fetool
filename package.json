@@ -3,7 +3,7 @@
   "main": "html/index.html",
   "window": {
     "frame": false,
-    "toolbar": false,
+    //"toolbar": false,
     "icon": "logo.png",
     "title": "前端助手",
     "height": 500,

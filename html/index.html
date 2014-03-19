@@ -19,14 +19,39 @@
       <div class="boxsub03">
         <div class="boxsub04">
           <!--content-->
-
+          <div class="userList"></div>
+          <div class="userInfo"></div>
           <!--//content-->
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<!--template-->
+<script type="text/html" id="userList">
+  <% if(users.length){ %>
+  <ul>
+    <% users.forEach(function(user){ %>
+    <li><%= user.name %> -- <span class="oid"><%= user._id%></span></li>
+    <% }) %>
+  </ul>
+  <% }else{ %>
+  <div>--暂无数据--</div>
+  <% } %>
+</script>
+<script type="text/html" id="userInfo">
+  <% if(userInfo){ %>
+  <h4>用户：<%= userInfo.name %></h4>
+  <p>用户等级：<%= userInfo.level %></p>
+  <p>创建时间：<%= userInfo.createTime %></p>
+  <% } %>
+</script>
+<!--//template-->
+
+<script src="../public/js/lib/jquery-1.10.2.min.js"></script>
 <script src="../public/js/tray.js"></script>
 <script src="../public/js/app.js"></script>
+<script src="../app/controller/index.js"></script>
 </body>
 </html>
