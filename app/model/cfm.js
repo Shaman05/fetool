@@ -5,7 +5,7 @@
  * Time: 下午2:55
  */
 
-var factory = require('../model/interface');
+var factory = require('./interface');
 
 var methods = {};
 

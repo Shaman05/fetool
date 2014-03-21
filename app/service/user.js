@@ -5,7 +5,7 @@
  * Time: 下午3:09
  */
 
-var user = require('../../model/user');
+var user = require('../model/user');
 
 module.exports = {
   /**

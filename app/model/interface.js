@@ -5,7 +5,7 @@
  * Time: 下午3:25
  */
 
-var mongoose = require('../lib/node_modules/mongoose');
+var mongoose = require('../../lib/node_modules/mongoose');
 var schema = require('./schema');
 
 /**

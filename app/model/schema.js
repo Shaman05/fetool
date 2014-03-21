@@ -5,7 +5,7 @@
  * Time: 下午2:58
  */
 
-var mongoose = require('../lib/node_modules/mongoose');
+var mongoose = require('../../lib/node_modules/mongoose');
 var Schema = mongoose.Schema;
 
 module.exports = {

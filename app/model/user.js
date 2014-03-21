@@ -5,7 +5,7 @@
  * Time: 下午3:25
  */
 
-var factory = require('../model/interface');
+var factory = require('./interface');
 
 var methods = {
   speak: function(){

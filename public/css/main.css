@@ -16,6 +16,7 @@ html,body {
     position: fixed;
     z-index: 0;
     border-left: #555555 5px solid;
+    box-shadow: 0 0 10px #000000;
 }
 .boxsub {
     height: 100%;
