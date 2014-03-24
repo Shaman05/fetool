@@ -1,6 +1,6 @@
 {
   "name": "Fetool",
-  "main": "html/index.html",
+  "main": "app/view/index.html",
   "window": {
     "frame": false,
     //"toolbar": false,

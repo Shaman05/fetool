@@ -8,11 +8,11 @@
  * 注意：在添加依赖的时候，当前路径为页面的所在路径
  */
 
-var util = require('../app/common/util');
-var ejs = require('../lib/node_modules/ejs');
+var util = require('../common/util');
+var ejs = require('../../lib/node_modules/ejs');
 
-var mongoose = require('../lib/node_modules/mongoose');
-var user = require('../app/service/user');
+var mongoose = require('../../lib/node_modules/mongoose');
+var user = require('../service/user');
 
 mongoose.connect('mongodb://localhost/test');
 
