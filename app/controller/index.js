@@ -9,10 +9,10 @@
  */
 
 var util = require('../common/util');
-var ejs = require('../../lib/node_modules/ejs');
+var ejs = require('../node_modules/ejs');
 
-var mongoose = require('../../lib/node_modules/mongoose');
-var user = require('../service/user');
+var mongoose = require('../node_modules/mongoose');
+var user = require('../model/user');
 
 mongoose.connect('mongodb://localhost/test');
 

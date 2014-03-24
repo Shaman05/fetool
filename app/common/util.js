@@ -4,7 +4,7 @@
  * Date: 14-3-18
  * Time: 下午12:20
  */
-var $ = require('../../lib/node_modules/jquery');
+var $ = require('../node_modules/jquery');
 var util = {};
 
 util.render = function($container, html, callback){
