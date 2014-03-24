@@ -6,8 +6,12 @@ html,body {
     margin: 0;
     padding: 0;
     background: transparent;
+    font-family: microsoft yahei, simhei;
 }
-.win-drag{
+a{
+    /*text-decoration: none;*/
+}
+.drag-item{
     -webkit-app-region: drag;
 }
 .box {
@@ -15,21 +19,21 @@ html,body {
     height: 100%;
     position: fixed;
     z-index: 0;
-    border-left: #555555 5px solid;
+    border-left: #3790CE 5px solid;
     box-shadow: 0 0 10px #000000;
 }
 .boxsub {
     height: 100%;
-    border-top: #555555 21px solid;
+    border-top: #3790CE 21px solid;
 }
 .boxsub02 {
     height: 100%;
-    border-right: #555555 5px solid;
+    border-right: #3790CE 5px solid;
     margin-right: 0;
 }
 .boxsub03 {
     height: 100%;
-    border-bottom: #555555 5px solid;
+    border-bottom: #3790CE 5px solid;
     margin: 0 -10px 0;
 }
 .boxsub04 {
@@ -54,5 +58,22 @@ html,body {
     -webkit-user-select: none;
     color: #ffffff;
     font-size: 11px;
-    text-shadow: 1px 0 1px #c9c9c9;
+    text-shadow: 1px 0 0 #000000;
+}
+.topBar table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.topBar .logo{
+    width: 24px;
+    background: url("../images/logo.png") no-repeat;
+    background-size: 16px 16px;
+}
+.topBar .title{
+    color: #ffffff;
+    font-size: 12px;
+}
+.topBar .menu{
+    width: 200px;
+    background: red;
 }
