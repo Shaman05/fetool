@@ -4,7 +4,7 @@
   "window": {
     "frame": false,
     //"toolbar": false,
-    "icon": "logo.png",
+    "icon": "public/images/logo.png",
     "title": "前端助手",
     "height": 500,
     "min_height": 500,

@@ -24,7 +24,7 @@ a{
 }
 .boxsub {
     height: 100%;
-    border-top: #3790CE 21px solid;
+    border-top: #3790CE 29px solid;
 }
 .boxsub02 {
     height: 100%;
@@ -45,10 +45,18 @@ a{
 /* frame end */
 
 /* common */
+.icon{
+    background: url("../images/icon01.png") no-repeat 0 0;
+    display: inline-block;
+    height: 18px;
+    width: 20px;
+    text-indent: -99px;
+    overflow: hidden;
+}
 /* common end */
 
 .topBar{
-    height: 16px;
+    height: 24px;
     line-height: 16px;
     position: absolute;
     top: 3px;
@@ -64,9 +72,12 @@ a{
     width: 100%;
     border-collapse: collapse;
 }
+.topBar table tr{
+    height: 24px;
+}
 .topBar .logo{
     width: 24px;
-    background: url("../images/logo.png") no-repeat;
+    background: url("../images/logo.png") no-repeat 2px 3px;
     background-size: 16px 16px;
 }
 .topBar .title{
@@ -74,6 +85,34 @@ a{
     font-size: 12px;
 }
 .topBar .menu{
-    width: 200px;
-    background: red;
+    width: 68px;
+}
+.topBar .menu span{
+    display: inline-block;
+    height: 18px;
+    width: 20px;
+    border: 1px solid #3790CE;
+    position: relative;
+    top: 2px;
+    border-radius: 2px;
+}
+.topBar .menu span:hover{
+    background-color: #5ea5d7;
+    border-color: #2177b7;
+}
+.topBar .menu .close:hover{
+    background-color: #c73b3b;
+    border-color: #8b2929;
+}
+.min-size .icon{
+    background-position: 3px 1px;
+}
+.max-size .icon{
+    background-position: -20px 2px;
+}
+.toggle-size .icon{
+    background-position: -64px 2px;
+}
+.close .icon{
+    background-position: -43px 2px;
 }
