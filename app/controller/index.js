@@ -18,21 +18,6 @@ mongoose.connect('mongodb://localhost/test');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function callback () {
-
-  user.getUserList({}, function(err, users){
-    var $container = $('.userList');
-    var tpl = $('#userList').html();
-    var html = ejs.render(tpl, {users: users});
-    $container.html(html);
-
-    var ObjectId = mongoose.Types.ObjectId;
-    user.getUserInfo(ObjectId.fromString($('.oid:eq(0)').text()), function(err, userInfo){
-      var $container = $('.userInfo');
-      var tpl = $('#userInfo').html();
-      var html = ejs.render(tpl, {userInfo: userInfo});
-      $container.html(html);
-    });
-  });
+db.once('open', function(){
 
 });

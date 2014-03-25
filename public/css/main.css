@@ -1,15 +1,17 @@
 /* frame */
 *,*:before,*:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
+body,ul,li{
+    margin: 0;
+    padding: 0;
+}
 html,body {
     height: 100%;
     width: 100%;
-    margin: 0;
-    padding: 0;
     background: transparent;
     font-family: microsoft yahei, simhei;
 }
-a{
-    /*text-decoration: none;*/
+ul, li{
+    list-style: none;
 }
 .drag-item{
     -webkit-app-region: drag;
@@ -45,6 +47,9 @@ a{
 /* frame end */
 
 /* common */
+.niceScroll{
+    visibility: hidden;
+}
 .icon{
     background: url("../images/icon01.png") no-repeat 0 0;
     display: inline-block;
@@ -115,4 +120,39 @@ a{
 }
 .close .icon{
     background-position: -43px 2px;
+}
+
+.wrap{
+    height: 100%;
+    background: #ffffff;
+}
+.left{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 56px;
+    height: 100%;
+    background: #384043;
+    box-shadow: 0 0 10px #384043;
+    border-right: 1px solid #565b5f;
+}
+.right{
+    margin-left: 60px;
+    margin-right: 5px;
+    height: 100%;
+    overflow: auto;
+}
+
+.left-nav li{
+    border-bottom: 1px solid #2e3136;
+    /*height: 56px;*/
+    box-shadow: 0 -1px 1px #565b5f inset;
+}
+
+.left-nav a{
+    display: block;
+    height: 32px;
+    width: 32px;
+    margin: 11px;
+    background: cornflowerblue;
 }

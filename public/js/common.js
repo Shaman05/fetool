@@ -5,6 +5,7 @@
  * Time: 下午4:12
  */
 (function(){
+
   'use strict';
 
   var gui = require('nw.gui');
@@ -12,6 +13,11 @@
   var maxFlag = false;
 
   $(function(){
+
+    var $niceScroll = $('.niceScroll');
+    $niceScroll.niceScroll({cursorcolor: '#384043'});
+    $niceScroll.css('visibility', 'visible');
+
     var $toggleWin = $('.max-size');
 
     util.eventInit({
