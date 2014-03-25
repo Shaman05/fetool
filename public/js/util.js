@@ -7,6 +7,8 @@
 
 (function(root, $){
 
+  'use strict';
+
   var util = {
     //执行事件
     eventExec: function(origin, eventGroup){
@@ -48,7 +50,7 @@
     eventInit: function(eventGroup){
       $(document)
       .on('click', '[event-click]', function(e){
-        util.throwEvent.call(this, e);
+        util.throwEvent.call(this, e, eventGroup);
         e.stopPropagation && e.stopPropagation();
         e.cancelBubble && (e.cancelBubble = true);
       })
