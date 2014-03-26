@@ -79,6 +79,42 @@ a{
     width: 100%;
     border: none;
 }
+input[type=text]{
+    border: 1px solid #ccc;
+    height: 30px;
+    vertical-align: middle;
+    padding: 4px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #555555;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    background-color: #ffffff;
+}
+.readonly{
+    background: #d4d4d4;
+    color: #555555;
+}
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table thead {
+    background: #70a7ff;
+    color: #ffffff;
+}
+.table td, .table th {
+    border: 1px solid #cccccc;
+    padding: 4px;
+    border-collapse: collapse;
+}
+.table caption{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 32px;
+}
+.table tbody .separateColor{
+    background: #eeeeee;
+}
 /* common end */
 
 .topBar{
@@ -108,6 +144,7 @@ a{
 .topBar .title{
     color: #ffffff;
     font-size: 12px;
+    cursor: default;
 }
 .topBar .menu{
     width: 70px;
@@ -215,6 +252,8 @@ a{
     background: url("../images/icon_setting.png") no-repeat 0 0;
     opacity: 0.8;
 }
+
+/* 菜单 */
 .left-nav a:hover,
 .setting:hover{
     opacity: 1;
@@ -241,13 +280,6 @@ a{
     line-height: 20px;
     padding-left: 8px;
 }
-.sub-menu > a:first-child,
-.sub-a > a{
-    border-radius: 0 4px 0 0;
-}
-.sub-menu > a:last-child{
-    border-radius: 0 0 4px 0;
-}
 .sub-menu a:hover{
     background: #384043;
     color: #ffffff;
@@ -268,3 +300,4 @@ a{
 .sub-a:hover arrow{
     border-color: #384043 #ffffff #ffffff #384043;
 }
+/* 菜单结束 */
