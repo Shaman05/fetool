@@ -16,6 +16,9 @@ ul, li{
 .drag-item{
     -webkit-app-region: drag;
 }
+.un-select{
+    -webkit-user-select: none;
+}
 .box {
     width: 100%;
     height: 100%;
@@ -68,7 +71,6 @@ ul, li{
     left: 5px;
     right: 5px;
     z-index: 9;
-    -webkit-user-select: none;
     color: #ffffff;
     font-size: 11px;
     text-shadow: 1px 0 0 #000000;
@@ -141,11 +143,18 @@ ul, li{
     margin-right: 5px;
     height: 100%;
     overflow: auto;
+    position: relative;
+}
+.right-wrap{
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 0;
 }
 
 .left-nav li{
     border-bottom: 1px solid #2e3136;
-    /*height: 56px;*/
     box-shadow: 0 -1px 1px #565b5f inset;
 }
 
@@ -153,6 +162,40 @@ ul, li{
     display: block;
     height: 32px;
     width: 32px;
+    overflow: hidden;
+    text-indent: -999px;
     margin: 11px;
-    background: cornflowerblue;
+    border: 1px solid #384043;
+    border-radius: 4px;
+    opacity: 0.8;
+}
+.doc{
+    background: url("../images/icon_doc.png") no-repeat 0 0;
+}
+.plug{
+    background: url("../images/icon_plug.png") no-repeat 0 0;
+}
+.fragment{
+    background: url("../images/icon_fragment.png") no-repeat 0 0;
+}
+.tools{
+    background: url("../images/icon_tool.png") no-repeat 0 0;
+}
+.learn{
+    background: url("../images/icon_learn.png") no-repeat 0 0;
+}
+.setting{
+    height: 24px;
+    width: 24px;
+    overflow: hidden;
+    text-indent: -999px;
+    position: absolute;
+    bottom: 6px;
+    left: 16px;
+    background: url("../images/icon_setting.png") no-repeat 0 0;
+    opacity: 0.8;
+}
+.left-nav a:hover,
+.setting:hover{
+    opacity: 1;
 }

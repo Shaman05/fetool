@@ -8,7 +8,7 @@
 <body>
 
 <!--topBar-->
-<div class="topBar">
+<div class="topBar un-select">
   <table>
     <tr>
       <td class="drag-item logo">&nbsp;</td>
@@ -29,21 +29,29 @@
       <div class="boxsub03">
         <div class="boxsub04">
           <!--content-->
-          <!--<div class="userList"></div>
-          <div class="userInfo"></div>-->
           <div class="wrap">
-            <div class="left">
+
+            <!--left-->
+            <div class="left un-select">
               <ul class="left-nav">
-                <li><a href="javascript:"></a></li>
-                <li><a href="javascript:"></a></li>
-                <li><a href="javascript:"></a></li>
-                <li><a href="javascript:"></a></li>
-                <li><a href="javascript:"></a></li>
+                <li><a href="javascript:" class="doc" title="文档查询">文档查询</a></li>
+                <li><a href="javascript:" class="plug" title="插件中心">插件中心</a></li>
+                <li><a href="javascript:" class="fragment" title="代码碎片">代码碎片</a></li>
+                <li><a href="javascript:" class="tools" title="常用工具">常用工具</a></li>
+                <li><a href="javascript:" class="learn" title="学习资料">学习资料</a></li>
               </ul>
+              <span class="setting" title="设置">设置</span>
             </div>
+            <!-//-left-->
+
+            <!--right-->
             <div class="right niceScroll">
-              <div style="height: 2000px;"></div>
+              <div class="right-wrap">
+                <iframe id="main-frame" src="" style="background: red" frameborder="0" height="100%" width="100%"></iframe>
+              </div>
             </div>
+            <!--//right-->
+
           </div>
           <!--//content-->
         </div>
