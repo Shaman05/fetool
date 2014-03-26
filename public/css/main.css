@@ -9,9 +9,14 @@ html,body {
     width: 100%;
     background: transparent;
     font-family: microsoft yahei, simhei;
+    font-size: 12px;
 }
 ul, li{
     list-style: none;
+}
+a{
+    color: #363636;
+    text-decoration: none;
 }
 .drag-item{
     -webkit-app-region: drag;
@@ -150,6 +155,7 @@ ul, li{
     background: #384043;
     box-shadow: 0 0 10px #384043;
     border-right: 1px solid #565b5f;
+    z-index: 1;
 }
 .right{
     margin-left: 60px;
@@ -157,7 +163,6 @@ ul, li{
     height: 100%;
     overflow: auto;
     position: relative;
-    font-size: 12px;
 }
 .right-wrap{
     position: absolute;
@@ -165,14 +170,15 @@ ul, li{
     bottom: 5px;
     left: 5px;
     right: 0;
+    z-index: 0;
 }
 
 .left-nav li{
     border-bottom: 1px solid #2e3136;
     box-shadow: 0 -1px 1px #565b5f inset;
+    position: relative;
 }
-
-.left-nav a{
+.left-nav li > a{
     display: block;
     height: 32px;
     width: 32px;
@@ -212,4 +218,53 @@ ul, li{
 .left-nav a:hover,
 .setting:hover{
     opacity: 1;
+}
+.sub-menu{
+    position: absolute;
+    border: 1px solid #565b5f;
+    background: #ffffff;
+    left: 100%;
+    top: 4px;
+    width: 90px;
+    padding: 2px;
+    display: none;
+    box-shadow: 0 0 3px #565b5f;
+    border-radius: 0 4px 4px 0;
+}
+.sub-a .sub-menu{
+    top: -8px;
+    margin-left: -2px;
+}
+.sub-menu a{
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 8px;
+}
+.sub-menu > a:first-child,
+.sub-a > a{
+    border-radius: 0 4px 0 0;
+}
+.sub-menu > a:last-child{
+    border-radius: 0 0 4px 0;
+}
+.sub-menu a:hover{
+    background: #384043;
+    color: #ffffff;
+}
+.left-nav li:hover > .sub-menu,
+.left-nav .sub-menu .sub-a:hover > .sub-menu{
+    display: block;
+}
+.sub-a arrow{
+    height: 0;
+    width: 0;
+    display: inline-block;
+    margin-left: 4px;
+    border-width: 3px;
+    border-color: #ffffff #384043 #384043 #ffffff;
+    border-style: solid;
+}
+.sub-a:hover arrow{
+    border-color: #384043 #ffffff #ffffff #384043;
 }
