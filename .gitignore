@@ -6,6 +6,8 @@
 *.swp
 Thumbs.db
 
+fetool.nw
+
 app/node_modules/
 resource/
 dist/
