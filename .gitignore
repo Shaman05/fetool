@@ -8,3 +8,4 @@ Thumbs.db
 
 app/node_modules/
 resource/
+dist/
