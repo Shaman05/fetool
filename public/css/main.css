@@ -50,6 +50,14 @@ ul, li{
 /* frame end */
 
 /* common */
+.loading{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.5) url("../images/loading.gif") no-repeat center;
+}
 .niceScroll{
     visibility: hidden;
 }
@@ -60,6 +68,11 @@ ul, li{
     width: 20px;
     text-indent: -99px;
     overflow: hidden;
+}
+.main-frame{
+    height: 100%;
+    width: 100%;
+    border: none;
 }
 /* common end */
 
@@ -144,6 +157,7 @@ ul, li{
     height: 100%;
     overflow: auto;
     position: relative;
+    font-size: 12px;
 }
 .right-wrap{
     position: absolute;

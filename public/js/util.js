@@ -63,6 +63,23 @@
       .on('change', '[event-change]', function(e){
         util.throwEvent.call(this, e, eventGroup);
       });
+    },
+    //加载中
+    showLoading: function($obj){
+      var isIframe = $obj.is('iframe');
+      var isAbsolute = $obj.css('position') === 'absolute';
+      var $mask = $('<div class="loading"></div>').hide();
+      if(isIframe){
+        $mask.appendTo($('body', $obj[0].contentWindow.document)).fadeIn(200);
+      }else{
+        !isAbsolute && $obj.css('position', 'relative');
+        $mask.appendTo($obj).fadeIn(200);
+      }
+    },
+    //隐藏loading
+    hideLoading: function($obj){
+      var isIframe = $obj.is('iframe');
+      $('.loading', isIframe ? $obj[0].contentWindow.document : $obj).remove();
     }
   };
 
