@@ -1,10 +1,10 @@
 /**
  * Created with JetBrains PhpStorm.
  * User: Chen Chao
- * Date: 14-3-19
- * Time: 下午3:11
+ * Date: 14-3-31
+ * Time: 下午4:33
  */
 
 module.exports = {
-  data_path: __dirname
+  dirname: __dirname
 }

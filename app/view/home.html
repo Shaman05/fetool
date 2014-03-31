@@ -5,6 +5,30 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
-  <h1>欢迎使用前端助手工具 :)</h1>
+  <p>当前路径：<span id="dir"></span></p>
+  <p>数据存储路径：<span id="data_dir"></span></p>
+  <button id="cc">创建目录</button>
+  <script>
+
+    window.onload = function(){
+      var fs = require('fs');
+      var home = require('../controller/home');
+      var __dir__ = process.execPath;
+      __dir__ = __dir__.replace('fetool.exe', '');
+      document.getElementById('dir').innerHTML = home.dirname;
+      document.getElementById('data_dir').innerHTML = __dir__;
+
+      document.getElementById('cc').onclick = function(){
+        if(!fs.existsSync(__dir__ + '/data')){
+          fs.mkdir(__dir__ + '/data', function(err){
+            alert(err ? err : '创建目录成功!');
+          });
+        }else{
+          alert('目录已存在!');
+        }
+      };
+    };
+
+  </script>
 </body>
 </html>
