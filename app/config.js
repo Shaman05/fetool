@@ -6,5 +6,11 @@
  */
 
 module.exports = {
-  data_path: __dirname
+  db: {
+    host: 'mongodb://localhost/',
+    name: 'test'
+  },
+  data_path: function(){
+    return __dirname;
+  }
 }

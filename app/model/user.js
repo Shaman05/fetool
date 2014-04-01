@@ -6,8 +6,25 @@
  */
 
 var user = require('./service/user');
+var crypto = require('../common/crypto');
 
 module.exports = {
+
+  /**
+   * 创建新用户
+   * @param name
+   * @param password
+   */
+  add: function(options, callback){
+    var newUser = user.create({
+      name: options.name,
+      password: crypto.md5(options.password)
+    });
+    user.save(newUser, function(err, user){
+      callback && callback(err, user);
+    });
+  },
+
   /**
    * 获取用户列表
    * @param condition

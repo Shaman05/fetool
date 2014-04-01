@@ -44,7 +44,9 @@ exports.createModel = function(params){
      * @param callback
      */
     save: function(record, callback){
+      console.log(record);
       record && record.save(function(err, _record){
+        console.log('save:', _record);
         callback(err, _record);
       });
     }

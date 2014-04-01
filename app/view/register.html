@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>注册</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<div class="form register">
+  <label for="name">用户名：<input type="text" name="name" id="name"/></label><br/>
+  <label for="password">密码：<input type="password" name="password" id="password"/></label><br/>
+  <label for="password2">确认密码：<input type="password" name="password2" id="password2"/></label><br/>
+  <button id="submit">提交</button>
+</div>
+<script src="../../public/js/lib/jquery-1.10.2.min.js"></script>
+<script>
+  $(function(){
+    var db = require('../model/db');
+    var register = require('../controller/register');
+
+    db.connect(function(){
+      $('#submit').on('click', function(){
+        var name = $('#name').val();
+        var pwd = $('#password').val();
+        register.addUser({
+          name: name,
+          password: pwd
+        }, function(err, user){
+          alert(err ? err : user.name + '创建成功!');
+        });
+      });
+    });
+
+  });
+</script>
+</body>
+</html>
