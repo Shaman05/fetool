@@ -241,7 +241,8 @@ input[type=text]{
 .learn{
     background: url("../images/icon_learn.png") no-repeat 0 0;
 }
-.setting{
+.setting,
+.unlogin{
     height: 24px;
     width: 24px;
     overflow: hidden;
@@ -249,8 +250,13 @@ input[type=text]{
     position: absolute;
     bottom: 6px;
     left: 16px;
-    background: url("../images/icon_setting.png") no-repeat 0 0;
     opacity: 0.8;
+}
+.setting{
+    background: url("../images/icon_setting.png") no-repeat 0 0;
+}
+.unlogin{
+    background: url("../images/icon_unlogin.png") no-repeat 0 0;
 }
 
 /* 菜单 */

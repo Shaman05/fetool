@@ -32,7 +32,11 @@
       //关闭
       closeWindow: function(){
         Window.close();
-      }
+      },
+      //未登录菜单
+      callMenu: function(){},
+      //设置
+      callSetting: function(){}
     });
 
     Window.on('maximize', function(){
