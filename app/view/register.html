@@ -17,7 +17,11 @@
     var db = require('../model/db');
     var register = require('../controller/register');
 
-    db.connect(function(){
+    db.connect(function(err){
+      if(err){
+        alert(err.msg);
+        return;
+      }
       $('#submit').on('click', function(){
         var name = $('#name').val();
         var pwd = $('#password').val();
