@@ -18,6 +18,9 @@ a{
     color: #363636;
     text-decoration: none;
 }
+.link:hover{
+    text-decoration: underline;
+}
 .drag-item{
     -webkit-app-region: drag;
 }
@@ -179,16 +182,14 @@ input[type=text]{
     background-position: -43px 2px;
 }
 .top-link{
-    width: 80px;
+    width: 40px;
     font-family: arial, helvetica, sans-serif;
 }
 .top-link a{
     color: #ffffff;
     font-size: 13px;
 }
-.top-link a:hover{
-    color: #dddddd;
-}
+
 
 .wrap{
     height: 100%;
