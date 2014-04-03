@@ -17,7 +17,7 @@
       // Create a tray icon
       var tray = new gui.Tray({
         title: '前端代码碎片工具',
-        icon: 'logo.png'
+        icon: '../../public/images/logo.png'
       });
 
       // Give it a menu
@@ -32,7 +32,7 @@
         label: 'wiki-帮助文档',
         click: function(){
           gui.Window.get(
-            win.open('http://www.baidu.com/', '前端代码碎片工具 - wiki')
+            win.open('https://github.com/Shaman05/fetool', '前端代码碎片工具 - wiki')
           );
         }
       });
@@ -42,6 +42,8 @@
       menu.append(logout);
       tray.menu = menu;
     }
-  }
+  };
+
+  win.tray.init();
 
 })(window);

@@ -11,15 +11,16 @@
 
   var util = {
     //执行事件
-    eventExec: function(origin, eventGroup){
+    eventExec: function(ev, origin, eventGroup){
       var e = util.eventAnalysis(origin);
+      var args = [ev].concat(e.args);
       if(typeof eventGroup[e.groupName] === 'function'){
-        eventGroup[e.groupName].apply(this, e.args);
+        eventGroup[e.groupName].apply(this, args);
         return;
       }
-      eventGroup[e.groupName][e.eventFn].apply(this, e.args);
+      eventGroup[e.groupName][e.eventFn].apply(this, args);
     },
-    throwEvent: function(e, eventGroup){
+    throwEvent: function(ev, eventGroup){
       var $this = $(this);
       //事件类型
       var eventMap = {
@@ -29,9 +30,9 @@
         change: 'change'
       };
       if(!eventGroup)return false;
-      var _fn = $this.attr(eventMap[e.type]);
+      var _fn = $this.attr(eventMap[ev.type]);
       var _args = $this.attr('data-args');
-      util.eventExec.call(this, {event: _fn, args: _args}, eventGroup);
+      util.eventExec.call(this, ev, {event: _fn, args: _args}, eventGroup);
     },
     //事件代理解析, 支持以命名空间形式定义的事件名称
     eventAnalysis: function(origin){
