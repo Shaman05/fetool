@@ -46,11 +46,10 @@
         buttons: {Ok: close}
       },
       init: function(){
-        var setting = {
+        $("#about").dialog($.extend(this.default, {
           modal: true,
           width: 500
-        };
-        $("#about").dialog($.extend(this.default, setting));
+        }));
       }
     };
     dialog.init();
@@ -61,51 +60,53 @@
     }
   }
 
+  function menu(options){
+    return new gui.MenuItem(options);
+  }
+
   //账户菜单
   function createUserMenu(){
-    var userItem = new gui.MenuItem({
-      label: '账 户'
-    });
+    var userItem = menu({label: '账 户'});
     var subMenu = new gui.Menu();
-    subMenu.append(new gui.MenuItem({ label: '账户信息' }));
-    subMenu.append(new gui.MenuItem({ label: '修改密码' }));
+    subMenu.append(menu({ label: '账户信息'}));
+    subMenu.append(menu({ label: '修改密码'}));
     userItem.submenu = subMenu;
     return userItem;
   }
 
   //设置
   function createSetting(){
-    return new gui.MenuItem({label: '设 置'});
+    return menu({label: '设 置'});
   }
 
   //导入
   function createImport(){
-    return new gui.MenuItem({label: '导 入'});
+    return menu({label: '导 入'});
   }
 
   //导出
   function createExports(){
-    var exportsItem = new gui.MenuItem({label: '导 出'});
+    var exportsItem = menu({label: '导 出'});
     var subMenu = new gui.Menu();
-    subMenu.append(new gui.MenuItem({ label: '导出代码碎片'}));
-    subMenu.append(new gui.MenuItem({ label: '我的笔记'}));
+    subMenu.append(menu({ label: '导出代码碎片'}));
+    subMenu.append(menu({ label: '我的笔记'}));
     exportsItem.submenu = subMenu;
     return exportsItem;
   }
 
   //帮助
   function createHelp(){
-    var helpItem = new gui.MenuItem({label: '帮 助'});
+    var helpItem = menu({label: '帮 助'});
     var subMenu = new gui.Menu();
-    subMenu.append(new gui.MenuItem({
+    subMenu.append(menu({
       label: 'Fetool 介绍',
       icon: "public/images/icon_home.png",
       click: function(){
         $frame.attr('src', 'home.html');
       }
     }));
-    subMenu.append(new gui.MenuItem({label: 'wiki'}));
-    subMenu.append(new gui.MenuItem({
+    subMenu.append(menu({label: 'wiki'}));
+    subMenu.append(menu({
       label: '关 于',
       click: function(){
         $('#about').dialog('open');
@@ -117,7 +118,7 @@
 
   //退出
   function createLogout(){
-    return new gui.MenuItem({
+    return menu({
       label: '退 出',
       icon: "public/images/gui_logout.png",
       click: function(){
@@ -128,7 +129,7 @@
 
   //分割线
   function separatorLine(){
-    return new gui.MenuItem({type: 'separator'});
+    return menu({type: 'separator'});
   }
 
 })(window);
