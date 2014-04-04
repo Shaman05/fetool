@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <link rel="stylesheet" href="../../public/css/main.css"/>
+  <link rel="stylesheet" href="../../public/css/custom-theme/jquery-ui-1.10.0.custom.css"/>
   <title>Fetool - 前端助手</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
   <table>
     <tr>
       <td class="drag-item logo">&nbsp;</td>
-      <td class="drag-item title">UPG 前端助手工具</td>
+      <td class="drag-item title">前端助手工具</td>
       <td class="top-link">
         <a href="#" title="菜单" event-click="callMenu">菜单</a>
       </td>
@@ -67,7 +68,7 @@
                 <li><a href="javascript:" class="plug" title="插件中心">插件中心</a></li>
                 <li><a href="javascript:" class="fragment" title="代码碎片">代码碎片</a></li>
                 <li><a href="javascript:" class="tools" title="常用工具">常用工具</a></li>
-                <li><a href="javascript:" class="learn" title="学习资料">学习资料</a></li>
+                <li><a href="home.html" target="main-frame" class="learn" title="学习资料">学习资料</a></li>
               </ul>
               <!--登陆显示-->
               <!--<span class="setting" title="设置" event-click="callSetting">设置</span>-->
@@ -92,12 +93,21 @@
   </div>
 </div>
 
+<div style="display: none">
+  <!--about dialog-->
+  <div id="about" title="关于Fetool">
+    <p>本工具是由 <span class="color-blue">node-webkit</span> 集成前端各类常用工具于一体的应用; 界面自主设计结合 <span class="color-blue">jquery-ui-bootstrap</span></p>
+    <p style="text-align: right; margin-bottom: 0">当前版本号：Bate0.0.1</p>
+  </div>
+  <!--//end about dialog-->
+</div>
+
 <script src="../../public/js/lib/jquery-1.10.2.min.js"></script>
+<script src="../../public/js/lib/jquery-ui-1.10.0.custom.min.js"></script>
 <script src="../../public/js/lib/jquery.nicescroll.min.js"></script>
 <script src="../../public/js/util.js"></script>
-<!--<script src="../../public/js/tray.js"></script>-->
 <script src="../../public/js/gui.js"></script>
 <script src="../../public/js/common.js"></script>
 <script src="../../public/js/app.js"></script>
 </body>
-</html>
+</html>.

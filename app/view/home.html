@@ -1,61 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>前端助手 - 介绍页</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../public/css/main.css"/>
 </head>
-<body>
-  <p>当前路径：<span id="dir"></span></p>
-  <p>数据存储路径：<span id="data_dir"></span></p>
-  <button id="cc">创建目录</button>
-  <textarea id="content" cols="30" rows="10"></textarea>
-  <button id="save">保存</button>
-  <button id="get">读取内容</button>
-  <textarea id="output" cols="30" rows="10" style="border: 1px solid cadetblue; padding: 20px;"></textarea>
-  <a href="register.html">注册</a>
-  <script src="../../public/js/lib/jquery-1.10.2.min.js"></script>
-  <script src="../../public/js/lib/jquery.nicescroll.min.js"></script>
-  <script src="../../public/js/util.js"></script>
-  <script src="../../public/js/common.js"></script>
-  <script>
-    $(function(){
+<body class="niceScroll">
+<pre>
+Fetool - 前端助手
+===================================
 
-      var fs = require('fs');
-      var home = require('../controller/home');
-      var __dir__ = process.execPath;
-      __dir__ = __dir__.replace('fetool.exe', '');
-      document.getElementById('dir').innerHTML = home.dirname;
-      document.getElementById('data_dir').innerHTML = __dir__;
+## 1 安装使用（如何运行）
 
-      document.getElementById('cc').onclick = function(){
-        if(!fs.existsSync(__dir__ + '/data')){
-          fs.mkdir(__dir__ + '/data', function(err){
-            alert(err ? err : '创建目录成功!');
-          });
-        }else{
-          alert('目录已存在!');
-        }
-      };
 
-      document.getElementById('save').onclick = function(){
-        if(fs.existsSync(__dir__ + '/data')){
-          var str = document.getElementById('content').value;
-          fs.writeFile(__dir__ + '/data/file_' + new Date().getTime(), str, function(err){
-            alert(err ? err : '保存成功!');
-          });
-        }else{
-          alert('目录不存在!');
-        }
-      };
 
-      document.getElementById('get').onclick = function(){
-        fs.readFile(__dir__ + '/data/file_1396257907480', function(err, str){
-          alert(err ? err : '读取成功!');
-          document.getElementById('output').value = str;
-        });
-      };
-    });
+## 2 功能
 
-  </script>
+### 2.1 工具类：
+
+  1. 正则验证
+  2. JS在线编辑
+  3. JS代码压缩
+  4. CSS代码压缩
+  5. HTML代码压缩
+  6. 多JS文件合并压缩
+
+### 2.2 文档查询
+
+  1. 常用对照表
+     HTTP Content-type (ok)
+     HTML转义字符 (ok)
+     RGB颜色参考 (ok)
+     ASCII对照表 (ok)
+     HTTP状态码详解 (ok)
+     网页字体参考 (ok)
+
+  2. API 文档
+     Css2.0 参考文档
+     Css3.0 参考文档
+     JavaScript 参考文档
+     JQuery API
+     NodeJs API
+
+  3. 其他文档
+
+### 2.3 jquery插件
+
+### 2.4 代码碎片
+
+### 2.5 学习网站
+</pre>
+<script src="../../public/js/lib/jquery-1.10.2.min.js"></script>
+<script src="../../public/js/lib/jquery.nicescroll.min.js"></script>
+<script src="../../public/js/util.js"></script>
+<script src="../../public/js/common.js"></script>
 </body>
 </html>

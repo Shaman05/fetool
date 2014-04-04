@@ -18,6 +18,9 @@ a{
     color: #363636;
     text-decoration: none;
 }
+button{
+    outline: none;
+}
 .link:hover{
     text-decoration: underline;
 }
@@ -58,6 +61,9 @@ a{
 /* frame end */
 
 /* common */
+.color-blue{
+    color: dodgerblue;
+}
 .loading{
     position: absolute;
     left: 0;

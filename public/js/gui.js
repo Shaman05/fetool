@@ -11,6 +11,8 @@
 
   var gui = require('nw.gui');
   var Window = gui.Window.get();
+  var $frame = $('#main-frame');
+  uiInit();
 
   win.ui = {
     getMenu: function(){
@@ -34,6 +36,30 @@
       return menu;
     }
   };
+
+  function uiInit(){
+
+    var dialog = {
+      default: {
+        autoOpen: false,
+        resizable: false,
+        buttons: {Ok: close}
+      },
+      init: function(){
+        var setting = {
+          modal: true,
+          width: 500
+        };
+        $("#about").dialog($.extend(this.default, setting));
+      }
+    };
+    dialog.init();
+
+
+    function close(){
+      $(this).dialog("close");
+    }
+  }
 
   //账户菜单
   function createUserMenu(){
@@ -71,8 +97,20 @@
   function createHelp(){
     var helpItem = new gui.MenuItem({label: '帮 助'});
     var subMenu = new gui.Menu();
-    subMenu.append(new gui.MenuItem({label: 'Wiki'}));
-    subMenu.append(new gui.MenuItem({label: 'About'}));
+    subMenu.append(new gui.MenuItem({
+      label: 'Fetool 介绍',
+      icon: "public/images/icon_home.png",
+      click: function(){
+        $frame.attr('src', 'home.html');
+      }
+    }));
+    subMenu.append(new gui.MenuItem({label: 'wiki'}));
+    subMenu.append(new gui.MenuItem({
+      label: '关 于',
+      click: function(){
+        $('#about').dialog('open');
+      }
+    }));
     helpItem.submenu = subMenu;
     return helpItem;
   }

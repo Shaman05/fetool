@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+  <p>当前路径：<span id="dir"></span></p>
+  <p>数据存储路径：<span id="data_dir"></span></p>
+  <button id="cc">创建目录</button>
+  <textarea id="content" cols="30" rows="10"></textarea>
+  <button id="save">保存</button>
+  <button id="get">读取内容</button>
+  <textarea id="output" cols="30" rows="10" style="border: 1px solid cadetblue; padding: 20px;"></textarea>
+  <a href="register.html">注册</a>
+  <script src="../../public/js/lib/jquery-1.10.2.min.js"></script>
+  <script src="../../public/js/lib/jquery.nicescroll.min.js"></script>
+  <script src="../../public/js/util.js"></script>
+  <script src="../../public/js/common.js"></script>
+  <script>
+    $(function(){
+
+      var fs = require('fs');
+      var home = require('../controller/home');
+      var __dir__ = process.execPath;
+      __dir__ = __dir__.replace('fetool.exe', '');
+      document.getElementById('dir').innerHTML = home.dirname;
+      document.getElementById('data_dir').innerHTML = __dir__;
+
+      document.getElementById('cc').onclick = function(){
+        if(!fs.existsSync(__dir__ + '/data')){
+          fs.mkdir(__dir__ + '/data', function(err){
+            alert(err ? err : '创建目录成功!');
+          });
+        }else{
+          alert('目录已存在!');
+        }
+      };
+
+      document.getElementById('save').onclick = function(){
+        if(fs.existsSync(__dir__ + '/data')){
+          var str = document.getElementById('content').value;
+          fs.writeFile(__dir__ + '/data/file_' + new Date().getTime(), str, function(err){
+            alert(err ? err : '保存成功!');
+          });
+        }else{
+          alert('目录不存在!');
+        }
+      };
+
+      document.getElementById('get').onclick = function(){
+        fs.readFile(__dir__ + '/data/file_1396257907480', function(err, str){
+          alert(err ? err : '读取成功!');
+          document.getElementById('output').value = str;
+        });
+      };
+    });
+
+  </script>
+</body>
+</html>
