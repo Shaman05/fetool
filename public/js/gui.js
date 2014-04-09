@@ -81,12 +81,18 @@
 
   //导入
   function createImport(){
-    return menu({label: '导 入'});
+    return menu({
+      label: '导 入',
+      enabled: false
+    });
   }
 
   //导出
   function createExports(){
-    var exportsItem = menu({label: '导 出'});
+    var exportsItem = menu({
+      label: '导 出',
+      enabled: false
+    });
     var subMenu = new gui.Menu();
     subMenu.append(menu({ label: '导出代码碎片'}));
     subMenu.append(menu({ label: '我的笔记'}));

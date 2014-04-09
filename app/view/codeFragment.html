@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>代码碎片</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../public/css/main.css"/>
+  <link rel="stylesheet" href="../../public/css/codemirror.css"/>
+</head>
+<body class="niceScroll">
+<div class="code-show-wrap">
+  <div class="code-show">
+    <h4>代码示例：</h4>
+    <textarea name="codeTest" id="codeTest1">
+/**
+* Created with JetBrains PhpStorm.
+* User: Chen Chao
+* Date: 14-3-14
+* Time: 下午3:25
+*/
+
+var factory = require('./interface');
+
+var methods = {
+  speak: function(){
+    console.log('嗨,我是' + (this.name ? this.name : '来自火星的人'));
+  }
+};
+
+module.exports = factory.createModel({
+  name: 'user', //这里的名称需存在于schema里
+  methods: methods
+});
+    </textarea>
+  </div>
+  <div class="code-show">
+    <h4>代码示例：</h4>
+    <textarea name="codeTest" id="codeTest2">
+/**
+* Created with JetBrains PhpStorm.
+* User: Chen Chao
+* Date: 14-3-14
+* Time: 下午3:25
+*/
+
+var factory = require('./interface');
+
+var methods = {
+  speak: function(){
+    console.log('嗨,我是' + (this.name ? this.name : '来自火星的人'));
+  }
+};
+
+module.exports = factory.createModel({
+  name: 'user', //这里的名称需存在于schema里
+  methods: methods
+});
+    </textarea>
+  </div>
+</div>
+<input type="file" value="导入文件"/>
+<script src="../../public/js/lib/jquery-1.10.2.min.js"></script>
+<script src="../../public/js/lib/jquery.nicescroll.min.js"></script>
+<script src="../../public/js/lib/codemirror.js"></script>
+<script src="../../public/js/lib/mode/javascript/javascript.js"></script>
+<script src="../../public/js/common.js"></script>
+<script>
+  $(function(){
+    CodeMirror.fromTextArea(document.getElementById("codeTest1"), {
+      lineNumbers: true,
+      lineWrapping: true,
+      styleActiveLine: true,
+      matchBrackets: true,
+      readOnly: true,
+      mode: 'javascript'
+    });
+    CodeMirror.fromTextArea(document.getElementById("codeTest2"), {
+      lineNumbers: true,
+      lineWrapping: true,
+      styleActiveLine: true,
+      matchBrackets: true,
+      mode: 'javascript'
+    });
+    var menu = window.top.ui.getMenu();
+    var importMenu = menu.items[3];
+    var exportsMenu = menu.items[4];
+    importMenu.enabled = true;
+    console.log(exportsMenu);
+    console.log(exportsMenu.enabled);
+    exportsMenu.enabled = true;
+    console.log(exportsMenu.enabled);
+  });
+</script>
+</body>
+</html>

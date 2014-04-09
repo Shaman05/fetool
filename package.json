@@ -3,7 +3,7 @@
   "main": "app/view/index.html",
   "window": {
     "frame": false,
-    "toolbar": false,
+    //"toolbar": false,
     "icon": "public/images/logo.png",
     "title": "前端助手",
     "height": 500,
