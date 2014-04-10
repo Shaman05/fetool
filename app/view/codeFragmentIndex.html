@@ -19,7 +19,7 @@
   <div class="codeContent niceScroll">
     <div class="code-show-wrap">
       <div class="code-show">
-        <h4>./<span id="dirLabel"></span><input type="hidden" value="../fetool" id="rootDir"/></h4>
+        <h4>./<span id="dirLabel"></span><input type="hidden" value="data" id="rootDir"/></h4>
 <textarea name="codeTest" id="codeTest2">
 /*读取文件内容*/
 </textarea>
@@ -65,12 +65,11 @@
           }else{
             !!dir && path.push(dir);
             $backDir.css('display', path.length > 1 ? 'inline' : 'none');
-            _util.getToc(path.join('\\'), function(data){
+            _util.getToc(__dir__ + path.join('\\'), function(data){
               if(data.err){
                 console.log(data.err);
                 return;
               }
-              console.log(path);
               $dirLabel.text(path.join('/'));
               var files = data.document || [];
               var folder = data.folder || [];
