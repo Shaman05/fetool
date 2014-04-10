@@ -27,7 +27,9 @@
         click: 'event-click',
         focusin: 'event-focus',
         focusout: 'event-blur',
-        change: 'change'
+        change: 'event-change',
+        mouseover: 'event-mouseover',
+        mouseout: 'event-mouseout'
       };
       if(!eventGroup)return false;
       var _fn = $this.attr(eventMap[ev.type]);
@@ -47,23 +49,25 @@
         args: _args
       };
     },
-    //分发页面事件
+    /**
+     * 初始化：分发页面事件
+     * @param eventGroup 业务逻辑对象
+     */
     eventInit: function(eventGroup){
+      var _self = this;
       $(document)
-      .on('click', '[event-click]', function(e){
-        util.throwEvent.call(this, e, eventGroup);
+        .on('click', '[event-click]', eventHandle)
+        .on('focus', '[event-focus]', eventHandle)
+        .on('blur', '[event-blur]', eventHandle)
+        .on('change', '[event-change]', eventHandle)
+        .on('mouseover', '[event-mouseover]', eventHandle)
+        .on('mouseout', '[event-mouseout]', eventHandle);
+
+      function eventHandle(e){
+        _self.throwEvent.call(this, e, eventGroup);
         e.stopPropagation && e.stopPropagation();
         e.cancelBubble && (e.cancelBubble = true);
-      })
-      .on('focus', '[event-focus]', function(e){
-        util.throwEvent.call(this, e, eventGroup);
-      })
-      .on('blur', '[event-blur]', function(e){
-        util.throwEvent.call(this, e, eventGroup);
-      })
-      .on('change', '[event-change]', function(e){
-        util.throwEvent.call(this, e, eventGroup);
-      });
+      }
     },
     //加载中
     showLoading: function($obj){

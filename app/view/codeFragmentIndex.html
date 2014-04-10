@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../public/css/custom-theme/jquery-ui-1.10.0.custom.css"/>
+  <link rel="stylesheet" href="../../public/css/main.css"/>
+  <link rel="stylesheet" href="../../public/css/codeFrame.css"/>
+  <link rel="stylesheet" href="../../public/css/codemirror.css"/>
+</head>
+<body class="codeFrame">
+  <div class="nav niceScroll">
+    <dl>
+      <dt>我的代码 <a event-click="backDir" href="javascript:" id="backDir" style="display: none">返回上一级</a></dt>
+      <dd class="codeList" id="dataDir">
+      </dd>
+    </dl>
+  </div>
+  <div class="codeContent niceScroll">
+    <div class="code-show-wrap">
+      <div class="code-show">
+        <h4>./<span id="dirLabel"></span><input type="hidden" value="../fetool" id="rootDir"/></h4>
+<textarea name="codeTest" id="codeTest2">
+/*读取文件内容*/
+</textarea>
+        <button class="read" id="save">保存</button>
+      </div>
+    </div>
+  </div>
+  <script src="../../public/js/lib/jquery-1.10.2.min.js"></script>
+  <script src="../../public/js/lib/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="../../public/js/lib/jquery.nicescroll.min.js"></script>
+  <script src="../../public/js/lib/codemirror.js"></script>
+  <script src="../../public/js/lib/mode/javascript/javascript.js"></script>
+  <script src="../../public/js/util.js"></script>
+  <script src="../../public/js/common.js"></script>
+  <script>
+    $(function(){
+      var fs = require('fs');
+      var _util = require('../common/util');
+      var __dir__ = process.execPath;
+      var root = $('#rootDir').val();
+      var $dirLabel = $('#dirLabel');
+      var $backDir = $('#backDir');
+      var path = [root];
+      __dir__ = __dir__.replace(/(fetool|nw)\.exe/, '');
+
+      var docEdit = CodeMirror.fromTextArea(document.getElementById("codeTest2"), {
+        lineNumbers: true,
+        lineWrapping: true,
+        styleActiveLine: true,
+        matchBrackets: true,
+        mode: 'javascript'
+      });
+
+      var codeFrame = {
+        getToc: function(e, dir){
+          if(dir.indexOf('.') > 0){
+            var fileName = __dir__ + path.join('\\') + '\\' + dir;
+            fs.readFile(fileName, 'utf8', function(err, content){
+              if(err)return;
+              docEdit.setValue(content);
+              docEdit.refresh();
+            });
+          }else{
+            !!dir && path.push(dir);
+            $backDir.css('display', path.length > 1 ? 'inline' : 'none');
+            _util.getToc(path.join('\\'), function(data){
+              if(data.err){
+                console.log(data.err);
+                return;
+              }
+              console.log(path);
+              $dirLabel.text(path.join('/'));
+              var files = data.document || [];
+              var folder = data.folder || [];
+              var tocBuffer = [];
+              folder.length > 0 && $.each(folder, function(i, folder){
+                tocBuffer.push(createLink('folder', folder));
+              });
+              files.length > 0 && $.each(files, function(i, files){
+                tocBuffer.push(createLink('document', files));
+              });
+              if(tocBuffer.length === 0){
+                tocBuffer.push('<div>...</div>');
+              }
+              $('#dataDir').html(tocBuffer.join(''));
+            });
+          }
+        },
+        backDir: function(e){
+          path.pop();
+          codeFrame.getToc(e, path.pop());
+        }
+      };
+
+      util.eventInit(codeFrame);
+      codeFrame.getToc(null, '');
+
+      function createLink(type, item){
+        return '<a event-click="getToc" data-args="' + item.name + '" href="javascript:" class="' + type + '">' + item.name + '</a>';
+      }
+    });
+  </script>
+</body>
+</html>

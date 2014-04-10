@@ -31,30 +31,15 @@ module.exports = factory.createModel({
   methods: methods
 });
     </textarea>
+    <button class="edit">编辑</button>
+    <button class="save" id="save">保存</button>
   </div>
   <div class="code-show">
     <h4>代码示例：</h4>
     <textarea name="codeTest" id="codeTest2">
-/**
-* Created with JetBrains PhpStorm.
-* User: Chen Chao
-* Date: 14-3-14
-* Time: 下午3:25
-*/
-
-var factory = require('./interface');
-
-var methods = {
-  speak: function(){
-    console.log('嗨,我是' + (this.name ? this.name : '来自火星的人'));
-  }
-};
-
-module.exports = factory.createModel({
-  name: 'user', //这里的名称需存在于schema里
-  methods: methods
-});
+/*读取文件内容*/
     </textarea>
+    <button class="read" id="read">读取</button>
   </div>
 </div>
 <input type="file" value="导入文件"/>
@@ -65,7 +50,21 @@ module.exports = factory.createModel({
 <script src="../../public/js/common.js"></script>
 <script>
   $(function(){
-    CodeMirror.fromTextArea(document.getElementById("codeTest1"), {
+
+    var fs = require('fs');
+    var home = require('../controller/home');
+    var __dir__ = process.execPath;
+    __dir__ = __dir__.replace(/(fetool|nw)\.exe/, '');
+    console.log(__dir__);
+
+    var htmlDoc = CodeMirror.fromTextArea(document.getElementById("codeTest1"), {
+      lineNumbers: true,
+      lineWrapping: true,
+      styleActiveLine: true,
+      matchBrackets: true,
+      mode: 'javascript'
+    });
+    var jsDoc = CodeMirror.fromTextArea(document.getElementById("codeTest2"), {
       lineNumbers: true,
       lineWrapping: true,
       styleActiveLine: true,
@@ -73,21 +72,22 @@ module.exports = factory.createModel({
       readOnly: true,
       mode: 'javascript'
     });
-    CodeMirror.fromTextArea(document.getElementById("codeTest2"), {
-      lineNumbers: true,
-      lineWrapping: true,
-      styleActiveLine: true,
-      matchBrackets: true,
-      mode: 'javascript'
+    $('#save').on('click', function(){
+      var content = htmlDoc.getValue();
+      if(fs.existsSync(__dir__ + '/data')){
+        fs.writeFile(__dir__ + '/data/code_test.txt', content, function(err){
+          alert(err ? err : '保存成功!');
+        });
+      }else{
+        alert('目录不存在!');
+      }
     });
-    var menu = window.top.ui.getMenu();
-    var importMenu = menu.items[3];
-    var exportsMenu = menu.items[4];
-    importMenu.enabled = true;
-    console.log(exportsMenu);
-    console.log(exportsMenu.enabled);
-    exportsMenu.enabled = true;
-    console.log(exportsMenu.enabled);
+    $('#read').on('click', function(){
+      fs.readFile(__dir__ + '/data/code_test.txt', 'utf8', function(err, content){
+        if(err)return;
+        jsDoc.setValue(content);
+      });
+    });
   });
 </script>
 </body>

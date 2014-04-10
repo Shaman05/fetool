@@ -62,13 +62,13 @@ button{
 
 /* common */
 .CodeMirror{
-    border: 1px solid #969696;
-    height: auto;
+    /*border: 1px solid #969696;
+    height: auto;*/
 }
 .code-show-wrap{
     overflow: hidden;
 }
-.code-show{
+.code-show-50{
     width: 49%;
     margin-right: 1%;
     float: left;

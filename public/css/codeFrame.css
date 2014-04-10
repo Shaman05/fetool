@@ -1,0 +1,40 @@
+dl,dt,dd{
+    margin: 0;
+    padding: 0;
+}
+.codeFrame{
+    border: 1px solid #cccccc;
+}
+.nav{
+    width: 130px;
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    bottom: 1px;
+    background: #29a8ff;
+    border-right: 1px solid #cccccc;
+}
+.nav dt{
+    height: 30px;
+    line-height: 30px;
+    font-weight: bold;
+    text-indent: 0.5em;
+    border-bottom: 1px solid #cccccc;
+}
+.codeList a{
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    text-indent: 1em;
+}
+.codeList a:hover{
+    background: #2177b7;
+    color: #ffffff;
+}
+.codeContent{
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 131px;
+    right: 1px;
+}
