@@ -11,7 +11,7 @@
 <body class="codeFrame">
   <div class="nav niceScroll">
     <dl>
-      <dt>我的代码 <a event-click="backDir" href="javascript:" id="backDir" style="display: none">返回上一级</a></dt>
+      <dt>我的代码</dt>
       <dd class="codeList" id="dataDir">
       </dd>
     </dl>
@@ -19,7 +19,7 @@
   <div class="codeContent niceScroll">
     <div class="code-show-wrap">
       <div class="code-show">
-        <h4>./<span id="dirLabel"></span><input type="hidden" value="data" id="rootDir"/></h4>
+        <h4>./<span id="dirLabel"></span><input type="hidden" value="app" id="rootDir"/></h4>
 <textarea name="codeTest" id="codeTest2">
 /*读取文件内容*/
 </textarea>
@@ -41,7 +41,6 @@
       var __dir__ = process.execPath;
       var root = $('#rootDir').val();
       var $dirLabel = $('#dirLabel');
-      var $backDir = $('#backDir');
       var path = [root];
       __dir__ = __dir__.replace(/(fetool|nw)\.exe/, '');
 
@@ -64,7 +63,6 @@
             });
           }else{
             !!dir && path.push(dir);
-            $backDir.css('display', path.length > 1 ? 'inline' : 'none');
             _util.getToc(__dir__ + path.join('\\'), function(data){
               if(data.err){
                 console.log(data.err);
@@ -83,6 +81,7 @@
               if(tocBuffer.length === 0){
                 tocBuffer.push('<div>...</div>');
               }
+              path.length > 1 && tocBuffer.push(createBack());
               $('#dataDir').html(tocBuffer.join(''));
             });
           }
@@ -96,8 +95,14 @@
       util.eventInit(codeFrame);
       codeFrame.getToc(null, '');
 
+      function createBack(){
+        return '<a event-click="backDir" href="javascript:">返回上一级</a>';
+      }
+
       function createLink(type, item){
-        return '<a event-click="getToc" data-args="' + item.name + '" href="javascript:" class="' + type + '">' + item.name + '</a>';
+        return '<a event-click="getToc" data-args="'
+            + item.name + '" href="javascript:"><span class="ui-icon ui-icon-folder-collapsed"></span>'
+            + item.name + '</a>';
       }
     });
   </script>

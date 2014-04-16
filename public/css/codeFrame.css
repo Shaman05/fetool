@@ -8,10 +8,9 @@ dl,dt,dd{
 .nav{
     width: 130px;
     position: absolute;
-    left: 1px;
-    top: 1px;
-    bottom: 1px;
-    background: #29a8ff;
+    left: 0;
+    top: 0;
+    bottom: 0;
     border-right: 1px solid #cccccc;
 }
 .nav dt{
