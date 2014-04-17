@@ -55,7 +55,6 @@ module.exports = factory.createModel({
     var home = require('../controller/home');
     var __dir__ = process.execPath;
     __dir__ = __dir__.replace(/(fetool|nw)\.exe/, '');
-    console.log(__dir__);
 
     var htmlDoc = CodeMirror.fromTextArea(document.getElementById("codeTest1"), {
       lineNumbers: true,

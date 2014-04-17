@@ -20,15 +20,24 @@ dl,dt,dd{
     text-indent: 0.5em;
     border-bottom: 1px solid #cccccc;
 }
+.codeList{
+    position: absolute;
+    top: 30px;
+    bottom: 0;
+    width: 100%;
+    padding: 4px 0;
+}
 .codeList a{
     display: block;
-    height: 24px;
     line-height: 24px;
-    text-indent: 1em;
+    padding-left: 6px;
 }
 .codeList a:hover{
-    background: #2177b7;
-    color: #ffffff;
+    background: #cfe6f0;
+    color: #3a31ff;
+}
+.codeList .ui-icon{
+    display: inline-block;
 }
 .codeContent{
     position: absolute;
@@ -36,4 +45,35 @@ dl,dt,dd{
     bottom: 1px;
     left: 131px;
     right: 1px;
+    padding: 4px 6px;
+}
+.code-show-wrap{
+    height: 100%;
+}
+.code-show{
+    height: 100%;
+    position: relative;
+}
+.codeContent .CodeMirror{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    border: 1px solid #ececec;
+}
+.file_icon{
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    vertical-align: -3px;
+    margin-right: 4px;
+}
+.file_folder{
+    background-image: url("../images/file-icon/folder.png");
+}
+.file_backDir{
+    background-image: url("../images/file-icon/backDir.png");
 }
