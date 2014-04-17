@@ -5,7 +5,6 @@
  * Time: 下午7:57
  */
 
-
 var fs = require('fs');
 var _util = require('../common/util');
 var __dir__ = process.execPath;
