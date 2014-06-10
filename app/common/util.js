@@ -9,6 +9,14 @@ var fs = require('fs');
 
 module.exports = {
 
+  readJSON: function(filePath, callback){
+    fs.readFile(filePath, function(err, data){
+      if(!err){
+        callback(JSON.parse(data));
+      }
+    });
+  },
+
   getPubYear: function(pubtime){
     return parseInt(pubtime.split('-')[0]);
   },

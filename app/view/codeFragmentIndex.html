@@ -6,6 +6,34 @@
   <link rel="stylesheet" href="../../public/css/main.css"/>
   <link rel="stylesheet" href="../../public/css/codeFrame.css"/>
   <link rel="stylesheet" href="../../public/css/codemirror.css"/>
+  <link rel="stylesheet" href="../../public/css/theme/3024-day.css">
+  <link rel="stylesheet" href="../../public/css/theme/3024-night.css">
+  <link rel="stylesheet" href="../../public/css/theme/ambiance.css">
+  <link rel="stylesheet" href="../../public/css/theme/base16-dark.css">
+  <link rel="stylesheet" href="../../public/css/theme/base16-light.css">
+  <link rel="stylesheet" href="../../public/css/theme/blackboard.css">
+  <link rel="stylesheet" href="../../public/css/theme/cobalt.css">
+  <link rel="stylesheet" href="../../public/css/theme/eclipse.css">
+  <link rel="stylesheet" href="../../public/css/theme/elegant.css">
+  <link rel="stylesheet" href="../../public/css/theme/erlang-dark.css">
+  <link rel="stylesheet" href="../../public/css/theme/lesser-dark.css">
+  <link rel="stylesheet" href="../../public/css/theme/mbo.css">
+  <link rel="stylesheet" href="../../public/css/theme/mdn-like.css">
+  <link rel="stylesheet" href="../../public/css/theme/midnight.css">
+  <link rel="stylesheet" href="../../public/css/theme/monokai.css">
+  <link rel="stylesheet" href="../../public/css/theme/neat.css">
+  <link rel="stylesheet" href="../../public/css/theme/night.css">
+  <link rel="stylesheet" href="../../public/css/theme/paraiso-dark.css">
+  <link rel="stylesheet" href="../../public/css/theme/paraiso-light.css">
+  <link rel="stylesheet" href="../../public/css/theme/pastel-on-dark.css">
+  <link rel="stylesheet" href="../../public/css/theme/rubyblue.css">
+  <link rel="stylesheet" href="../../public/css/theme/solarized.css">
+  <link rel="stylesheet" href="../../public/css/theme/the-matrix.css">
+  <link rel="stylesheet" href="../../public/css/theme/tomorrow-night-eighties.css">
+  <link rel="stylesheet" href="../../public/css/theme/twilight.css">
+  <link rel="stylesheet" href="../../public/css/theme/vibrant-ink.css">
+  <link rel="stylesheet" href="../../public/css/theme/xq-dark.css">
+  <link rel="stylesheet" href="../../public/css/theme/xq-light.css">
 </head>
 <body class="codeFrame">
   <div class="nav">
@@ -18,10 +46,47 @@
   <div class="codeContent niceScroll">
     <div class="code-show-wrap">
       <div class="code-show">
-        <h4>./<span id="dirLabel"></span><input type="hidden" value="app" id="rootDir"/></h4>
+        <h4>./<span id="dirLabel"></span></h4>
 <textarea name="codeTest" id="codeEditArea">
 /*点击文件读取内容*/
 </textarea>
+        <div class="code-tool">
+          <select class="theme-select" name="setting" id="setting" event-change="changeTheme">
+            <option selected>theme select</option>
+            <option>default</option>
+            <option>3024-day</option>
+            <option>3024-night</option>
+            <option>ambiance</option>
+            <option>base16-dark</option>
+            <option>base16-light</option>
+            <option>blackboard</option>
+            <option>cobalt</option>
+            <option>eclipse</option>
+            <option>elegant</option>
+            <option>erlang-dark</option>
+            <option>lesser-dark</option>
+            <option>mbo</option>
+            <option>mdn-like</option>
+            <option>midnight</option>
+            <option>monokai</option>
+            <option>neat</option>
+            <option>night</option>
+            <option>paraiso-dark</option>
+            <option>paraiso-light</option>
+            <option>pastel-on-dark</option>
+            <option>rubyblue</option>
+            <option>solarized dark</option>
+            <option>solarized light</option>
+            <option>the-matrix</option>
+            <option>tomorrow-night-eighties</option>
+            <option>twilight</option>
+            <option>vibrant-ink</option>
+            <option>xq-dark</option>
+            <option>xq-light</option>
+          </select>
+          <button class="bbtn">Edit</button>
+          <button class="bbtn">Save</button>
+        </div>
       </div>
     </div>
   </div>

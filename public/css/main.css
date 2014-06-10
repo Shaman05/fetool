@@ -18,7 +18,7 @@ a{
     color: #363636;
     text-decoration: none;
 }
-button{
+button, select{
     outline: none;
 }
 .link:hover{
@@ -74,10 +74,19 @@ button{
     float: left;
 }
 .code-show h4{
+    height: 20px;
+    overflow: hidden;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 20px;
     margin: 0;
-    padding-bottom: 4px;
+}
+.code-tool{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 25px;
+    width: 100%;
+    overflow: hidden;
 }
 .color-blue{
     color: dodgerblue;
@@ -141,6 +150,11 @@ input[type=text]{
 }
 .table tbody .separateColor{
     background: #eeeeee;
+}
+.bbtn{
+    background: lightgray;
+    margin: 1px;
+    cursor: pointer;
 }
 /* common end */
 

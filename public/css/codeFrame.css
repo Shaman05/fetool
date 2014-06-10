@@ -36,16 +36,19 @@ dl,dt,dd{
     background: #cfe6f0;
     color: #3a31ff;
 }
+.codeList .current{
+    background: #a3a4f0;
+    color: #ffe72c;
+}
 .codeList .ui-icon{
     display: inline-block;
 }
 .codeContent{
     position: absolute;
-    top: 1px;
-    bottom: 1px;
-    left: 131px;
-    right: 1px;
-    padding: 4px 6px;
+    top: 0;
+    bottom: 0;
+    left: 130px;
+    right: 0;
 }
 .code-show-wrap{
     height: 100%;
@@ -54,14 +57,18 @@ dl,dt,dd{
     height: 100%;
     position: relative;
 }
+.theme-select{
+    float: right;
+}
 .codeContent .CodeMirror{
     position: absolute;
     top: 20px;
     left: 0;
-    bottom: 0;
+    bottom: 25px;
     width: 100%;
     height: auto;
-    border: 1px solid #ececec;
+    border-top: 1px solid #DDD9D9;
+    border-bottom: 1px solid #DDD9D9;
 }
 .file_icon{
     display: inline-block;
@@ -70,10 +77,29 @@ dl,dt,dd{
     background-repeat: no-repeat;
     vertical-align: -3px;
     margin-right: 4px;
+    background-size: contain;
 }
 .file_folder{
     background-image: url("../images/file-icon/folder.png");
 }
 .file_backDir{
     background-image: url("../images/file-icon/backDir.png");
+}
+.file_html{
+    background-image: url("../images/file-icon/html.png");
+}
+.file_css{
+    background-image: url("../images/file-icon/css.png");
+}
+.file_js{
+    background-image: url("../images/file-icon/js.png");
+}
+.file_php{
+    background-image: url("../images/file-icon/php.png");
+}
+.file_rb{
+    background-image: url("../images/file-icon/rb.png");
+}
+.file_xml{
+    background-image: url("../images/file-icon/xml.png");
 }
