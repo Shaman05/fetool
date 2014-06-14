@@ -259,6 +259,18 @@ input[type=text]{
     right: 0;
     z-index: 0;
 }
+.iframeTool{
+    height: 32px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+.iframeTool a{
+    opacity: 0.1;
+}
+.iframeTool a:hover{
+    opacity: 0.8;
+}
 
 .left-nav li{
     border-bottom: 1px solid #2e3136;
