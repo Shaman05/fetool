@@ -22,6 +22,7 @@
       var importMenu = createImport();
       var exportsMenu = createExports();
       var helpMenu = createHelp();
+      var aboutMenu = createAbout();
       var logoutMenu = createLogout();
       var separator = separatorLine();
 
@@ -32,6 +33,7 @@
       menu.append(exportsMenu);
       menu.append(separator);
       menu.append(helpMenu);
+      menu.append(aboutMenu);
       menu.append(logoutMenu);
       return menu;
     }
@@ -112,14 +114,18 @@
       }
     }));
     subMenu.append(menu({label: 'wiki'}));
-    subMenu.append(menu({
+    helpItem.submenu = subMenu;
+    return helpItem;
+  }
+
+  //关于
+  function createAbout(){
+    return menu({
       label: '关 于',
       click: function(){
         $('#about').dialog('open');
       }
-    }));
-    helpItem.submenu = subMenu;
-    return helpItem;
+    });
   }
 
   //退出
