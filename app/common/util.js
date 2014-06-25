@@ -48,6 +48,11 @@ module.exports = {
     return content.split('[[split]]')[0];
   },
 
+  /**
+   * 获取文件/文件夹大小
+   * @param path
+   * @returns {*}
+   */
   getDirSize: function(path){
     var size = 0;
     return _getDirSize(path);
@@ -73,6 +78,46 @@ module.exports = {
     }
   },
 
+  /**
+   * 判断是否为文件夹
+   * @param filePath
+   * @returns {*}
+   */
+  isDir: function(filePath){
+    var stats = fs.lstatSync(filePath);
+    return stats.isDirectory();
+  },
+
+  /**
+   * 删除非空文件夹/文件
+   * @param path
+   */
+  deleteFolderRecursive: function(path, callback) {
+    var files = [];
+    if(fs.existsSync(path)){
+      if(module.exports.isDir(path)){
+        files = fs.readdirSync(path);
+        files.forEach(function(file, index){
+          var curPath = path + "/" + file;
+          if(fs.statSync(curPath).isDirectory()){
+            deleteFolderRecursive(curPath);
+          }else{ // delete file
+            fs.unlinkSync(curPath);
+          }
+        });
+        fs.rmdirSync(path);
+      }else{
+        fs.unlinkSync(path);
+      }
+      callback && callback();
+    }
+  },
+
+  /**
+   * 获取文件夹目录
+   * @param dir
+   * @param callback
+   */
   getToc: function(dir, callback){
     var _self = this;
     var resJSON = {
@@ -111,6 +156,11 @@ module.exports = {
     });
   },
 
+  /**
+   * 字节大小转化
+   * @param size
+   * @returns {string}
+   */
   formatSize: function(size){
     var kb = 1024;
     var mb = kb * 1024;
