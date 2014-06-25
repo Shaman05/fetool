@@ -22,6 +22,7 @@ var context = context || (function () {
 		
 		$(document).on('click', 'html', function () {
 			$('.dropdown-context').fadeOut(options.fadeSpeed, function(){
+        $('.context-temp-hover').removeClass('context-temp-hover');
 				$('.dropdown-context').css({display:''}).find('.drop-left').removeClass('drop-left');
 			});
 		});
@@ -108,6 +109,8 @@ var context = context || (function () {
 			
 			var $dd = $('#dropdown-' + id);
       $dd.find('a').attr('data-arg', this.title);
+      $('.context-temp-hover').removeClass('context-temp-hover');
+      $(this).addClass('context-temp-hover');
 			if (typeof options.above == 'boolean' && options.above) {
 				$dd.addClass('dropdown-context-up').css({
 					top: e.pageY - 20 - $('#dropdown-' + id).height(),

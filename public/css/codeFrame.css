@@ -32,7 +32,7 @@ dl,dt,dd{
     line-height: 24px;
     padding-left: 6px;
 }
-.codeList a:hover{
+.codeList a:hover, .codeList .context-temp-hover{
     background: #cfe6f0;
     color: #3a31ff;
 }

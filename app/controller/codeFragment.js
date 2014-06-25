@@ -25,30 +25,36 @@ context.init({
   preventDoubleContext: false,
   compress: true
 });
-context.settings({
-
-});
-context.attach('[data-type=folder]', [
-  {header: 'Folder'},
+context.attach('[data-type]', [
+  {header: 'Options'},
   {text: 'Open', action: OpenFile},
   {text: 'Delete', action: DeleteFile}
 ]);
-context.attach('[data-type=document]', [
-  {header: 'Document'},
-  {text: 'Open', action: OpenFile},
-  {text: 'Delete', action: DeleteFile}
+context.attach('#dataDir', [
+  {header: 'New'},
+  {text: 'File', action: NewFile},
+  {text: 'Directory', action: NewDirectory}
 ]);
-function OpenFile(e){
+function OpenFile(){
+  $dataDir.find('.context-temp-hover').removeClass('context-temp-hover');
   $('a[title="' + $(this).attr('data-arg') + '"]').trigger('click');
 }
-function DeleteFile(e){
+function DeleteFile(){
   var $this = $(this);
   var filePath = __dir__ + path.join('\\') + '\\' + $this.attr('data-arg');
   if(confirm('确认删除吗？')){
     _util.deleteFolderRecursive(filePath, function(){
       $('a[title="' + $this.attr('data-arg') + '"]').remove();
     });
+  }else{
+    $dataDir.find('.context-temp-hover').removeClass('context-temp-hover');
   }
+}
+function NewFile(){
+  alert('new');
+}
+function NewDirectory(){
+
 }
 
 //页面初始化
@@ -68,6 +74,8 @@ function codeFramePageInit(config){
     getToc: function(e, dir){
       var filePath = __dir__ + path.join('\\') + '\\' + dir;
       var extension, canOpen = false;
+      $('.dropdown-context').fadeOut(300);
+      $dataDir.find('.context-temp-hover').removeClass('context-temp-hover');
       if(!_util.isDir(filePath)){ //文件
         extension = filePath.split('.').pop();
         canOpen = allowOpenFile.indexOf(extension) > -1;
