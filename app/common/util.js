@@ -7,6 +7,15 @@
 var $ = require('../node_modules/jquery');
 var fs = require('fs');
 
+function returnData(callback, boolen, message, data){
+  var defaultData = {
+    boolen: boolen === undefined ? true : boolen,
+    message: message === undefined ? '' : message,
+    data: data === undefined ? '' : data
+  };
+  callback(defaultData);
+}
+
 module.exports = {
 
   readJSON: function(filePath, callback){
@@ -153,6 +162,21 @@ module.exports = {
         }
       }
       callback(resJSON);
+    });
+  },
+
+  /**
+   * 创建新文件
+   * @param filePath
+   * @param callback
+   */
+  createNewFile: function(filePath, callback){
+    fs.writeFile(filePath, '', function(err){
+      if(err){
+        callback && returnData(callback, false, err);
+      }else{
+        callback && returnData(callback);
+      }
     });
   },
 

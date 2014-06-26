@@ -51,10 +51,41 @@ function DeleteFile(){
   }
 }
 function NewFile(){
-  alert('new');
+  $('.dropdown-context').fadeOut(300);
+  setTimeout(function(){
+    var fileName = prompt("请输入文件名称:");
+    var filePath = __dir__ + path.join('\\') + '\\' + fileName;
+    if(!fileName)return;
+    if(!/.*\..*/.test(fileName)){
+      alert('文件名不合法!');
+      NewFile();
+    }else{
+      if(fs.existsSync(filePath)){
+        if(confirm('该文件已存在，要覆盖吗？')){
+          _util.createNewFile(filePath, function(data){
+            if(!data.boolen){
+              alert(data.message);
+            }else{
+              $dataDir.find('[title="' + fileName + '"]').trigger('click');
+            }
+          });
+        }
+      }else{
+        _util.createNewFile(filePath, function(data){
+          if(!data.boolen){
+            alert(data.message);
+          }else{
+            $dataDir.append(createLink('document', {name: fileName}));
+            $dataDir.find('[title="' + fileName + '"]').trigger('click');
+          }
+        });
+      }
+    }
+  }, 10);
 }
 function NewDirectory(){
-
+  var fileName = prompt("请输入文件夹名称:");
+  alert(fileName);
 }
 
 //页面初始化
@@ -66,7 +97,7 @@ function codeFramePageInit(config){
     indentUnit: 2,
     styleActiveLine: true,
     matchBrackets: true,
-    readOnly: true,
+    //readOnly: true,
     mode: 'javascript'
   });
 
