@@ -10,12 +10,46 @@ var _util = require('../common/util');
 var __dir__ = process.execPath.replace(/(fetool|nw)\.exe/, '');
 var root = 'data';
 var codeMirrorConfig = 'config\\codeMirror.json';
-var allowOpenFile = ['html', 'css', 'js', 'txt', 'json', 'xml', 'md', 'php', 'rb', 'py', 'sass', 'scss', 'java', 'jade', 'sh', 'coffee', 'ts', 'txt', 'gitignore'];
 var path = [root];
 var configFile = __dir__ + path.concat([codeMirrorConfig]).join('\\');
+var allowOpenFile = ['html', 'css', 'js', 'txt', 'json', 'xml', 'md', 'php', 'rb', 'py', 'sass', 'scss', 'java', 'jade', 'sh', 'coffee', 'ts', 'txt', 'gitignore'];
+var mixedMode = {
+  name: "htmlmixed",
+  scriptTypes: [
+    {
+      matches: /\/x-handlebars-template|\/x-mustache/i,
+      mode: null
+    },
+    {
+      matches: /(text|application)\/(x-)?vb(a|script)/i,
+      mode: "vbscript"}
+  ]
+};
+var modeMap = {
+  html: mixedMode,
+  js: 'text/javascript',
+  css: 'text/css',
+  json: 'application/json',
+  xml: 'application/xml',
+  md: 'text/x-markdown',
+  php: 'php',
+  rb: 'text/x-ruby',
+  py: 'text/x-python',
+  less: 'text/x-less',
+  scss: 'text/x-sass',
+  sass: 'text/x-sass',
+  sh: 'text/x-sh',
+  java: 'text/x-java',
+  cs: 'text/x-csharp',
+  jade: 'text/x-jade',
+  coffee: 'text/x-coffeescript',
+  ts: 'application/typescript'
+};
 var $dataDir = $('#dataDir');
 var $dirLabel = $('#dirLabel');
 var docEdit;
+var currentEditFile;
+var isSaving = false;
 
 _util.readJSON(configFile, function(data){
   codeFramePageInit(data);
@@ -85,8 +119,31 @@ function NewFile(){
   }, 10);
 }
 function NewDirectory(){
-  var fileName = prompt("请输入文件夹名称:");
-  alert(fileName);
+  $('.dropdown-context').fadeOut(300);
+  setTimeout(function(){
+    var fileName = prompt("请输入文件夹名称:");
+    var filePath = __dir__ + path.join('\\') + '\\' + fileName;
+    if(!/^[^\.].*/.test($.trim(fileName))){
+      alert('文件名不合法!');
+      NewFile();
+    }else{
+      if(fs.existsSync(filePath)){
+        alert('该文件夹或文件已存在!');
+      }else{
+        _util.createNewFolder(filePath, function(data){
+          if(!data.boolen){
+            alert(data.message);
+          }else{
+            if($dataDir.find('[data-type="document"]').size() == 0){
+              $dataDir.append(createLink('folder', {name: fileName}));
+            }else{
+              $(createLink('folder', {name: fileName})).insertBefore($dataDir.find('[data-type="document"]').eq(0));
+            }
+          }
+        });
+      }
+    }
+  }, 10);
 }
 
 //页面初始化
@@ -98,7 +155,8 @@ function codeFramePageInit(config){
     indentUnit: 2,
     styleActiveLine: true,
     matchBrackets: true,
-    readOnly: true
+    readOnly: true,
+    mode: modeMap['md']
   });
 
   var codeFrame = {
@@ -115,7 +173,8 @@ function codeFramePageInit(config){
             alert(err);
             return;
           }
-          openEditIde(config, content, extension, function(){
+          openEditIde(content, extension, function(){
+            currentEditFile = filePath;
             $dataDir.find('.current').removeClass('current');
             $(e.target).addClass('current');
             $dirLabel.text([path.join('/'), dir].join('/'));
@@ -161,6 +220,16 @@ function codeFramePageInit(config){
           if (err) alert('保存配置出错：' + err);
         });
       });
+    },
+    saveFile: function(e){ //异步保存文件
+      var content = docEdit.getValue();
+      if(!isSaving && currentEditFile){
+        isSaving = true;
+        fs.writeFile(currentEditFile, content, function(err){
+          isSaving = false;
+          alert(err || '保存成功!');
+        });
+      }
     }
   };
 
@@ -184,39 +253,7 @@ function createLink(type, item){
 }
 
 //点击文件打开编辑器
-function openEditIde(config, content, extension, callback){
-  var mixedMode = {
-    name: "htmlmixed",
-    scriptTypes: [
-      {
-        matches: /\/x-handlebars-template|\/x-mustache/i,
-        mode: null
-      },
-      {
-        matches: /(text|application)\/(x-)?vb(a|script)/i,
-        mode: "vbscript"}
-    ]
-  };
-  var modeMap = {
-    html: mixedMode,
-    js: 'text/javascript',
-    css: 'text/css',
-    json: 'application/json',
-    xml: 'application/xml',
-    md: 'text/x-markdown',
-    php: 'php',
-    rb: 'text/x-ruby',
-    py: 'text/x-python',
-    less: 'text/x-less',
-    scss: 'text/x-sass',
-    sass: 'text/x-sass',
-    sh: 'text/x-sh',
-    java: 'text/x-java',
-    cs: 'text/x-csharp',
-    jade: 'text/x-jade',
-    coffee: 'text/x-coffeescript',
-    ts: 'application/typescript'
-  };
+function openEditIde(content, extension, callback){
   $('.CodeMirror-wrap').remove();
   _util.readJSON(configFile, function(data){
     docEdit = CodeMirror.fromTextArea(document.getElementById("codeEditArea"), {

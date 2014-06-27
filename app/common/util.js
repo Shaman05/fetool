@@ -109,7 +109,7 @@ module.exports = {
         files.forEach(function(file, index){
           var curPath = path + "/" + file;
           if(fs.statSync(curPath).isDirectory()){
-            deleteFolderRecursive(curPath);
+            module.exports.deleteFolderRecursive(curPath);
           }else{ // delete file
             fs.unlinkSync(curPath);
           }
@@ -172,6 +172,21 @@ module.exports = {
    */
   createNewFile: function(filePath, callback){
     fs.writeFile(filePath, '', function(err){
+      if(err){
+        callback && returnData(callback, false, err);
+      }else{
+        callback && returnData(callback);
+      }
+    });
+  },
+
+  /**
+   * 创建新文件夹
+   * @param filePath
+   * @param callback
+   */
+  createNewFolder: function(filePath, callback){
+    fs.mkdir(filePath, function(err){
       if(err){
         callback && returnData(callback, false, err);
       }else{

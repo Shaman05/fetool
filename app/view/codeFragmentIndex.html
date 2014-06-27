@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../public/css/theme/xq-light.css">
 </head>
 <body class="codeFrame">
-  <div class="nav">
+  <div class="nav un-select">
     <dl>
       <dt>我的代码</dt>
       <dd class="codeList niceScroll" id="dataDir">
@@ -48,9 +48,34 @@
       <div class="code-show">
         <h4>./<span id="dirLabel"></span></h4>
 <textarea name="codeTest" id="codeEditArea">
-/*点击文件读取内容*/
+代码碎片功能使用须知
+=====================================================
+
+代码碎片的存储位置：与 fetool.exe 同级目录下的 data 文件夹
+
+``data/config 目录为配置文件目录，操作的时候请注意``
+
+可编辑的文本文件类型：['html', 'css', 'js', 'txt', 'json', 'xml', 'md', 'php', 'rb', 'py', 'sass', 'scss', 'java', 'jade', 'sh', 'coffee', 'ts', 'txt', 'gitignore']
+
+## 如何创建文件夹
+
+进入对应的目录在编辑器右侧目录空白处：右键->选择 Directory->输入合法文件夹名->确定
+
+``不允许创建已存在的文件夹（可以先删除）``
+
+## 如何创建文件
+
+进入对应的目录在编辑器右侧目录空白处：右键->选择 File->输入合法文件名->确定
+
+``创建已存在的文件将提示是否覆盖``
+
+## 关于编辑器
+
+* 由[CodeMirror](http://codemirror.net)驱动
+* 编辑器底部目前有 保存 按钮和 主题（保存于配置文件 data/config/codeMirror.json） 选择两个功能
+
 </textarea>
-        <div class="code-tool">
+        <div class="code-tool un-select">
           <select class="theme-select" name="setting" id="setting" event-change="changeTheme">
             <option selected>theme select</option>
             <option>default</option>
@@ -84,8 +109,7 @@
             <option>xq-dark</option>
             <option>xq-light</option>
           </select>
-          <button class="bbtn">Edit</button>
-          <button class="bbtn">Save</button>
+          <button class="bbtn" event-click="saveFile">Save</button>
         </div>
       </div>
     </div>
