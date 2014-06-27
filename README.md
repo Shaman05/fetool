@@ -9,7 +9,7 @@
 
 ### 2.1 文档查询
 
-``说明：本工具所用文档来自 [开源中国 - 在线API文档](http://tool.oschina.net/apidocs)``
+说明：本工具所用文档来自 [开源中国 - 在线API文档](http://tool.oschina.net/apidocs)
 
   1. 常用对照表
 
