@@ -10,11 +10,12 @@ var _util = require('../common/util');
 var __dir__ = process.execPath.replace(/(fetool|nw)\.exe/, '');
 var root = 'data';
 var codeMirrorConfig = 'config\\codeMirror.json';
-var allowOpenFile = ['html', 'css', 'js', 'txt', 'json', 'xml', 'md', '.php', '.rb', '.py'];
+var allowOpenFile = ['html', 'css', 'js', 'txt', 'json', 'xml', 'md', 'php', 'rb', 'py', 'sass', 'scss', 'java', 'jade', 'sh', 'coffee', 'ts', 'txt', 'gitignore'];
 var path = [root];
 var configFile = __dir__ + path.concat([codeMirrorConfig]).join('\\');
 var $dataDir = $('#dataDir');
 var $dirLabel = $('#dirLabel');
+var docEdit;
 
 _util.readJSON(configFile, function(data){
   codeFramePageInit(data);
@@ -90,15 +91,14 @@ function NewDirectory(){
 
 //页面初始化
 function codeFramePageInit(config){
-  var docEdit = CodeMirror.fromTextArea(document.getElementById("codeEditArea"), {
+  docEdit = CodeMirror.fromTextArea(document.getElementById("codeEditArea"), {
     theme: config.theme,
     lineNumbers: true,
     lineWrapping: true,
     indentUnit: 2,
     styleActiveLine: true,
     matchBrackets: true,
-    //readOnly: true,
-    mode: 'javascript'
+    readOnly: true
   });
 
   var codeFrame = {
@@ -111,12 +111,15 @@ function codeFramePageInit(config){
         extension = filePath.split('.').pop();
         canOpen = allowOpenFile.indexOf(extension) > -1;
         canOpen && fs.readFile(filePath, 'utf8', function(err, content){
-          if(err)return;
-          docEdit.setValue(content);
-          docEdit.refresh();
-          $dataDir.find('.current').removeClass('current');
-          $(e.target).addClass('current');
-          $dirLabel.text([path.join('/'), dir].join('/'));
+          if(err){
+            alert(err);
+            return;
+          }
+          openEditIde(config, content, extension, function(){
+            $dataDir.find('.current').removeClass('current');
+            $(e.target).addClass('current');
+            $dirLabel.text([path.join('/'), dir].join('/'));
+          });
         });
       }else{ //文件夹
         !!dir && path.push(dir);
@@ -178,4 +181,56 @@ function createLink(type, item){
   return '<a title="' + name + '" event-click="getToc" data-args="'
     + name + '" href="javascript:" data-type="' + type + '"><span class="file_icon file_' + suffix + '"></span>'
     + label + '</a>';
+}
+
+//点击文件打开编辑器
+function openEditIde(config, content, extension, callback){
+  var mixedMode = {
+    name: "htmlmixed",
+    scriptTypes: [
+      {
+        matches: /\/x-handlebars-template|\/x-mustache/i,
+        mode: null
+      },
+      {
+        matches: /(text|application)\/(x-)?vb(a|script)/i,
+        mode: "vbscript"}
+    ]
+  };
+  var modeMap = {
+    html: mixedMode,
+    js: 'text/javascript',
+    css: 'text/css',
+    json: 'application/json',
+    xml: 'application/xml',
+    md: 'text/x-markdown',
+    php: 'php',
+    rb: 'text/x-ruby',
+    py: 'text/x-python',
+    less: 'text/x-less',
+    scss: 'text/x-sass',
+    sass: 'text/x-sass',
+    sh: 'text/x-sh',
+    java: 'text/x-java',
+    cs: 'text/x-csharp',
+    jade: 'text/x-jade',
+    coffee: 'text/x-coffeescript',
+    ts: 'application/typescript'
+  };
+  $('.CodeMirror-wrap').remove();
+  _util.readJSON(configFile, function(data){
+    docEdit = CodeMirror.fromTextArea(document.getElementById("codeEditArea"), {
+      theme: data.theme,
+      lineNumbers: true,
+      lineWrapping: true,
+      indentUnit: 2,
+      styleActiveLine: true,
+      matchBrackets: true,
+      mode: modeMap[extension] || 'text'
+    });
+    docEdit.setValue(content);
+    callback && setTimeout(function(){
+      callback();
+    }, 200);
+  });
 }
