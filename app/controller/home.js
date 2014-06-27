@@ -5,6 +5,14 @@
  * Time: 下午4:33
  */
 
-module.exports = {
-  dirname: __dirname
-}
+(function(){
+  'use strict';
+  var fs = require('fs');
+  var __dir__ = process.execPath.replace(/(fetool|nw)\.exe/, '');
+  var $readme = $('#readme');
+  fs.readFile(__dir__ + '//README.md', 'UTF8', function(err, content){
+    if(!err){
+      $readme.text(content);
+    }
+  });
+})();
