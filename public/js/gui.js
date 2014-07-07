@@ -68,7 +68,10 @@
 
   //账户菜单
   function createUserMenu(){
-    var userItem = menu({label: '账 户'});
+    var userItem = menu({
+      label: '账 户',
+      enabled: false
+    });
     var subMenu = new gui.Menu();
     subMenu.append(menu({ label: '账户信息'}));
     subMenu.append(menu({ label: '修改密码'}));
@@ -78,7 +81,10 @@
 
   //设置
   function createSetting(){
-    return menu({label: '设 置'});
+    return menu({
+      label: '设 置',
+      enabled: false
+    });
   }
 
   //导入
@@ -113,7 +119,18 @@
         $frame.attr('src', 'home.html');
       }
     }));
-    subMenu.append(menu({label: 'wiki'}));
+    subMenu.append(menu({
+      label: 'wiki',
+      click: function(){
+        gui.Window.open('https://github.com/Shaman05/fetool', {
+          position: 'center',
+          title: '加载中...',
+          toolbar: false,
+          height: 500,
+          width: 1100
+        });
+      }
+    }));
     helpItem.submenu = subMenu;
     return helpItem;
   }
