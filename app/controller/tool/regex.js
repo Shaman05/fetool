@@ -16,7 +16,7 @@
   var $errorText = $('#errorText');
   var $textReplaceSource = $('#textReplaceSource');
   var $textReplaceResult = $('#textReplaceResult');
-  var regexPage = {
+  var page = {
     selectRegEx: function(){
       $regexSource.val($(this).attr('data-regex'));
       $('.dropdown-toggle').dropdown('toggle');
@@ -44,7 +44,7 @@
       $textReplaceResult.val('');
     }
   };
-  util.eventInit(regexPage);
+  util.eventInit(page);
 
   //创建正则对象
   function buildRegex() {

@@ -1,12 +1,26 @@
 .tool-container{
     padding: 20px 0;
 }
+.tool-container .panel h3{
+    font-weight: bold;
+}
 .tool-container .panel{
     cursor: pointer;
-    opacity: 0.8;
+    box-shadow: 0 0 5px #bce8f1;
+    -webkit-transition: all 0.2s ease-in;
 }
 .tool-container .panel:hover{
-    opacity: 1;
+    box-shadow: 0 0 5px #3790CE;
+}
+.tool-container .panel:hover .panel-heading{
+    background: #45b3ff;
+    color: #ffffff;
+    text-shadow: 1px 1px 0 #2e2e2e;
+    -webkit-transition: all 0.2s ease-in;
+}
+.tool-container .panel:hover,
+.tool-container .panel:hover .panel-heading{
+    border-color: #3790CE;
 }
 .form-control{
     width: 100%;
