@@ -1,0 +1,36 @@
+.tool-container{
+    padding: 20px 0;
+}
+.tool-container .panel{
+    cursor: pointer;
+    opacity: 0.8;
+}
+.tool-container .panel:hover{
+    opacity: 1;
+}
+.form-control{
+    width: 100%;
+    resize: vertical;
+}
+.tool-container button.meta-elem{
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.tool-container .dropdown-menu{
+    font-size: 12px;
+}
+.tool-container .alert{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+}
+.modal-header{
+    border-bottom: none;
+}
+.modal-dialog p{
+    margin: 10px 0;
+}
