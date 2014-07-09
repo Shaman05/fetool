@@ -54,23 +54,18 @@
     try{
       return new RegExp($regexSource.val(), op);
     }catch (e){
-      if(e){
-        $errorText.text('正则表达式语法错误！');
-        $('#errorModel').modal();
-      }
+      e && showError('正则表达式语法错误！');
     }
   }
 
   //验证正则测试的输入
   function isValidRegExInput(){
     if(!$.trim($textSource.val())){
-      $errorText.text('请输入待匹配文本！');
-      $('#errorModel').modal();
+      showError('请输入待匹配文本！');
       return false;
     }
     if(!$.trim($regexSource.val())){
-      $errorText.text('请输入正则表达式！');
-      $('#errorModel').modal();
+      showError('请输入正则表达式！');
       return false;
     }
     return true;
@@ -97,6 +92,11 @@
   function onReplace(regex) {
     var str = $textSource.val();
     $textReplaceResult.val(str.replace(regex, $textReplaceSource.val()));
+  }
+
+  function showError(text){
+    $errorText.text(text);
+    $('#errorModel').modal();
   }
 
 })();
