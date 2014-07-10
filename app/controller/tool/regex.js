@@ -14,6 +14,7 @@
   var $textSource = $('#textSource');
   var $textResult = $('#textResult');
   var $errorText = $('#errorText');
+  var $errorMessage = $('#errorMessage');
   var $textReplaceSource = $('#textReplaceSource');
   var $textReplaceResult = $('#textReplaceResult');
   var page = {
@@ -94,8 +95,9 @@
     $textReplaceResult.val(str.replace(regex, $textReplaceSource.val()));
   }
 
-  function showError(text){
+  function showError(text, msg){
     $errorText.text(text);
+    msg && $errorMessage.text(msg);
     $('#errorModel').modal();
   }
 

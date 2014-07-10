@@ -48,3 +48,10 @@
 .modal-dialog p{
     margin: 10px 0;
 }
+.tool-container .CodeMirror{
+    width: 100%;
+    height: 380px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #3300bc;
+    border: 1px solid #3a31ff;
+}

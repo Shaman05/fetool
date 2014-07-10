@@ -6,22 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../../../public/css/bootcss/bootstrap.min.css"/>
   <link rel="stylesheet" href="../../../public/css/bootcss/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="../../../public/css/codemirror.css"/>
+  <link rel="stylesheet" href="../../../public/css/theme/monokai.css">
   <link rel="stylesheet" href="../../../public/css/tool.css"/>
 </head>
 <body class="niceScroll">
   <div class="container-fluid">
-    <div class="tool-container">
-      less
+    <div class="tool-container less-page">
+      <div class="row">
+        <div class="col-sm-5">
+          <div id="left">
+            <textarea name="less" id="lessSource">
+/*LESS语法示例代码*/
+
+@width:400px;
+@height:300px;
+@font_size:12px;
+
+textarea {
+  width:@width;
+  height:@height;
+  font-size:@font_size;
+}</textarea>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <button data-compiling="0" event-click="compileLess" type="button" class="btn btn-primary" style="width: 100%;">Less -&gt; Css</button>
+        </div>
+        <div class="col-sm-5">
+          <div id="right">
+            <textarea name="css" id="cssSource">/*编译后的CSS代码*/</textarea>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <!--警告框-->
   <div id="errorModel" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
        aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
           <p><strong id="errorText">&nbsp;</strong></p>
+          <div id="errorMessage"></div>
         </div>
       </div>
     </div>
@@ -30,9 +58,12 @@
   <script src="../../../public/js/lib/jquery-1.10.2.min.js"></script>
   <script src="../../../public/js/lib/bootstrap.min.js"></script>
   <script src="../../../public/js/lib/jquery.nicescroll.min.js"></script>
+  <script src="../../../public/js/lib/codemirror.js"></script>
+  <script src="../../../public/js/lib/mode/css/css.js"></script>
+  <script src="../../../public/js/lib/addon/selection/active-line.js"></script>
+  <script src="../../../public/js/lib/less-1.7.0.min.js"></script>
   <script src="../../../public/js/util.js"></script>
   <script src="../../../public/js/common.js"></script>
-  <script src="../../../public/js/lib/less-1.7.0.min.js"></script>
   <script src="../../../app/controller/tool/less.js"></script>
 </body>
 </html>
