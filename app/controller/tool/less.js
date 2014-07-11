@@ -44,6 +44,7 @@
       var $this = $(this);
       var lessContent = $.trim(lessEditor.getValue());
       if(!lessContent || $this.attr('data-compiling') == '1')return;
+      $this.attr('data-compiling', '1');
       $this.text('开始生成文件...');
 
       //创建临时文件
@@ -104,7 +105,7 @@
   }
 
   function resetCompileBtn(){
-    $compileBtn.text('Less -> Css').attr('data-compiling', 0);
+    $compileBtn.html('LESS <span class="glyphicon glyphicon-chevron-right"></span> CSS').attr('data-compiling', 0);
   }
 
 })();

@@ -1,3 +1,6 @@
+button:focus, input:focus, textarea:focus{
+    outline: none;
+}
 .tool-container{
     padding: 20px 0;
 }
@@ -54,4 +57,11 @@
     border-radius: 5px;
     box-shadow: 0 0 10px #3300bc;
     border: 1px solid #3a31ff;
+}
+.markdown-page .CodeMirror-wrap pre{
+    font-size: 12px;
+}
+.realtime-preview h4{
+    padding: 20px 0 10px;
+    border-bottom: 1px dotted #adadad;
 }
