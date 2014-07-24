@@ -25,6 +25,9 @@ button:focus, input:focus, textarea:focus{
 .tool-container .panel:hover .panel-heading{
     border-color: #3790CE;
 }
+.tool-container .panel-body{
+    min-height: 76px;
+}
 .form-control{
     width: 100%;
     resize: vertical;

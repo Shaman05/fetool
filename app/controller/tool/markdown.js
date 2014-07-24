@@ -10,6 +10,7 @@
 
   var markdownEditor, htmlEditor;
   var $compileBtn = $('[data-compiling]');
+  var $realtimeBtn = $('#realtime');
   var $realView = $("#realtime-preview");
   var page = {
     init: function(){
@@ -20,10 +21,11 @@
         indentUnit: 2,
         styleActiveLine: true,
         matchBrackets: true,
-        theme: 'monokai',
-        onChange:function(){
-          page.compileCode();
-        }
+        theme: 'monokai'
+      });
+      markdownEditor.on("change", function(cm, change) {
+        var isRealTimeView = $realtimeBtn.hasClass('active');
+        isRealTimeView && page.compileCode();
       });
       htmlEditor = CodeMirror.fromTextArea(document.getElementById("htmlCode"), {
         mode: "text/html",
@@ -35,13 +37,11 @@
         readOnly: true,
         theme: 'monokai'
       });
-
     },
     compileCode: function(){
-      var $this = $(this);
       var markdownCode = markdownEditor.getValue();
-      if(!markdownCode || $this.attr('data-compiling') == '1')return;
-      $this.attr('data-compiling', '1').text('编译中...');
+      if(!markdownCode || $compileBtn.attr('data-compiling') == '1')return;
+      $compileBtn.attr('data-compiling', '1').text('编译中...');
       var converter = new Markdown.Converter();
       var html = converter.makeHtml(markdownCode);
       htmlEditor.setValue(html);
