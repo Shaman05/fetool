@@ -4,6 +4,8 @@
 *.exe
 *.pak
 *.swp
+*.dat
+credits.html
 Thumbs.db
 
 fetool.nw
