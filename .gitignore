@@ -7,12 +7,7 @@
 *.dat
 credits.html
 Thumbs.db
-
 fetool.nw
-
 node_modules/
-app/node_modules/
-resource/
-dist/
+bower_components/
 data/
-release/

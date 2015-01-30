@@ -1,0 +1,15 @@
+{
+  "name": "Fetool",
+  "homepage": "https://github.com/shaman05/fetool",
+  "authors": [
+    "shaman <chenchao@upg.cn>"
+  ],
+  "description": "A tool for front-end developer",
+  "keywords": ["tool"],
+  "license": "MIT",
+  "devDependencies": {
+    "requirejs": "~2.1.9",
+    "requirejs-text": "~2.0.10",
+    "bootstrap": "3"
+  }
+}
