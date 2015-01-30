@@ -6,10 +6,11 @@
     "toolbar": true,
     "icon": "static/images/logo.png",
     "title": "前端助手",
-    "height": 500,
-    "min_height": 500,
-    "width": 1050,
-    "min_width": 1050
+    "height": 450,
+    "min_height": 380,
+    "width": 850,
+    "min_width": 500,
+    "position": "center"
   },
   "dependencies": {
     "mongoose": "3.6.14",
