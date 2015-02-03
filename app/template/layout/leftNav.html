@@ -1,0 +1,49 @@
+<ul class="left-nav">
+  <li>
+    <a href="javascript:" title="文档查询">
+      <icon-document color="#c1c1c1" hover="#f1f1f1"></icon-document>
+    </a>
+    <div class="sub-menu">
+      <div class="sub-a"><a href="javascript:">{{doc.comparisonTable.label}}<arrow></arrow></a>
+        <div class="sub-menu" style="width: 140px">
+          <a data-ng-repeat="item in doc.comparisonTable.list" href="#comparisonTable/{{item.page}}">{{item.label}}</a>
+        </div>
+      </div>
+      <div class="sub-a"><a href="javascript:">{{doc.api.label}}<arrow></arrow></a>
+        <div class="sub-menu" style="width: 140px">
+          <div class="sub-a"><a href="javascript:">{{doc.api.frontEnd.label}}<arrow></arrow></a>
+            <div class="sub-menu" style="width: 140px">
+              <a data-ng-repeat="item in doc.api.frontEnd.list" href="#/openUrl" data-ng-click="changeUrl(item.url)">{{item.label}}</a>
+            </div>
+          </div>
+          <a data-ng-repeat="item in doc.api.other.list" href="#/openUrl" data-ng-click="changeUrl(item.url)">{{item.label}}</a>
+        </div>
+      </div>
+      <a href="#/openUrl" data-ng-click="changeUrl('http://gf.yrz.cn:8080/')">UPG前端规范</a>
+      <a href="javascript:alert('期待你的待添加哦！')">其他文档</a>
+    </div>
+  </li>
+  <li>
+    <a href="#/openUrl" data-ng-click="changeUrl('http://gf.yrz.cn:8080/component/index.html')" title="插件中心">
+      <icon-plug color="#c1c1c1" hover="#f1f1f1"></icon-plug>
+    </a>
+  </li>
+  <li>
+    <a href="#/openUrl" data-url="codeFragmentIndex.html" title="代码碎片">
+      <icon-fragment color="#c1c1c1" hover="#f1f1f1"></icon-fragment>
+    </a>
+  </li>
+  <li>
+    <a href="#/tool" title="常用工具">
+      <icon-tool color="#c1c1c1" hover="#f1f1f1"></icon-tool>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:alert('开发中...')" title="学习资料">
+      <icon-book color="#c1c1c1" hover="#f1f1f1"></icon-book>
+    </a>
+  </li>
+</ul>
+<a class="setting" title="设置" href="javascript:">
+  <icon-setting color="#c1c1c1" hover="#f1f1f1"></icon-setting>
+</a>

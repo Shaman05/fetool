@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-ng-app="fetool">
+<head>
+  <title>Fetool - 前端助手</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body data-ng-controller="MainController">
+<div data-ng-include="'template/layout/topBar.html'"></div>
+<!--box-->
+<div class="box">
+  <div class="boxsub">
+    <div class="boxsub02">
+      <div class="boxsub03">
+        <div class="boxsub04">
+          <!--content-->
+          <div class="wrap">
+            <div class="left un-select" data-ng-include="'template/layout/leftNav.html'"></div>
+            <!--<div class="right right-frame" data-ng-include="'template/layout/rightFrame.html'"></div>-->
+            <div class="right right-content">
+              <div data-ng-view style="padding: 10px"></div>
+            </div>
+          </div>
+          <!--//content-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--//box-->
+<script data-main="main" src="bower_components/requirejs/require.js"></script>
+</body>
+</html>

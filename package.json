@@ -1,10 +1,10 @@
-﻿{
+{
   "name": "Fetool",
-  "main": "index.html",
+  "main": "app/index.html",
   "window": {
-    "frame": false,
-    "toolbar": false,
-    "icon": "static/images/logo.png",
+    "frame": true,
+    "toolbar": true,
+    "icon": "app/images/logo.png",
     "title": "前端助手",
     "height": 450,
     "min_height": 380,
@@ -17,5 +17,9 @@
     "ejs": "*",
     "jquery": "*",
     "less": "*"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install"
   }
 }

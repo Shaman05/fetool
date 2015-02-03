@@ -1,0 +1,85 @@
+<div data-ng-controller="tool">
+  <ol class="breadcrumb">
+    <li><a href="#/tool">常用工具</a></li>
+    <li class="active" data-ng-show="currentPage">{{currentPage}}</li>
+  </ol>
+  <div class="container-fluid">
+    <div class="tool-container regex-page">
+      <div class="form-group">
+        <label for="textSource">输入待匹配文本：</label><br>
+        <textarea id="textSource" placeholder="在此输入待匹配文本" class="form-control" rows="4"></textarea>
+      </div>
+      <hr/>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">正则表达式</div>
+          <input id="regexSource" class="form-control" type="text" placeholder="在此输入正则表达式" style="width: 82%">
+          <div class="btn-group" style="width: 18%">
+            <button type="button" class="btn btn-info meta-elem" style="width: 85%">常用正则表达式</button>
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" style="width: 15%">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="[\u4e00-\u9fa5]">匹配中文字符</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="[^\x00-\xff]">匹配双字节字符(包括汉字在内)</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="\n\s*\r">匹配空白行</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="[\w!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[\w!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?">匹配Email地址</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="[a-zA-z]+://[^\s]*">匹配网址URL</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="\d{3}-\d{8}|\d{4}-\{7,8}">匹配国内电话号码</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="[1-9][0-9]{4,}">匹配腾讯QQ号</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="[1-9]\d{5}(?!\d)">匹配中国邮政编码</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$">匹配18位身份证号</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8])))">匹配(年-月-日)格式日期</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^[1-9]\d*$">匹配正整数</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^-[1-9]\d*$">匹配负整数</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^-?[1-9]\d*$">匹配整数</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^[1-9]\d*|0$">匹配非负整数（正整数 + 0）</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^-[1-9]\d*|0$">匹配非正整数（负整数 + 0）</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^[1-9]\d*\.\d*|0\.\d*[1-9]\d*$">匹配正浮点数</a></li>
+              <li><a href="javascript:" event-click="selectRegEx" data-regex="^-[1-9]\d*\.\d*|-0\.\d*[1-9]\d*$">匹配负浮点数</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button event-click="reset" type="button" class="btn btn-primary" style="width: 10%;">重 置</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button event-click="applyTest" type="button" class="btn btn-primary" style="width: 20%;">测 试 匹 配</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label class="checkbox-inline">
+          <input type="checkbox" id="optionGlobal" checked> 全局搜索
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" id="optionIgnoreCase"> 忽略大小写
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="textResult">匹配结果：</label><br>
+        <textarea id="textResult" placeholder="没有匹配" class="form-control" rows="4" readonly></textarea>
+      </div>
+      <hr/>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon">替换文本</div>
+          <input id="textReplaceSource" class="form-control" type="email" placeholder="在此输入替换文本" style="width: 82%">
+          <button event-click="applyReplace" type="button" class="btn btn-primary meta-elem" style="width: 18%;">替 换</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="textReplaceResult">替换结果：</label><br>
+        <textarea id="textReplaceResult" placeholder="没有替换结果" class="form-control" rows="4" readonly></textarea>
+      </div>
+    </div>
+  </div>
+  <!--警告框-->
+  <div id="errorModel" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+          <p><strong id="errorText">&nbsp;</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

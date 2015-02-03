@@ -1,0 +1,11 @@
+<div class="right-wrap" data-ng-controller="openUrl">
+  <div class="iframeTool">
+    <a href="javascript:" data-ng-click="back()" title="返回上一页">
+      <icon-back></icon-back>
+    </a>
+    <a href="javascript:" data-ng-click="refresh()" title="刷新">
+      <icon-refresh></icon-refresh>
+    </a>
+  </div>
+  <iframe data-url="{{url}}" class="main-frame" name="main-frame" id="main-frame" src="{{trustUrl()}}"></iframe>
+</div>
