@@ -2,12 +2,21 @@
 
 requirejs.config({
   paths: {
-    angular: 'bower_components/angular/angular',
-    angularRoute: 'bower_components/angular-route/angular-route',
-    text: 'bower_components/requirejs-text/text'
+    packageJSON: '../package.json',
+    angular: 'bower_components/angular/angular.min',
+    angularRoute: 'bower_components/angular-route/angular-route.min',
+    text: 'bower_components/requirejs-text/text',
+    jquery: 'bower_components/jquery/dist/jquery.min',
+    bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.min',
+    util: 'core/util',
+    gui: 'core/gui'
   },
   shim: {
-    'angular': {'exports': 'angular'},
+    'bootstrap': ['jquery'],
+    'angular': {
+      deps: ['bootstrap'],
+      'exports': 'angular'
+    },
     'angularRoute': ['angular']
   },
   priority: [

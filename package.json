@@ -1,14 +1,15 @@
 {
   "name": "Fetool",
+  "version": "0.0.1",
   "main": "app/index.html",
   "window": {
     "frame": true,
     "toolbar": true,
     "icon": "app/images/logo.png",
     "title": "前端助手",
-    "height": 450,
-    "min_height": 380,
-    "width": 850,
+    "height": 500,
+    "min_height": 400,
+    "width": 1000,
     "min_width": 500,
     "position": "center"
   },

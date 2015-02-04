@@ -7,14 +7,15 @@
  * 定义了主控制器mainController，通过读取controllerTable列表来动态构建对应的子控制器
  */
 
-define(['angular', 'services'], function (angular) {
+define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
 
   'use strict';
 
   var controllers = angular.module('fetool.controllers', ['fetool.services']);
   var controllerTable = {
     'openUrl': 'controllers/openUrl',
-    'tool': 'controllers/tool'
+    'tool': 'controllers/tool',
+    'tools': 'controllers/tools'
   };
 
   //主控制器
@@ -58,8 +59,6 @@ define(['angular', 'services'], function (angular) {
    * 应用的主控制器可以看做是一个全局的控制器，在所有的路由下都可以使用
    */
   function mainController($rootScope, $scope, version, _$services_){
-    $rootScope.appVersion = version;
-    $rootScope.userAgent = navigator.userAgent;
     $rootScope.currentPage = null;
     $rootScope.changeUrl = function(url){
       $rootScope.url = url;
@@ -104,6 +103,12 @@ define(['angular', 'services'], function (angular) {
           ]
         }
       }
+    };
+    $scope.setting = function($event){
+      var menu = gui.settingMenu();
+      $event.preventDefault();
+      menu.popup($event.pageX, $event.pageY);
+      return false;
     };
   }
 

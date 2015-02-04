@@ -12,8 +12,9 @@ define(['angular'], function (angular) {
 
   'use strict';
 
+  var pkg = require('../package.json');
   var services = angular.module('fetool.services', []);
-  services.value('version', '0.0.1');
+  services.value('version', pkg.version);
   services.factory('_$services_', function($http, $rootScope){
     var o = {};
     var key;

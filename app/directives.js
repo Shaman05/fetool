@@ -15,7 +15,7 @@ define(['angular', 'services'], function (angular, services) {
 
   //svg icons
   angular.forEach([
-    'fragment', 'document', 'plug', 'tool', 'book', 'back', 'refresh', 'setting'
+    'fragment', 'document', 'plug', 'tool', 'book', 'back', 'refresh', 'setting', 'topset', 'logout'
   ], function(name){
     var directiveName = 'icon' + name.charAt(0).toUpperCase() + name.slice(1);
     directives.directive(directiveName, [
