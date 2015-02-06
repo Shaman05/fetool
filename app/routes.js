@@ -17,6 +17,7 @@ define(['angular', 'app'], function (angular, app) {
     var routeMap = {
       '/': 'welcome',
       '/openUrl': 'rightFrame',
+      '/codeFragment': 'codeFragment',
       '/tool': 'tool/index',
       '/error404': 'error/404'
     };

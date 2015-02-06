@@ -15,14 +15,15 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
   var controllerTable = {
     'openUrl': 'controllers/openUrl',
     'tool': 'controllers/tool',
-    'tools': 'controllers/tools'
+    'regex': 'controllers/tool/regex',
+    'less': 'controllers/tool/less',
+    'markDown': 'controllers/tool/markDown'
   };
 
   //主控制器
   controllers.controller('MainController', [
     '$rootScope',
     '$scope',
-    'version',
     '_$services_',
     mainController
   ]);
@@ -58,11 +59,12 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
    * @description
    * 应用的主控制器可以看做是一个全局的控制器，在所有的路由下都可以使用
    */
-  function mainController($rootScope, $scope, version, _$services_){
-    $rootScope.currentPage = null;
+  function mainController($rootScope, $scope, _$services_){
     $rootScope.changeUrl = function(url){
       $rootScope.url = url;
     };
+    $rootScope.minWin = gui.minWin;
+    $rootScope.closeWin = gui.closeWin;
     $scope.doc = {
       comparisonTable: {
         label: '常用对照表',

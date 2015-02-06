@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <title>常用工具 - Markdown 编译器</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../../../public/css/bootcss/bootstrap.min.css"/>
-  <link rel="stylesheet" href="../../../public/css/bootcss/bootstrap-theme.min.css"/>
-  <link rel="stylesheet" href="../../../public/css/codemirror.css"/>
-  <link rel="stylesheet" href="../../../public/css/theme/monokai.css">
-  <link rel="stylesheet" href="../../../public/css/tool.css"/>
-</head>
-<body class="niceScroll">
+<div data-ng-controller="markDown">
+  <ol class="breadcrumb">
+    <li><a href="#/tool">常用工具</a></li>
+    <li class="active" data-ng-show="currentPage">{{currentPage}}</li>
+  </ol>
   <div class="container-fluid">
     <div class="tool-container markdown-page">
       <div class="row">
@@ -64,31 +56,4 @@ Fetool - 前端助手(Beta 0.1)
       </div>
     </div>
   </div>
-  <!--警告框-->
-  <div id="errorModel" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-          <p><strong id="errorText">&nbsp;</strong></p>
-          <div id="errorMessage"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--//警告框-->
-  <script src="../../../public/js/lib/jquery-1.10.2.min.js"></script>
-  <script src="../../../public/js/lib/bootstrap.min.js"></script>
-  <script src="../../../public/js/lib/jquery.nicescroll.min.js"></script>
-  <script src="../../../public/js/lib/codemirror.js"></script>
-  <script src="../../../public/js/lib/mode/xml/xml.js"></script>
-  <script src="../../../public/js/lib/mode/htmlmixed/htmlmixed.js"></script>
-  <script src="../../../public/js/lib/mode/markdown/markdown.js"></script>
-  <script src="../../../public/js/lib/addon/selection/active-line.js"></script>
-  <script src="../../../public/js/lib/Markdown.Converter.js"></script>
-  <script src="../../../public/js/util.js"></script>
-  <script src="../../../public/js/common.js"></script>
-  <script src="../../../app/controller/tool/markdown.js"></script>
-</body>
-</html>
+</div>

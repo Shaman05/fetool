@@ -35,7 +35,8 @@ define([
       var html, setting = {
         title: '',
         content: '',
-        foot: true,
+        footer: true,
+        header: true,
         onOpen: function(){},
         onCancel: function(){},
         onOk: function(){}
@@ -46,7 +47,8 @@ define([
       var $elem = $(html);
       $elem.on('shown.bs.modal', opt.onOpen);
       $elem.on('hidden.bs.modal', opt.onCancel);
-      !opt.foot && $elem.find('.modal-footer').remove();
+      !opt.header && $elem.find('.modal-header').css('border-bottom', 'none');
+      !opt.footer && $elem.find('.modal-footer').remove();
       $elem.appendTo('body');
       $elem.modal();
     }

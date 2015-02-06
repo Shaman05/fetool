@@ -156,17 +156,6 @@ button, select{
     width: 100%;
     border: none;
 }
-input[type=text]{
-    border: 1px solid #ccc;
-    height: 30px;
-    vertical-align: middle;
-    padding: 4px;
-    font-size: 13px;
-    line-height: 18px;
-    color: #555555;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    background-color: #ffffff;
-}
 .readonly{
     background: #d4d4d4;
     color: #555555;
@@ -387,9 +376,6 @@ button:focus, input:focus, textarea:focus{
     z-index: 999;
     width: 100%;
 }
-.modal-header{
-    border-bottom: none;
-}
 .modal-dialog p{
     margin: 10px 0;
 }
@@ -422,35 +408,6 @@ button:focus, input:focus, textarea:focus{
     color: #999;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     text-transform: uppercase;
-}
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    display: none;
-    float: left;
-    min-width: 160px;
-    padding: 5px 0;
-    margin: 2px 0 0;
-    list-style: none;
-    background-color: #ffffff;
-    border: 1px solid #ccc;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    *border-right-width: 2px;
-    *border-bottom-width: 2px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
-    background-clip: padding-box;
-    text-align:left;
 }
 .dropdown-menu.pull-right {
     right: 0;
@@ -659,5 +616,11 @@ button:focus, input:focus, textarea:focus{
 .alert-title{
     font-weight: bold;
     font-size: 14px;
+}
+.checkbox-inline input[type=checkbox]{
+    margin-left: -16px;
+}
+.checkbox-inline span{
+    vertical-align: -2px;
 }
 /*extend bootstrap end*/

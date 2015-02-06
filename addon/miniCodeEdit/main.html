@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini Code Editor</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="zepto.min.js"></script>
+  <script src="editor.js"></script>
+  <script src="cm/lib/codemirror.js"></script>
+  <script src="cm/mode/css/css.js"></script>
+  <script src="cm/mode/xml/xml.js"></script>
+  <script src="cm/mode/javascript/javascript.js"></script>
+  <script src="cm/mode/htmlmixed/htmlmixed.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cm/lib/codemirror.css">
+  <link rel="stylesheet" href="cm/theme/lesser-dark.css">
+</head>
+<body>
+<!--topBar-->
+<div class="topBar un-select">
+  <div class="titleBar drag-item"><span>F</span>etool - 前端助手</div>
+  <div class="topNavBar">
+    <icon-close data-ng-click="closeWin()"></icon-close>
+    <icon-minus data-ng-click="minWin()"></icon-minus>
+  </div>
+</div>
+<!--//topBar-->
+<div class="box">
+  <div class="boxsub">
+    <div class="boxsub02">
+      <div class="boxsub03">
+        <div class="boxsub04">
+          <!--content-->
+          <div class="wrap">
+            <div class="buttons" style="display: none">
+              <button id="new"><img src="img/16x16/file_add.png"/>新文件(New)</button>
+              <button id="open"><img src="img/16x16/file.png"/>打开(Open)</button>
+              <button id="save"><img src="img/16x16/diskette.png"/>保存(Save)</button>
+            </div>
+            <div id="editor"></div>
+            <div class="info">
+              <label>Filename: </label><span id="title"></span>
+              <label>Mode: </label><span id="mode"></span>
+            </div>
+          </div>
+          <!--//content-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input style="display:none;" id="openFile" type="file"/>
+<input style="display:none;" id="saveFile" type="file" nwsaveas/>
+</body>
+</html>

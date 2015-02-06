@@ -29,10 +29,14 @@ window.name = "NG_DEFER_BOOTSTRAP!";
 requirejs([
   'angular',
   'app',
+  'gui',
   'routes'
-], function (angular, app) {
+], function (angular, app, gui) {
   angular.element(document.getElementsByTagName('html')[0]);
   angular.element().ready(function () {
     angular.bootstrap(document, [app.name]);
+    setTimeout(function(){
+      gui.showWin();
+    }, 10);
   });
 });

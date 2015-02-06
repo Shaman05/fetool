@@ -17,13 +17,23 @@ define([
   var pkg = require('../package.json');
 
   return {
+    showWin: function(){
+      guiWin.show();
+    },
+    minWin: function(){
+      guiWin.minimize();
+    },
+    closeWin: function(){
+      guiWin.close();
+    },
     settingMenu: function(){
       var menu = new gui.Menu();
+      menu.append(new gui.MenuItem({ label: '编辑器', click: openEdit }));
       menu.append(new gui.MenuItem({ label: '设 置' }));
       menu.append(new gui.MenuItem({ label: '帮 助' }));
       menu.append(new gui.MenuItem({ label: '关 于', click: appInfo }));
       menu.append(new gui.MenuItem({ type: 'separator' }));
-      menu.append(new gui.MenuItem({ label: '退 出', click: logout}));
+      menu.append(new gui.MenuItem({ label: '退 出', click: this.closeWin}));
       return menu;
     }
   };
@@ -35,13 +45,20 @@ define([
     util.dialog({
       title: '关于前端助手',
       content: info,
-      foot: false
+      footer: false
     });
   }
 
-  function logout(){
-    //todo something
-    guiWin.close();
+  function openEdit(){
+    gui.Window.open('../addon/miniCodeEdit/main.html', {
+      "width": 800,
+      "height": 520,
+      "show": false,
+      "title": "Mini Code Editor",
+      "frame": false,
+      "toolbar": true,
+      "icon": "app/images/logo.png"
+    });
   }
 
 });
