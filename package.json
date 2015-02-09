@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "app/app.html",
   "window": {
-    "frame": true,
+    "frame": false,
     "toolbar": true,
     "icon": "app/images/logo.png",
     "title": "前端助手",
@@ -12,7 +12,7 @@
     "width": 1000,
     "min_width": 500,
     "position": "center",
-    "show": false
+    "show": true
   },
   "dependencies": {
     "mongoose": "3.6.14",

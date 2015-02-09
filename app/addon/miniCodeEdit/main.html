@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mini Code Editor</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="cm/lib/codemirror.css">
+  <link data-theme="lesser-dark" rel="stylesheet" href="cm/theme/lesser-dark.css">
+  <link data-theme="ambiance" rel="stylesheet" href="cm/theme/ambiance.css">
+  <link data-theme="blackboard" rel="stylesheet" href="cm/theme/blackboard.css">
+  <link data-theme="cobalt" rel="stylesheet" href="cm/theme/cobalt.css">
+  <link data-theme="eclipse" rel="stylesheet" href="cm/theme/eclipse.css">
+  <link data-theme="elegant" rel="stylesheet" href="cm/theme/elegant.css">
+  <link data-theme="erlang-dark" rel="stylesheet" href="cm/theme/erlang-dark.css">
+  <link data-theme="monokai" rel="stylesheet" href="cm/theme/monokai.css">
+  <link data-theme="neat" rel="stylesheet" href="cm/theme/neat.css">
+  <link data-theme="night" rel="stylesheet" href="cm/theme/night.css">
+  <link data-theme="rubyblue" rel="stylesheet" href="cm/theme/rubyblue.css">
+  <link data-theme="xq-dark" rel="stylesheet" href="cm/theme/xq-dark.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--topBar-->
+<div class="topBar un-select">
+  <div class="titleBar drag-item"><span>F</span>etool - 前端助手</div>
+  <div class="topNavBar">
+    <span id="close" class="glyphicon glyphicon-remove" aria-hidden="true" title="关闭"></span>
+    <span id="min" class="glyphicon glyphicon-minus" aria-hidden="true" title="最小化"></span>
+  </div>
+</div>
+<!--//topBar-->
+<div class="box">
+  <div class="boxsub">
+    <div class="boxsub02">
+      <div class="boxsub03">
+        <div class="boxsub04">
+          <!--content-->
+          <div class="wrap">
+            <div class="buttons" style="display: none">
+              <button id="new"><img src="img/16x16/file_add.png"/>新文件(New)</button>
+              <button id="open"><img src="img/16x16/file.png"/>打开(Open)</button>
+              <button id="save"><img src="img/16x16/diskette.png"/>保存(Save)</button>
+            </div>
+            <div id="editor"></div>
+            <div class="info">
+              <span style="float: right"><label>Mode: </label><span id="mode"></span></span>
+              <label>Filename: </label><span id="title"></span>
+            </div>
+          </div>
+          <!--//content-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input style="display:none;" id="openFile" type="file"/>
+<input style="display:none;" id="saveFile" type="file" nwsaveas/>
+<script src="zepto.min.js"></script>
+<script src="cm/lib/codemirror.js"></script>
+<script src="cm/mode/css/css.js"></script>
+<script src="cm/mode/xml/xml.js"></script>
+<script src="cm/mode/javascript/javascript.js"></script>
+<script src="cm/mode/htmlmixed/htmlmixed.js"></script>
+<script src="editor.js"></script>
+<script src="menu.js"></script>
+</body>
+</html>

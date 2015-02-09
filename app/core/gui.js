@@ -14,6 +14,7 @@ define([
 
   var gui = require('nw.gui');
   var guiWin = gui.Window.get();
+  var conf = require('./conf/app.conf');
   var pkg = require('../package.json');
 
   return {
@@ -50,13 +51,13 @@ define([
   }
 
   function openEdit(){
-    gui.Window.open('../addon/miniCodeEdit/main.html', {
+    gui.Window.open('addon/miniCodeEdit/main.html', {
       "width": 800,
       "height": 520,
       "show": false,
       "title": "Mini Code Editor",
-      "frame": false,
-      "toolbar": true,
+      "frame": conf.frame,
+      "toolbar": conf.toolbar,
       "icon": "app/images/logo.png"
     });
   }

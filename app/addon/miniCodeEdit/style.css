@@ -4,7 +4,6 @@ html,body {
     margin: 0;
     font-family: "microsoft yahei", "simhei";
     font-size: 12px;
-    background: #DCE0E4;
 }
 button {
     margin: 0;
@@ -12,6 +11,7 @@ button {
 .CodeMirror {
     margin: 0;
     padding: 0;
+    font-size: 12px;
 }
 .CodeMirror-scroll {
     height: auto;
@@ -21,23 +21,23 @@ button {
 #editor {
     position: absolute;
     top: 0;
-    bottom: 48px;
+    bottom: 20px;
     left: 0;
     right: 0;
-    background: #262626;
 }
 .info {
     font-family: monospace;
     white-space: nowrap;
     position: absolute;
-    bottom: 28px;
     background: #eee;
-    padding-left: 2px;
+    padding: 0 2px;
     height: 18px;
     line-height: 18px;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 9999;
+    overflow: hidden;
 }
 .info label {
     font-weight: bold;
@@ -85,14 +85,13 @@ button {
 }
 .box,.boxsub,.boxsub02,.boxsub03{
     border-color: #3E4144;
-    background: #3E4144;
 }
 .wrap{
     position: absolute;
     left: 0;
-    right: 5px;
+    right: 0;
     top: 0;
-    bottom: 5px;
+    bottom: 0;
 }
 .topBar{
     height: 22px;
