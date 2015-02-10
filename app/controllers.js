@@ -17,7 +17,8 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
     'tool': 'controllers/tool',
     'regex': 'controllers/tool/regex',
     'less': 'controllers/tool/less',
-    'markDown': 'controllers/tool/markDown'
+    'markDown': 'controllers/tool/markDown',
+    'codeFragment': 'controllers/codeFragment'
   };
 
   //主控制器

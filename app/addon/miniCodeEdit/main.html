@@ -23,7 +23,7 @@
 <body>
 <!--topBar-->
 <div class="topBar un-select">
-  <div class="titleBar drag-item"><span>F</span>etool - 前端助手</div>
+  <div class="titleBar drag-item"><span>F</span>etool - MiniCodeEditor</div>
   <div class="topNavBar">
     <span id="close" class="glyphicon glyphicon-remove" aria-hidden="true" title="关闭"></span>
     <span id="min" class="glyphicon glyphicon-minus" aria-hidden="true" title="最小化"></span>
@@ -56,13 +56,6 @@
 </div>
 <input style="display:none;" id="openFile" type="file"/>
 <input style="display:none;" id="saveFile" type="file" nwsaveas/>
-<script src="zepto.min.js"></script>
-<script src="cm/lib/codemirror.js"></script>
-<script src="cm/mode/css/css.js"></script>
-<script src="cm/mode/xml/xml.js"></script>
-<script src="cm/mode/javascript/javascript.js"></script>
-<script src="cm/mode/htmlmixed/htmlmixed.js"></script>
-<script src="editor.js"></script>
-<script src="menu.js"></script>
+<script data-main="index" src="../../bower_components/requirejs/require.js"></script>
 </body>
 </html>

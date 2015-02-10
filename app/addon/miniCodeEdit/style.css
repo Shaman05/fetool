@@ -8,16 +8,6 @@ html,body {
 button {
     margin: 0;
 }
-.CodeMirror {
-    margin: 0;
-    padding: 0;
-    font-size: 12px;
-}
-.CodeMirror-scroll {
-    height: auto;
-    overflow-y: hidden;
-    overflow-x: auto;
-}
 #editor {
     position: absolute;
     top: 0;
@@ -137,3 +127,39 @@ button {
 .topNavBar .glyphicon-remove:hover{
     background: #C73636;
 }
+
+/*extend CodeMirror*/
+.CodeMirror .CodeMirror-cursor{
+    line-height: 0;
+}
+/*extend CodeMirror end*/
+
+/*extend bootstrap*/
+.mask{
+    position: fixed;
+    z-index: 998;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+.alert{
+    position: absolute;
+    z-index: 999;
+    width: 50%;
+    margin-left: -25%;
+    left: 50%;
+    top: 30%;
+}
+.alert-title{
+    font-weight: bold;
+    font-size: 14px;
+}
+.checkbox-inline input[type=checkbox]{
+    margin-left: -16px;
+}
+.checkbox-inline span{
+    vertical-align: -2px;
+}
+/*extend bootstrap end*/

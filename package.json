@@ -12,7 +12,7 @@
     "width": 1000,
     "min_width": 500,
     "position": "center",
-    "show": true
+    "show": false
   },
   "dependencies": {
     "mongoose": "3.6.14",

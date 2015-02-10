@@ -101,93 +101,6 @@ button, select{
     background: #C73636;
 }
 
-/* common */
-.CodeMirror{
-    /*border: 1px solid #969696;
-    height: auto;*/
-}
-.code-show-wrap{
-    overflow: hidden;
-}
-.code-show-50{
-    width: 49%;
-    margin-right: 1%;
-    float: left;
-}
-.code-show h4{
-    height: 20px;
-    overflow: hidden;
-    font-size: 14px;
-    line-height: 20px;
-    margin: 0;
-}
-.code-tool{
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 25px;
-    width: 100%;
-    overflow: hidden;
-}
-.color-blue{
-    color: dodgerblue;
-}
-.loading{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.5) url("../images/loading.gif") no-repeat center;
-}
-.niceScroll{
-    visibility: hidden;
-}
-.icon{
-    background: url("../images/icon01.png") no-repeat 0 0;
-    display: inline-block;
-    height: 18px;
-    width: 20px;
-    text-indent: -99px;
-    overflow: hidden;
-}
-.main-frame{
-    height: 100%;
-    width: 100%;
-    border: none;
-}
-.readonly{
-    background: #d4d4d4;
-    color: #555555;
-}
-.table{
-    width: 100%;
-    border-collapse: collapse;
-}
-.table thead {
-    background: #70a7ff;
-    color: #ffffff;
-}
-.table td, .table th {
-    border: 1px solid #cccccc;
-    padding: 4px;
-    border-collapse: collapse;
-}
-.table caption{
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 32px;
-}
-.table tbody .separateColor{
-    background: #eeeeee;
-}
-.bbtn{
-    background: lightgray;
-    margin: 1px;
-    cursor: pointer;
-}
-/* common end */
-
 .wrap{
     height: 100%;
 }
@@ -278,6 +191,37 @@ button, select{
     text-align: right;
     margin-bottom: 0
 }
+
+/*fileExplorer*/
+.files {
+    padding: 0;
+    margin: 0;
+}
+.file {
+    margin: 2px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+}
+.file.focus {
+    background-color: #08C;
+    -webkit-border-radius: 4px;
+}
+.file .name {
+    word-wrap: break-word;
+}
+.file.focus .name {
+    color: white;
+}
+.file.focus .icon {
+    -webkit-filter: invert(20%);
+}
+.file,
+.file .icon,
+.file .name{
+    width: 100px;
+}
+/*fileExplorer end*/
 
 /* 菜单 */
 .left-nav li:hover > a,
@@ -580,7 +524,6 @@ button:focus, input:focus, textarea:focus{
 .dropdown-context .dropdown-submenu:hover > .dropdown-menu {
     display: block;
 }
-
 .compressed-context a{
     padding-left: 14px;
     padding-top: 0;

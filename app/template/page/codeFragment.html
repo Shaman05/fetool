@@ -1,16 +1,8 @@
-<div class="well" style="float: left; width: 160px; padding: 8px;">
-  <ul class="nav nav-pills">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages</a></li>
-  </ul>
-</div>
-
-<div style="float: left; position: absolute; left: 210px; right: 0; top: 0; bottom: 50px">
+<div class="container-fluid fileExplorer" data-ng-controller="codeFragment">
   <div class="row">
-    <ul id="addressbar" class="breadcrumb"></ul>
+    <ul class="breadcrumb" id="addressbar"></ul>
   </div>
-  <div class="row" style="background: #FFF; -webkit-border-radius: 2px; margin: -5px 1px 0 -19px; height: 100%; overflow: auto">
-    <ul style="margin: 5px;" id="files"></ul>
+  <div class="row">
+    <ul class="files" id="files"></ul>
   </div>
 </div>

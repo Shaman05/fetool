@@ -1,15 +1,21 @@
 /**
  * Created with JetBrains PhpStorm.
  * User: Chen Chao
- * Date: 2015/2/6
- * Time: 14:49
+ * Date: 2015/2/9
+ * Time: 17:35
  */
 
-+(function(){
+define([
+  './main.js'
+], function(main){
+
+  'use strict';
+
   var fs = require("fs");
   var gui = require("nw.gui");
   var conf = require("./conf/app.conf");
   var confFile = conf.conf_file();
+  var editor = main.getEditor();
 
   var clipboard = gui.Clipboard.get();
   var menu = new gui.Menu();
@@ -23,15 +29,6 @@
   menu.append(new gui.MenuItem({ label: 'Paste', click: past }));
   menu.append(new gui.MenuItem({ type: 'separator' }));
   menu.append(new gui.MenuItem({ label: 'Theme', submenu: themeMenu }));
-  init();
-
-  function init(){
-    document.getElementById("editor").addEventListener('contextmenu', function(ev) {
-      ev.preventDefault();
-      menu.popup(ev.x, ev.y);
-      return false;
-    });
-  }
 
   function createThemeMenu(){
     var themeList = new gui.Menu();
@@ -46,7 +43,7 @@
           click: function(){
             setTheme(this, themeList.items, function(menu){
               conf.codeTheme = menu.label;
-              editor.setOption("theme", conf.codeTheme);
+              main.getEditor().setOption("theme", conf.codeTheme);
               //同时将选择保存到配置
               fs.readFile(confFile, 'utf8', function(err, data){
                 var content = data.replace(/codeTheme: ".*"/ig, 'codeTheme: "' + conf.codeTheme + '"');
@@ -96,4 +93,15 @@
   function saveFile(){
     $("#saveFile").trigger("click");
   }
-}());
+
+  return {
+    init: function(){
+      document.getElementById("editor").addEventListener('contextmenu', function(ev) {
+        ev.preventDefault();
+        menu.popup(ev.x, ev.y);
+        return false;
+      });
+    }
+  };
+
+});

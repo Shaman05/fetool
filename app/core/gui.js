@@ -36,6 +36,9 @@ define([
       menu.append(new gui.MenuItem({ type: 'separator' }));
       menu.append(new gui.MenuItem({ label: '退 出', click: this.closeWin}));
       return menu;
+    },
+    callMiniCodeEditor: function(file_path){
+      openEdit(file_path);
     }
   };
 
@@ -50,11 +53,11 @@ define([
     });
   }
 
-  function openEdit(){
-    gui.Window.open('addon/miniCodeEdit/main.html', {
+  function openEdit(file_path){
+    gui.Window.open('addon/miniCodeEdit/main.html?file=' + file_path, {
       "width": 800,
       "height": 520,
-      "show": false,
+      "show": true,
       "title": "Mini Code Editor",
       "frame": conf.frame,
       "toolbar": conf.toolbar,
