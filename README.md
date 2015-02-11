@@ -3,6 +3,11 @@
 
 说明：之前做过一个版本，功能比较弱，代码组织结构很乱，扩展起来很吃力，这个版本对老版本重构并扩展了一些新的功能
 
+实际使用中的部分截图：
+
+代码碎片
+![image](https://github.com/Shaman05/fetool/blob/master/app/images/code-fragment.png)
+
 ## 1 使用
 
 本工具已绿色打包，只需将 fetool.rar 解压后运行 fetool.exe 即可
