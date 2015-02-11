@@ -11,7 +11,7 @@ button {
 #editor {
     position: absolute;
     top: 0;
-    bottom: 20px;
+    bottom: 18px;
     left: 0;
     right: 0;
 }
@@ -19,7 +19,6 @@ button {
     font-family: monospace;
     white-space: nowrap;
     position: absolute;
-    background: #eee;
     padding: 0 2px;
     height: 18px;
     line-height: 18px;
@@ -31,6 +30,19 @@ button {
 }
 .info label {
     font-weight: bold;
+}
+.info-mode{
+    float: right;
+    position: relative;
+    z-index: 8;
+}
+.info-title{
+    position: relative;
+    z-index: 9;
+}
+.info,
+.info-title{
+    background: #eee;
 }
 .buttons {
     height: 24px;

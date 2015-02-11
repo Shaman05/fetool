@@ -14,9 +14,11 @@ define([
 
   global.$ = $;
   global.fe_util = util;
+  global.fe_gui = gui;
 
   var fs = require('fs');
   var path = require('path');
+  var shell = require('nw.gui').Shell;
   var abar = require('./node_modules/address_bar');
   var folder_view = require('./node_modules/folder_view');
   var conf = require('./conf/app.conf');
@@ -27,8 +29,6 @@ define([
     var addressbar = new abar.AddressBar($('#addressbar'));
     var current_path = conf.dataRoot();
 
-    util.isValidDir(current_path);
-
     folder.open(current_path);
     addressbar.set(current_path);
 
@@ -36,8 +36,12 @@ define([
       if (mime.type == 'folder') {
         addressbar.enter(mime);
       } else {
-        if(util.isSupportFile(mime.path)){
-          gui.callMiniCodeEditor(mime.path);
+        if(mime.type == 'image'){
+          shell.openItem(mime.path);
+        }else{
+          if(util.isSupportFile(mime.path)){
+            gui.callMiniCodeEditor(mime.path);
+          }
         }
       }
     });

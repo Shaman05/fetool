@@ -6,10 +6,12 @@
  */
 
 var path = require('path');
+var pkg = require('../../package.json');
 
 module.exports = {
-  frame: false,
-  toolbar: true,
+  version: pkg.version,
+  frame: pkg.window.frame,
+  toolbar: pkg.window.toolbar,
 
   /**
    * 配置文件路径
@@ -26,6 +28,11 @@ module.exports = {
   dataRoot: function(){
     return path.join(process.cwd(), 'data');
   },
+
+  /**
+   * 是否允许浏览和编辑指定的 dataRoot 目录以外的文件(!!建议不要开启)
+   */
+  enablePathFull: false,
 
   /**
    * MiniCodeEditor支持的格式

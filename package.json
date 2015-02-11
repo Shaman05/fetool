@@ -4,7 +4,7 @@
   "main": "app/app.html",
   "window": {
     "frame": false,
-    "toolbar": true,
+    "toolbar": false,
     "icon": "app/images/logo.png",
     "title": "前端助手",
     "height": 500,

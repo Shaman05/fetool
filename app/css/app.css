@@ -191,6 +191,27 @@ button, select{
     text-align: right;
     margin-bottom: 0
 }
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.table thead {
+    background: #70a7ff;
+    color: #ffffff;
+}
+.table td, .table th {
+    border: 1px solid #cccccc;
+    padding: 4px;
+    border-collapse: collapse;
+}
+.table caption{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 32px;
+}
+.table tbody .separateColor{
+    background: #eeeeee;
+}
 
 /*fileExplorer*/
 .files {
@@ -569,5 +590,11 @@ button:focus, input:focus, textarea:focus{
 }
 .checkbox-inline span{
     vertical-align: -2px;
+}
+.modal-dialog{
+    margin: 100px auto 0;
+}
+.modal-dialog-sm{
+    width: 300px;
 }
 /*extend bootstrap end*/

@@ -28,13 +28,6 @@ define([
   var $title = document.getElementById("title");
   var $mode = document.getElementById("mode");
 
-  util.dialog({
-    content: '确认删除吗？',
-    onOk: function(){
-      alert('yes!');
-    }
-  });
-
   function handleDocumentChange(title) {
     var mode = "javascript";
     var modeName = "JavaScript";
@@ -166,7 +159,6 @@ define([
         newFile();
       }
       onresize();
-
       gui.Window.get().show();
     },
     getEditor: function(){

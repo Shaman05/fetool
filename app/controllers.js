@@ -110,7 +110,7 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
     $scope.setting = function($event){
       var menu = gui.settingMenu();
       $event.preventDefault();
-      menu.popup($event.pageX, $event.pageY);
+      menu.popup($event.pageX - 2, $event.pageY - 2);
       return false;
     };
   }

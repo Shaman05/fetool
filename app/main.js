@@ -9,7 +9,8 @@ requirejs.config({
     jquery: 'bower_components/jquery/dist/jquery.min',
     bootstrap: 'bower_components/bootstrap/dist/js/bootstrap.min',
     util: 'core/util',
-    gui: 'core/gui'
+    gui: 'core/gui',
+    file: 'core/file'
   },
   shim: {
     'bootstrap': ['jquery'],

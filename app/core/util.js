@@ -16,7 +16,6 @@ define([
   var fs = require('fs');
   var gui = require('nw.gui');
   var conf = require('./conf/app.conf');
-  var pkg = require('../package.json');
   var dataRoot = conf.dataRoot();
 
   function clearnMask(id){
@@ -25,7 +24,7 @@ define([
 
   return {
     isValidDir: function(dir){
-      return dir.indexOf(dataRoot) > -1;
+      return conf.enablePathFull ? true : dir.indexOf(dataRoot) > -1;
     },
 
     getParams: function(url){
@@ -101,10 +100,12 @@ define([
     },
 
     dialog: function(opt){
+      var self = this;
       var html, setting = {
         title: '',
         content: '',
         footer: true,
+        small: false,
         onOpen: function(){},
         onCancel: function(){},
         onOk: function(){}
@@ -113,11 +114,18 @@ define([
       html = modalTpl.replace(/\{\{title\}\}/g, opt.title);
       html = html.replace(/\{\{content\}\}/g, opt.content);
       var $elem = $(html);
+      if(opt.small){
+        $elem.find('.modal-dialog').addClass('modal-dialog-sm');
+      }
       $elem.on('shown.bs.modal', opt.onOpen);
-      $elem.on('hidden.bs.modal', opt.onCancel);
+      $elem.on('hidden.bs.modal', function(){
+        opt.onCancel();
+        self.closeDialog();
+      });
       $elem.on('click',  '.btn-primary', function(){
         opt.onOk();
         $elem.modal('hide');
+        self.closeDialog();
       });
       !opt.title && $elem.find('.modal-header').css('border-bottom', 'none');
       !opt.footer && $elem.find('.modal-footer').remove();
@@ -125,12 +133,28 @@ define([
       $elem.modal();
     },
 
+    confirm: function(opt){
+      var defaultSetting = {
+        content: '这是一个 confirm 对话框',
+        small: true,
+        onCancel: function(){},
+        onOk: function(){}
+      };
+      this.dialog($.extend(defaultSetting, opt));
+    },
+
+    closeDialog: function(){
+      $('.modal[role=dialog]').remove();
+    },
+
     openEdit: function(file_path, isSelfCall){
       var url = isSelfCall ? 'main.html' : 'addon/miniCodeEdit/main.html' + (file_path ? '?file=' + file_path : '');
       gui.Window.open(url, {
         "width": 800,
         "height": 520,
-        "show": true,
+        "min_width": 270,
+        "min_height": 52,
+        "show": false,
         "title": "Mini Code Editor",
         "frame": conf.frame,
         "toolbar": conf.toolbar,
@@ -139,7 +163,7 @@ define([
     },
 
     appInfo: function(){
-      var info = appInfoTpl.replace(/\{\{version\}\}/g, pkg.version);
+      var info = appInfoTpl.replace(/\{\{version\}\}/g, conf.version);
       info = info.replace(/\{\{userAgent\}\}/g, navigator.userAgent);
       info = info.replace(/\{\{nodeVersion\}\}/g, process.version);
       this.dialog({

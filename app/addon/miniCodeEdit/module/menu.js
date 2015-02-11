@@ -98,7 +98,7 @@ define([
     init: function(){
       document.getElementById("editor").addEventListener('contextmenu', function(ev) {
         ev.preventDefault();
-        menu.popup(ev.x, ev.y);
+        menu.popup(ev.x - 2, ev.y - 2);
         return false;
       });
     }
