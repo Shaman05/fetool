@@ -8,6 +8,15 @@
 代码碎片
 ![image](https://github.com/Shaman05/fetool/blob/master/app/images/code-fragment.png)
 
+文档查询
+![image](https://github.com/Shaman05/fetool/blob/master/app/images/document.png)
+
+工具-正则表达式
+![image](https://github.com/Shaman05/fetool/blob/master/app/images/regex-page.png)
+
+迷你编辑器
+![image](https://github.com/Shaman05/fetool/blob/master/app/images/mini-code-editor.png)
+
 ## 1 使用
 
 本工具已绿色打包，只需将 fetool.rar 解压后运行 fetool.exe 即可
