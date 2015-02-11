@@ -1,9 +1,13 @@
 ﻿Fetool - 前端助手(Beta 0.1)
 ===================================
 
-说明：之前做过一个版本，功能比较弱，代码组织结构很乱，扩展起来很吃力，这个版本对老版本重构并扩展了一些新的功能
+说明：node-webkit 刚出来的时候做过一个版本，功能比较弱，代码组织结构很乱，扩展起来很吃力，这段时间有点空余时间又想玩玩 node-webkit 加上项目里开始正式加入 angular, 所以又做了个版本。 这次对老版本重构并扩展了一些新的功能，开发环境：
 
-实际使用中的部分截图：
+* node-webkit [v0.11.6](http://dl.node-webkit.org/v0.11.6/node-webkit-v0.11.6-win-x64.zip): (Jan 21, 2015, based off of Node v0.11.13, Chromium 38.0.2125.104)
+* window7 64位
+
+
+### 实际使用中的部分截图：
 
 代码碎片
 ![image](https://github.com/Shaman05/fetool/blob/master/app/images/code-fragment.png)
