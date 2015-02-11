@@ -7,20 +7,27 @@
 
 define([
   'text!template/ui/alert.html',
-  'text!template/ui/modal.html'
-], function(alertTpl, modalTpl){
+  'text!template/ui/modal.html',
+  'text!template/fragment/appInfo.html'
+], function(alertTpl, modalTpl, appInfoTpl){
 
   'use strict';
 
   var fs = require('fs');
+  var gui = require('nw.gui');
   var conf = require('./conf/app.conf');
-  console.log(conf);
+  var pkg = require('../package.json');
+  var dataRoot = conf.dataRoot();
 
   function clearnMask(id){
     $('#mask_' + id).remove();
   }
 
   return {
+    isValidDir: function(dir){
+      return dir.indexOf(dataRoot) > -1;
+    },
+
     getParams: function(url){
       var _url = url || window.location.href;
       var index = _url.indexOf('?');
@@ -98,7 +105,6 @@ define([
         title: '',
         content: '',
         footer: true,
-        header: true,
         onOpen: function(){},
         onCancel: function(){},
         onOk: function(){}
@@ -109,10 +115,53 @@ define([
       var $elem = $(html);
       $elem.on('shown.bs.modal', opt.onOpen);
       $elem.on('hidden.bs.modal', opt.onCancel);
-      !opt.header && $elem.find('.modal-header').css('border-bottom', 'none');
+      $elem.on('click',  '.btn-primary', function(){
+        opt.onOk();
+        $elem.modal('hide');
+      });
+      !opt.title && $elem.find('.modal-header').css('border-bottom', 'none');
       !opt.footer && $elem.find('.modal-footer').remove();
       $elem.appendTo('body');
       $elem.modal();
+    },
+
+    openEdit: function(file_path, isSelfCall){
+      var url = isSelfCall ? 'main.html' : 'addon/miniCodeEdit/main.html' + (file_path ? '?file=' + file_path : '');
+      gui.Window.open(url, {
+        "width": 800,
+        "height": 520,
+        "show": true,
+        "title": "Mini Code Editor",
+        "frame": conf.frame,
+        "toolbar": conf.toolbar,
+        "icon": "app/images/logo.png"
+      });
+    },
+
+    appInfo: function(){
+      var info = appInfoTpl.replace(/\{\{version\}\}/g, pkg.version);
+      info = info.replace(/\{\{userAgent\}\}/g, navigator.userAgent);
+      info = info.replace(/\{\{nodeVersion\}\}/g, process.version);
+      this.dialog({
+        title: '关于前端助手',
+        content: info,
+        footer: false
+      });
+    },
+
+    createEditor: function(opt){
+      return new CodeMirror(opt.dom, {
+        mode: {
+          name: "javascript",
+          json: true
+        },
+        lineNumbers: true,
+        theme: conf.codeTheme,
+        extraKeys: {
+          "Cmd-S": function(instance) { opt.saveAction() },
+          "Ctrl-S": function(instance) { opt.saveAction() }
+        }
+      });
     }
   };
 

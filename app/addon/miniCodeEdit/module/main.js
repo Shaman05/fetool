@@ -28,6 +28,13 @@ define([
   var $title = document.getElementById("title");
   var $mode = document.getElementById("mode");
 
+  util.dialog({
+    content: '确认删除吗？',
+    onOk: function(){
+      alert('yes!');
+    }
+  });
+
   function handleDocumentChange(title) {
     var mode = "javascript";
     var modeName = "JavaScript";
@@ -86,9 +93,10 @@ define([
   }
 
   function onChosenFileToOpen(theFileEntry) {
-    if(util.isSupportFile(theFileEntry)){
-      setFile(theFileEntry, false);
-      readFileIntoEditor(theFileEntry);
+    var fileName = decodeURIComponent(theFileEntry);
+    if(util.isSupportFile(fileName)){
+      setFile(fileName, false);
+      readFileIntoEditor(fileName);
     }
   }
 
@@ -98,15 +106,7 @@ define([
   }
 
   function handleNewButton() {
-    gui.Window.open('main.html', {
-      "width": 800,
-      "height": 520,
-      "show": false,
-      "title": "Mini Code Editor",
-      "frame": conf.frame,
-      "toolbar": conf.toolbar,
-      "icon": "app/images/logo.png"
-    });
+    util.openEdit(null, true);
   }
 
   function handleOpenButton() {
@@ -155,17 +155,9 @@ define([
         onChosenFileToOpen($(this).val());
       });
 
-      editor = new CodeMirror($editor, {
-        mode: {
-          name: "javascript",
-          json: true
-        },
-        lineNumbers: true,
-        theme: conf.codeTheme,
-        extraKeys: {
-          "Cmd-S": function(instance) { handleSaveButton() },
-          "Ctrl-S": function(instance) { handleSaveButton() }
-        }
+      editor = util.createEditor({
+        dom: $editor,
+        saveAction: handleSaveButton
       });
 
       if(file_path){

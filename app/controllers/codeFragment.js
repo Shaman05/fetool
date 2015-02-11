@@ -19,12 +19,15 @@ define([
   var path = require('path');
   var abar = require('./node_modules/address_bar');
   var folder_view = require('./node_modules/folder_view');
+  var conf = require('./conf/app.conf');
 
   return ['$rootScope', '$scope', '_$services_', function($rootScope, $scope, _$services_){
 
     var folder = new folder_view.Folder($('#files'));
     var addressbar = new abar.AddressBar($('#addressbar'));
-    var current_path = process.cwd();
+    var current_path = conf.dataRoot();
+
+    util.isValidDir(current_path);
 
     folder.open(current_path);
     addressbar.set(current_path);

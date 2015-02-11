@@ -6,16 +6,14 @@
  */
 
 define([
-  'util',
-  'text!template/fragment/appInfo.html'
-], function(util, appInfoTpl){
+  'util'
+], function(util){
 
   'use strict';
 
   var gui = require('nw.gui');
   var guiWin = gui.Window.get();
   var conf = require('./conf/app.conf');
-  var pkg = require('../package.json');
 
   return {
     showWin: function(){
@@ -29,40 +27,27 @@ define([
     },
     settingMenu: function(){
       var menu = new gui.Menu();
-      menu.append(new gui.MenuItem({ label: '编辑器', click: openEdit }));
+      menu.append(new gui.MenuItem({
+        label: '编辑器',
+        click: function(){
+          util.openEdit();
+        }
+      }));
       menu.append(new gui.MenuItem({ label: '设 置' }));
       menu.append(new gui.MenuItem({ label: '帮 助' }));
-      menu.append(new gui.MenuItem({ label: '关 于', click: appInfo }));
+      menu.append(new gui.MenuItem({
+        label: '关 于',
+        click: function(){
+          util.appInfo();
+        }
+      }));
       menu.append(new gui.MenuItem({ type: 'separator' }));
       menu.append(new gui.MenuItem({ label: '退 出', click: this.closeWin}));
       return menu;
     },
     callMiniCodeEditor: function(file_path){
-      openEdit(file_path);
+      util.openEdit(file_path);
     }
   };
-
-  function appInfo(){
-    var info = appInfoTpl.replace(/\{\{version\}\}/g, pkg.version);
-    info = info.replace(/\{\{userAgent\}\}/g, navigator.userAgent);
-    info = info.replace(/\{\{nodeVersion\}\}/g, process.version);
-    util.dialog({
-      title: '关于前端助手',
-      content: info,
-      footer: false
-    });
-  }
-
-  function openEdit(file_path){
-    gui.Window.open('addon/miniCodeEdit/main.html?file=' + file_path, {
-      "width": 800,
-      "height": 520,
-      "show": true,
-      "title": "Mini Code Editor",
-      "frame": conf.frame,
-      "toolbar": conf.toolbar,
-      "icon": "app/images/logo.png"
-    });
-  }
 
 });

@@ -221,6 +221,10 @@ button, select{
 .file .name{
     width: 100px;
 }
+.breadcrumb > .active a{
+    text-decoration: underline;
+    font-weight: bold;
+}
 /*fileExplorer end*/
 
 /* 菜单 */
