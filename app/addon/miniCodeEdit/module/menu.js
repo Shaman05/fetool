@@ -70,16 +70,17 @@ define([
   }
 
   function copy(){
-    clipboard.set(editor.getSelection());
+    clipboard.set(main.getEditor().getSelection());
   }
 
   function cut(){
+    var editor = main.getEditor();
     clipboard.set(editor.getSelection());
     editor.replaceSelection('');
   }
 
   function past(){
-    editor.replaceSelection(clipboard.get());
+    main.getEditor().replaceSelection(clipboard.get());
   }
 
   function newFile(){
