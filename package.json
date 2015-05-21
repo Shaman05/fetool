@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "app/app.html",
   "window": {
-    "frame": false,
-    "toolbar": false,
+    "frame": true,
+    "toolbar": true,
     "icon": "app/images/logo.png",
     "title": "前端助手",
     "height": 500,

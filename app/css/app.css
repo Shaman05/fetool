@@ -100,6 +100,71 @@ button, select{
 .topNavBar .glyphicon-remove:hover{
     background: #C73636;
 }
+/*滚动条样式*/
+::-webkit-scrollbar-track-piece{
+    border-radius:0;/*滚动条的圆角宽度*/
+}
+::-webkit-scrollbar{
+    width:5px;/*滚动条的宽度*/
+    height:5px;/*滚动条的高度*/
+    border-radius: 4px;
+}
+::-webkit-scrollbar:hover{
+    background-color: rgb(204, 204, 204);
+}
+::-webkit-scrollbar-thumb{
+    background-color:rgba(87, 92, 96, 0.6);
+    border-radius:5px;
+    min-height: 60px;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color:rgba(87, 92, 96, 0.9);
+}
+/*滚动条样式 end*/
+
+/*mini code editor*/
+#editor {
+    position: absolute;
+    top: 0;
+    bottom: 18px;
+    left: 0;
+    right: 0;
+}
+.info {
+    font-family: monospace;
+    white-space: nowrap;
+    position: absolute;
+    padding: 0 2px;
+    height: 18px;
+    line-height: 18px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
+.info label {
+    font-weight: bold;
+}
+.info-mode{
+    float: right;
+    position: relative;
+    z-index: 8;
+}
+.info-title{
+    position: relative;
+    z-index: 9;
+}
+.info,
+.info-title{
+    background: #eee;
+}
+/*mini code editor end*/
+/*extend CodeMirror*/
+.CodeMirror .CodeMirror-cursor{
+    line-height: 0;
+}
+/*extend CodeMirror end*/
 
 .wrap{
     height: 100%;
@@ -218,7 +283,8 @@ button, select{
     padding: 0;
     margin: 0;
 }
-.file {
+.file,
+.newFile {
     margin: 2px;
     display: inline-block;
     text-align: center;
@@ -239,12 +305,31 @@ button, select{
 }
 .file,
 .file .icon,
-.file .name{
+.file .name,
+.newFile{
     width: 100px;
 }
 .breadcrumb > .active a{
     text-decoration: underline;
     font-weight: bold;
+}
+.newFile[data-action=addFile] .icon{
+    height: 100px;
+    cursor: pointer;
+}
+.newFile[data-action=addFile] .icon span{
+    display: inline-block;
+    height: 90px;
+    width: 86px;
+    border: 3px #cccccc dotted;
+    margin-top: 5px;
+    position: relative;
+}
+.newFile[data-action=addFile] .icon span:after{
+    content: '+';
+    font-size: 52px;
+    font-weight: bold;
+    color: #cccccc;
 }
 /*fileExplorer end*/
 

@@ -69,6 +69,23 @@ define([
       menu.popup(e.pageX - 2, e.pageY - 2);
     },
 
+    callAddNewFileContextMenu: function(e){
+      var menu = new gui.Menu();
+      menu.append(new gui.MenuItem({
+        label: 'New folder',
+        click: function(){
+
+        }
+      }));
+      menu.append(new gui.MenuItem({
+        label: 'New file',
+        click: function(){
+
+        }
+      }));
+      menu.popup(e.pageX - 2, e.pageY - 2);
+    },
+
     callMiniCodeEditor: function(file_path){
       util.openEdit(file_path);
     }

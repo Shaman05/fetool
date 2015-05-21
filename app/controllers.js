@@ -16,6 +16,7 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
     'openUrl': 'controllers/openUrl',
     'tool': 'controllers/tool',
     'regex': 'controllers/tool/regex',
+    'sass': 'controllers/tool/sass',
     'less': 'controllers/tool/less',
     'markDown': 'controllers/tool/markDown',
     'codeFragment': 'controllers/codeFragment'
@@ -26,6 +27,7 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
     '$rootScope',
     '$scope',
     '_$services_',
+    '_$data_source_',
     mainController
   ]);
   //其他通用控制器
@@ -60,53 +62,13 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
    * @description
    * 应用的主控制器可以看做是一个全局的控制器，在所有的路由下都可以使用
    */
-  function mainController($rootScope, $scope, _$services_){
+  function mainController($rootScope, $scope, _$services_, _$data_source_){
     $rootScope.changeUrl = function(url){
       $rootScope.url = url;
     };
     $rootScope.minWin = gui.minWin;
     $rootScope.closeWin = gui.closeWin;
-    $scope.doc = {
-      comparisonTable: {
-        label: '常用对照表',
-        list: [
-          {label: 'HTTP Content-type', page: 'httpContentType'},
-          {label: 'HTML转义字符', page: 'htmlESC'},
-          {label: 'RGB颜色参考', page: 'colors'},
-          {label: 'ASCII对照表', page: 'ASCII'},
-          {label: 'HTTP状态码详解', page: 'httpStatusCode'},
-          {label: '网页字体参考', page: 'fontFamily'}
-        ]
-      },
-      api: {
-        label: 'API 文档',
-        frontEnd: {
-          label: '前端常用',
-          list: [
-            {label: 'Css2.0 参考文档', url: 'http://tool.oschina.net/uploads/apidocs/css2/'},
-            {label: 'Css3.0 参考文档', url: 'http://tool.oschina.net/uploads/apidocs/css3/'},
-            {label: 'JQuery API', url: 'http://tool.oschina.net/uploads/apidocs/jquery/'},
-            {label: 'jquery-mobile API', url: 'http://tool.oschina.net/uploads/apidocs/jquery-mobile/'},
-            {label: 'Zepto API', url: 'http://www.html-5.cn/Manual/Zepto/'},
-            {label: 'extjs API', url: 'http://tool.oschina.net/uploads/apidocs/extjs4.1/docs/index.html#!/api'},
-            {label: 'Bootstrap EN', url: 'http://tool.oschina.net/uploads/apidocs/bootstrap/'},
-            {label: 'Bootstrap CN', url: 'http://www.bootcss.com/'},
-            {label: 'YUI', url: 'http://tool.oschina.net/uploads/apidocs/yui3.5.1/api/'}
-          ]
-        },
-        other:{
-          label: '其他',
-          list: [
-            {label: 'NodeJs API', url: 'http://tool.oschina.net/uploads/apidocs/nodejs/api/'},
-            {label: 'Angular 教程', url: 'http://www.w3cschool.cc/angularjs/angularjs-tutorial.html'},
-            {label: 'PHP 中文手册', url: 'http://tool.oschina.net/uploads/apidocs/php-zh/'},
-            {label: 'MySQL5.1 参考手册', url: 'http://tool.oschina.net/uploads/apidocs/mysql-5.1-zh/'},
-            {label: 'Python3', url: 'http://tool.oschina.net/uploads/apidocs/Python/reference/'},
-            {label: 'Ruby1.9', url: 'http://tool.oschina.net/uploads/apidocs/ruby-1.9.3-core/'}
-          ]
-        }
-      }
-    };
+    $scope.doc = _$data_source_.navDocList;
     $scope.setting = function($event){
       var menu = gui.settingMenu();
       $event.preventDefault();

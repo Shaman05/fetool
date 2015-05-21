@@ -1,11 +1,12 @@
-<div class="right-wrap" data-ng-controller="openUrl">
+<div class="right-wrap" data-ng-controller="openUrl" id="frameWrap">
   <div class="iframeTool">
     <a href="javascript:" data-ng-click="back()" title="返回上一页">
       <icon-back></icon-back>
     </a>
-    <a href="javascript:" data-ng-click="refresh()" title="刷新">
+    <!--<a href="javascript:" data-ng-click="refresh()" title="刷新">
       <icon-refresh></icon-refresh>
-    </a>
+    </a>-->
+    <span id="loading" style="display: none">Content loading...</span>
   </div>
-  <iframe data-url="{{url}}" class="main-frame" name="main-frame" id="main-frame" src="{{trustUrl()}}" height="100%" width="100%" frameborder="0"></iframe>
+  <!--<iframe data-url="{{url}}" class="main-frame" name="main-frame" id="main-frame" src="{{trustUrl()}}" height="100%" width="100%" frameborder="0"></iframe>-->
 </div>

@@ -32,7 +32,7 @@ module.exports = {
   /**
    * 是否允许浏览和编辑指定的 dataRoot 目录以外的文件(!!建议不要开启)
    */
-  enablePathFull: false,
+  enablePathFull: true,
 
   /**
    * MiniCodeEditor支持的格式

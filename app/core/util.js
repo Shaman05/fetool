@@ -18,8 +18,16 @@ define([
   var conf = require('./conf/app.conf');
   var dataRoot = conf.dataRoot();
 
+  function createMask(rtime){
+    return $('<div id="mask_' + rtime + '" class="mask"></div>');
+  }
+
   function clearnMask(id){
     $('#mask_' + id).remove();
+  }
+
+  function createLoading(){
+
   }
 
   return {
@@ -74,7 +82,7 @@ define([
       }
       var $elem = $(html);
       var rtime = +new Date();
-      var $mask = $('<div id="mask_' + rtime + '" class="mask"></div>');
+      var $mask = createMask(rtime);
       if(isSuccess){
         $elem.find('.alert-title').remove();
       }
@@ -145,6 +153,14 @@ define([
 
     closeDialog: function(){
       $('.modal[role=dialog]').remove();
+    },
+
+    showLoading: function(){
+
+    },
+
+    hideLoading: function(){
+
     },
 
     openEdit: function(file_path, isSelfCall){

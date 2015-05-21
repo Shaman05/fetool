@@ -10,7 +10,7 @@ define([], function(){
   'use strict';
 
   return ['$rootScope', '$scope', '_$services_', function($rootScope, $scope, _$services_){
-
+    $scope.currentPage = 'sass 编译';
     $scope.$apply();
   }];
 
