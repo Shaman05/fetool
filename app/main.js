@@ -18,7 +18,8 @@ requirejs.config({
       deps: ['bootstrap'],
       'exports': 'angular'
     },
-    'angularRoute': ['angular']
+    'angularRoute': ['angular'],
+    'mode_markdown': ['codemirror']
   },
   priority: [
     "angular"

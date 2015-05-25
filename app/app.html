@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+  <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body data-ng-controller="MainController">
@@ -30,6 +31,12 @@
   </div>
 </div>
 <!--//box-->
+<script src="bower_components/codemirror/lib/codemirror.js"></script>
+<script src="bower_components/codemirror/lib/Markdown.Converter.js"></script>
+<script src="bower_components/codemirror/mode/markdown/markdown.js"></script>
+<script src="bower_components/codemirror/mode/xml/xml.js"></script>
+<script src="bower_components/codemirror/mode/css/css.js"></script>
+<script src="bower_components/codemirror/mode/htmlmixed/htmlmixed.js"></script>
 <script data-main="main" src="bower_components/requirejs/require.js"></script>
 </body>
 </html>

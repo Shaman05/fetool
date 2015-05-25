@@ -1,8 +1,5 @@
 <div data-ng-controller="markDown">
-  <ol class="breadcrumb">
-    <li><a href="#/tool">常用工具</a></li>
-    <li class="active" data-ng-show="currentPage">{{currentPage}}</li>
-  </ol>
+  <div data-ng-include="'template/page/tool/tool-nav.html'"></div>
   <div class="container-fluid">
     <div class="tool-container markdown-page">
       <div class="row">
@@ -32,12 +29,12 @@ Fetool - 前端助手(Beta 0.1)
         </div>
         <div class="col-sm-2">
           <div class="form-group">
-            <button data-compiling="0" event-click="compileCode" type="button" class="btn btn-primary" style="width: 100%;">
+            <button data-compiling="0" data-ng-click="compile()" type="button" class="btn btn-primary" style="width: 100%;">
               <span class="glyphicon glyphicon-chevron-right"></span> HTML
             </button>
           </div>
           <div class="form-group">
-            <button class="btn btn-primary" data-toggle="button" id="realtime" style="width: 100%; outline: none">实时预览</button>
+            <button class="btn btn-primary" data-toggle="button"  data-ng-click="toggleRealTimeShow()" style="width: 100%; outline: none">实时预览</button>
           </div>
         </div>
         <div class="col-sm-5">
@@ -48,7 +45,7 @@ Fetool - 前端助手(Beta 0.1)
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <div class="form-group realtime-preview">
+          <div class="form-group realtime-preview" data-ng-show="realTimeShow">
             <h4>实时预览：</h4>
             <div id="realtime-preview"></div>
           </div>

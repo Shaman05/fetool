@@ -19,6 +19,7 @@ define(['angular', 'util', 'gui', 'services'], function (angular, util, gui) {
     'sass': 'controllers/tool/sass',
     'less': 'controllers/tool/less',
     'markDown': 'controllers/tool/markDown',
+    'jslint': 'controllers/tool/jslint',
     'codeFragment': 'controllers/codeFragment'
   };
 
