@@ -17,6 +17,7 @@ define([
   var gui = require('nw.gui');
   var conf = require('./conf/app.conf');
   var dataRoot = conf.dataRoot();
+  var ls = window.localStorage;
 
   function createMask(rtime){
     return $('<div id="mask_' + rtime + '" class="mask"></div>');
@@ -27,7 +28,7 @@ define([
   }
 
   function createLoading(){
-
+    return $('<div class="throbber-loader fe-loading">Loading…</div>');
   }
 
   return {
@@ -155,12 +156,29 @@ define([
       $('.modal[role=dialog]').remove();
     },
 
-    showLoading: function(){
-
+    showLoading: function($container){
+      if(!$container){
+        $container = $('#rightContent');
+      }
+      var t = +new Date(),
+          $mask = createMask(t),
+          $loading = createLoading();
+      $mask.addClass('in-mask');
+      $loading.addClass('fe-in-loading');
+      $container
+        .css({
+          'position': 'relative'
+        })
+        .append($mask)
+        .append($loading);
     },
 
-    hideLoading: function(){
-
+    hideLoading: function($container){
+      if(!$container){
+        $container = $('#rightContent');
+      }
+      $container.find('.fe-loading').remove();
+      $container.find('.in-mask').fadeOut();
     },
 
     openEdit: function(file_path, isSelfCall){
@@ -202,6 +220,61 @@ define([
           "Ctrl-S": function(instance) { opt.saveAction() }
         }
       });
+    },
+
+    setLocalStorage: function(key, val){
+      ls.setItem(key, typeof val === 'string' ? val : JSON.stringify(val));
+    },
+
+    getLocalStorage: function(key){
+      var val = ls.getItem(key);
+      if(!val){
+        return null;
+      }
+      try{
+        val = JSON.parse(val);
+      }catch(e){}
+      return val;
+    },
+
+    clearLocalStorage: function(key){
+      ls.removeItem(key);
+    },
+
+    report: function($container){
+      $container = $container || $('.report-log-body').eq(0);
+      var lineTpl = '<p class="report-line {type}">{content}</p>';
+      function getLintDom(type, msg){
+        return $(lineTpl.replace(/\{type\}/g, 'report-' + type).replace(/\{content\}/g, msg));
+      }
+      return {
+        warning: function(){},
+        error: function(msg){
+          $container.append(getLintDom('error', msg));
+        },
+        info: function(msg){
+          $container.append(getLintDom('info', msg));
+        },
+        success: function(msg){
+          $container.append(getLintDom('success', msg));
+        },
+        normal: function(msg){
+          $container.append(getLintDom('normal', msg));
+        },
+        br: function(){
+          $container.append(getLintDom('normal', '&nbsp;'));
+        }
+      };
+    },
+
+    sleep: function(second){
+      var startTime = +new Date();
+      while(true){
+        var endTime = +new Date();
+        if(endTime - startTime > second){
+          break;
+        }
+      }
     }
   };
 

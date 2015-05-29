@@ -14,7 +14,34 @@ define([], function(){
 
   return {
     /**
-     * 删除文件或文件夹（递归）
+     * 异步获取文件内容
+     * @param file_path
+     * @param callback
+     */
+    getFile: function(file_path, callback){
+      if(fs.existsSync(file_path)){
+        fs.readFile(file_path, 'utf8', function(err, data){
+          if(err){
+            callback(err);
+          }else{
+            callback(null, data);
+          }
+        });
+      }else{
+        callback('文件不存在！');
+      }
+    },
+
+    /**
+     * 同步获取文件内容
+     * @param file_path
+     */
+    getFileSync: function(file_path){
+      return fs.readFileSync(file_path, 'utf8');
+    },
+
+    /**
+     * 递归删除文件或文件夹
      * @param file_path
      * @param callback
      */
@@ -40,7 +67,93 @@ define([], function(){
       }
       doDeleteFile(file_path);
       callback && callback();
+    },
+
+    /**
+     * 使用递归异步获取文件夹文件
+     * @param dir
+     * @param suffix 指定类型
+     * @param callback 回调
+     */
+    getFilesByDir: function(dir, suffix, callback){
+      var m = this,
+          fileArr = [];
+      _getFilesByDir(dir, suffix, function(err){
+        callback(err, fileArr);
+      });
+      function _getFilesByDir(dir, suffix, callback){
+        fs.readdir(dir, function(err, files){
+          if(err){
+            callback(err);
+            return;
+          }
+          each(files, function(file, callback) {
+            var path_name = path.join(dir, file);
+            var stat = fs.statSync(path_name);
+            var type = path_name.split('.');
+            type = type[type.length - 1];
+            if (stat.isDirectory()) {
+              _getFilesByDir(path_name, suffix, callback);
+            } else {
+              if(type === suffix || suffix === ''){
+                fileArr.push({
+                  type: type,
+                  file: path_name,
+                  size: m.formatSize(stat.size)
+                });
+              }
+              callback();
+            }
+          }, function() {
+            callback(err);
+          });
+        });
+      }
+    },
+
+    formatSize: function(size){
+      var kb = 1024;
+      var mb = kb * 1024;
+      var gb = mb * 1024;
+      var tb = gb * 1024;
+      if(size > tb){
+        return p2Number(size/tb) + 'TB';
+      }
+      if(size > gb){
+        return p2Number(size/gb) + 'GB';
+      }
+      if(size > mb){
+        return p2Number(size/mb) + 'MB';
+      }
+      if(size > kb){
+        return p2Number(size/kb) + 'KB';
+      }
+      return size + 'Bytes';
+      function p2Number(num){
+        return Math.ceil(num * 100)/100;
+      }
     }
   };
+
+  function each(arr, iterator, callback) {
+    callback = callback || function () {};
+    if (!arr.length) {
+      return callback();
+    }
+    var completed = 0;
+    arr.forEach(function (x) {
+      iterator(x, function (err) {
+        if (err) {
+          callback(err);
+          callback = function () {};
+        } else {
+          completed += 1;
+          if (completed >= arr.length) {
+            callback(null);
+          }
+        }
+      });
+    });
+  }
 
 });

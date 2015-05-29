@@ -1,7 +1,41 @@
-<div class="sass-page" data-ng-controller="jslint">
+<div class="jslint-page" data-ng-controller="jslint">
   <div data-ng-include="'template/page/tool/tool-nav.html'"></div>
-  <div class="container-fluid">
-    <h1>JSLint</h1>
-    <p>选择文件或者文件夹: <input type="file"/></p>
+  <div class="file-list">
+    <ul>
+      <li data-ng-repeat="file in fileList" title="{{file.file}}" data-ng-click="jslint_file(file.file)">
+        FIlE: <span>{{file.file}}</span>
+        <br>
+        size: <span>{{file.size}}</span> | type: <span>{{file.type}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="jslint-log-wrap" id="jslint-log">
+    <div class="log-head">
+      <strong>JSLint 检测日志</strong>
+      <button data-ng-click="close_jslint_log()" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+    <div class="log-body" id="jslint-log-content">
+
+    </div>
+    <div class="log-foot">
+      <button data-ng-click="clear_jslint_log()" type="button" class="btn btn-default btn-xs">清空日志</button>
+    </div>
+  </div>
+  <div class="container-fluid" id="jsLintPage">
+    <div class="form-group">
+      <label>选择文件夹：</label>
+      <input type="file" nwdirectory id="select_dir"/>
+    </div>
+    <div class="form-group">
+      <label>历史文件夹列表：</label>
+      <ul>
+        <li style="background: antiquewhite; margin-bottom: 4px;" data-ng-click="readDir(dir.path)" data-ng-repeat="dir in dirList">DIR: <span>{{dir.path}}</span></li>
+      </ul>
+    </div>
+    <div class="form-group">
+      <button data-ng-disabled="!fileList.length" data-ng-click="start_jslint()" type="button" class="btn btn-primary">开始检测</button>
+      <button data-ng-click="view_log()" type="button" class="btn btn-info">查看日志</button>
+      <button data-ng-click="clear_dirList()" type="button" class="btn btn-warning">清除历史目录</button>
+    </div>
   </div>
 </div>

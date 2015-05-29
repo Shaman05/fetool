@@ -447,6 +447,86 @@ button:focus, input:focus, textarea:focus{
     padding: 20px 0 10px;
     border-bottom: 1px dotted #adadad;
 }
+.jslint-log-wrap{
+    position: absolute;
+    padding: 4px 8px;
+    border-radius: 2px;
+    right: 10px;
+    top: 60px;
+    bottom: 10px;
+    left: 45%;
+    z-index: 997;
+    background: rgba(230, 201, 135, 0.9);
+    display: none;
+}
+.log-head{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.65);
+}
+.log-head strong{
+    color: rgba(54, 54, 54, 0.70);
+    font-size: 14px;
+}
+.log-body{
+    position: absolute;
+    overflow: auto;
+    padding: 6px 8px;
+    top: 32px;
+    left: 10px;
+    right: 10px;
+    bottom: 40px;
+    background: #000000;
+    box-shadow: 1px 1px 1px #cccccc inset;
+}
+.log-foot{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    height: 40px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(204, 204, 204, 0.65);
+}
+.report-line{
+    margin: 0;
+    line-height: 16px;
+    font-family: "Courier New", Courier, sans-serif;
+}
+.report-line.report-normal{
+    color: #ffffff;
+}
+.report-line.report-error{
+    color: red;
+}
+.report-line.report-info{
+    color: #ffff00;
+}
+.report-line.report-success{
+    color: #008000;
+}
+.file-list{
+    position: absolute;
+    padding: 4px 8px;
+    background: #ffffff;
+    border-radius: 4px;
+    right: 10px;
+    top: 60px;
+    bottom: 10px;
+    width: 50%;
+    overflow: auto;
+    display: none;
+}
+.file-list li{
+    background: rgba(60, 166, 236, 0.2);
+    border-radius: 2px;
+    margin: 2px 0;
+    padding: 0 4px;
+    width: 100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
 /*tool end*/
 
 /**
@@ -656,7 +736,23 @@ button:focus, input:focus, textarea:focus{
     height: 100%;
     left: 0;
     top: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.5);
+}
+.in-mask{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+}
+.throbber-loader.fe-loading{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin: -0.7em 0 0 -0.5em;
+    z-index: 999;
+}
+.throbber-loader.fe-loading.fe-in-loading{
+    position: absolute;
 }
 .alert{
     position: absolute;
@@ -682,4 +778,89 @@ button:focus, input:focus, textarea:focus{
 .modal-dialog-sm{
     width: 300px;
 }
+.container-fluid{
+    transition: all 0.5s;
+}
+.split-container-50{
+    padding-right: 50%;
+}
+.split-container-60{
+    padding-right: 40%;
+}
+.split-container-70{
+    padding-right: 30%;
+}
+.split-container-80{
+    padding-right: 20%;
+}
 /*extend bootstrap end*/
+
+/*loading css*/
+@-moz-keyframes throbber-loader {
+    0% {
+        background: #dde2e7;
+    }
+    10% {
+        background: #6b9dc8;
+    }
+    40% {
+        background: #dde2e7;
+    }
+}
+@-webkit-keyframes throbber-loader {
+    0% {
+        background: #dde2e7;
+    }
+    10% {
+        background: #6b9dc8;
+    }
+    40% {
+        background: #dde2e7;
+    }
+}
+@keyframes throbber-loader {
+    0% {
+        background: #dde2e7;
+    }
+    10% {
+        background: #6b9dc8;
+    }
+    40% {
+        background: #dde2e7;
+    }
+}
+/* :not(:required) hides these rules from IE9 and below */
+.throbber-loader:not(:required) {
+    -moz-animation: throbber-loader 2000ms 300ms infinite ease-out;
+    -webkit-animation: throbber-loader 2000ms 300ms infinite ease-out;
+    animation: throbber-loader 2000ms 300ms infinite ease-out;
+    background: #dde2e7;
+    display: inline-block;
+    position: relative;
+    text-indent: -9999px;
+    width: 0.9em;
+    height: 1.5em;
+    margin: 0 1.6em;
+}
+.throbber-loader:not(:required):before, .throbber-loader:not(:required):after {
+    background: #dde2e7;
+    content: '\x200B';
+    display: inline-block;
+    width: 0.9em;
+    height: 1.5em;
+    position: absolute;
+    top: 0;
+}
+.throbber-loader:not(:required):before {
+    -moz-animation: throbber-loader 2000ms 150ms infinite ease-out;
+    -webkit-animation: throbber-loader 2000ms 150ms infinite ease-out;
+    animation: throbber-loader 2000ms 150ms infinite ease-out;
+    left: -1.6em;
+}
+.throbber-loader:not(:required):after {
+    -moz-animation: throbber-loader 2000ms 450ms infinite ease-out;
+    -webkit-animation: throbber-loader 2000ms 450ms infinite ease-out;
+    animation: throbber-loader 2000ms 450ms infinite ease-out;
+    right: -1.6em;
+}
+/*loading css end*/
