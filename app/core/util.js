@@ -178,7 +178,7 @@ define([
         $container = $('#rightContent');
       }
       $container.find('.fe-loading').remove();
-      $container.find('.in-mask').fadeOut();
+      $container.find('.in-mask').fadeOut().remove();
     },
 
     openEdit: function(file_path, isSelfCall){

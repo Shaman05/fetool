@@ -5,7 +5,9 @@
  * Time: 15:38
  */
 
-define([], function(){
+define([
+  'util'
+], function(util){
 
   'use strict';
 
@@ -38,6 +40,11 @@ define([], function(){
      */
     getFileSync: function(file_path){
       return fs.readFileSync(file_path, 'utf8');
+    },
+
+    getFileSuffix: function(file_path){
+      var type = file_path.split('.');
+      return type.length === 1 ? '' : type[type.length - 1];
     },
 
     /**
@@ -77,7 +84,8 @@ define([], function(){
      */
     getFilesByDir: function(dir, suffix, callback){
       var m = this,
-          fileArr = [];
+          fileArr = [],
+          hasError = null;
       _getFilesByDir(dir, suffix, function(err){
         callback(err, fileArr);
       });
@@ -85,15 +93,15 @@ define([], function(){
         fs.readdir(dir, function(err, files){
           if(err){
             callback(err);
+            util.hideLoading();
             return;
           }
-          each(files, function(file, callback) {
+          hasError = each(files, function(file, callback) {
             var path_name = path.join(dir, file);
             var stat = fs.statSync(path_name);
-            var type = path_name.split('.');
-            type = type[type.length - 1];
+            var type = m.getFileSuffix(path_name);
             if (stat.isDirectory()) {
-              _getFilesByDir(path_name, suffix, callback);
+              !hasError && _getFilesByDir(path_name, suffix, callback);
             } else {
               if(type === suffix || suffix === ''){
                 fileArr.push({
@@ -141,19 +149,26 @@ define([], function(){
       return callback();
     }
     var completed = 0;
-    arr.forEach(function (x) {
-      iterator(x, function (err) {
-        if (err) {
-          callback(err);
-          callback = function () {};
-        } else {
-          completed += 1;
-          if (completed >= arr.length) {
-            callback(null);
+    try {
+      arr.forEach(function (x) {
+        return !iterator(x, function (err) {
+          if (err) {
+            callback(err);
+            callback = function () {
+            };
+          } else {
+            completed += 1;
+            if (completed >= arr.length) {
+              callback(null);
+            }
           }
-        }
+        });
       });
-    });
+    }catch (e){
+      util.alert(e, true);
+      util.hideLoading();
+      return true;
+    }
   }
 
 });

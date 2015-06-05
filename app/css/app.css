@@ -454,7 +454,7 @@ button:focus, input:focus, textarea:focus{
     right: 10px;
     top: 60px;
     bottom: 10px;
-    left: 45%;
+    left: 10px;
     z-index: 997;
     background: rgba(230, 201, 135, 0.9);
     display: none;
@@ -503,7 +503,7 @@ button:focus, input:focus, textarea:focus{
     color: #ffff00;
 }
 .report-line.report-success{
-    color: #008000;
+    color: #02FF02;
 }
 .file-list{
     position: absolute;
@@ -526,6 +526,34 @@ button:focus, input:focus, textarea:focus{
     overflow:hidden;
     white-space:nowrap;
     text-overflow:ellipsis;
+}
+.jslint-setting{}
+.jslint-setting label{
+    margin: 2px 6px 2px 0;
+    font-weight: normal;
+}
+.jslint-setting input[type=checkbox]{
+    margin-right: 2px;
+    vertical-align: -2px;
+}
+.history-dir li{
+    position: relative;
+    width: 48%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    padding: 4px 12px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    background: #f9ffcd;
+    border: 1px solid #f9ffcd;
+}
+.history-dir li input{
+    position: absolute;
+    left: 12px;
+    top: 1px;
+    width: 50%;
+    display: none;
 }
 /*tool end*/
 

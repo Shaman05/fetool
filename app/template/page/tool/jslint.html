@@ -1,11 +1,13 @@
 <div class="jslint-page" data-ng-controller="jslint">
   <div data-ng-include="'template/page/tool/tool-nav.html'"></div>
-  <div class="file-list">
+  <div class="file-list" id="file-list">
+    <h6>
+      <button data-ng-click="refreshDir()">刷新</button>
+      该文件目录下共 <span data-ng-bind="fileCount"></span> 个文件。
+    </h6>
     <ul>
-      <li data-ng-repeat="file in fileList" title="{{file.file}}" data-ng-click="jslint_file(file.file)">
-        FIlE: <span>{{file.file}}</span>
-        <br>
-        size: <span>{{file.size}}</span> | type: <span>{{file.type}}</span>
+      <li data-ng-repeat="file in fileList track by $index" title="{{file.file}}" data-index="{{$index}}">
+        file: {{file.file}}<br>size: {{file.size}} | type: {{file.type}}
       </li>
     </ul>
   </div>
@@ -23,19 +25,36 @@
   </div>
   <div class="container-fluid" id="jsLintPage">
     <div class="form-group">
+      <label>设置：</label>
+      <div class="jslint-setting un-select">
+        <label><input type="checkbox" data-ng-model="eqeq" />eqeq(==)</label>
+        <label><input type="checkbox"/>设置1</label>
+        <label><input type="checkbox"/>设置1</label>
+        <label><input type="checkbox"/>设置1</label>
+      </div>
+      <div class="jslint-setting un-select">
+        <label><input type="checkbox"/>设置1</label>
+        <label><input type="checkbox"/>设置1</label>
+        <label><input type="checkbox"/>设置1</label>
+        <label><input type="checkbox"/>设置1</label>
+      </div>
+    </div>
+    <div class="form-group">
       <label>选择文件夹：</label>
       <input type="file" nwdirectory id="select_dir"/>
     </div>
     <div class="form-group">
       <label>历史文件夹列表：</label>
-      <ul>
-        <li style="background: antiquewhite; margin-bottom: 4px;" data-ng-click="readDir(dir.path)" data-ng-repeat="dir in dirList">DIR: <span>{{dir.path}}</span></li>
+      <ul class="history-dir" id="history-dir">
+        <li data-ng-repeat="dir in dirList track by $index" data-index="{{$index}}" data-dir="{{dir.path}}" title="{{dir.path}}">
+          {{dir.title}} <input type="text" data-ng-keypress="enter($event)" placeholder="重命名" data-index="{{$index}}">
+        </li>
       </ul>
     </div>
     <div class="form-group">
       <button data-ng-disabled="!fileList.length" data-ng-click="start_jslint()" type="button" class="btn btn-primary">开始检测</button>
       <button data-ng-click="view_log()" type="button" class="btn btn-info">查看日志</button>
-      <button data-ng-click="clear_dirList()" type="button" class="btn btn-warning">清除历史目录</button>
+      <button data-ng-click="clear_dirList()" type="button" class="btn btn-warning">清除历史记录</button>
     </div>
   </div>
 </div>

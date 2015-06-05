@@ -88,7 +88,60 @@ define([
 
     callMiniCodeEditor: function(file_path){
       util.openEdit(file_path);
+    },
+
+    callJslintContextMenu: function(e, action){
+      var $item = $(e.target);
+      var file_path = $item.attr('title');
+      var index = $item.attr('data-index');
+      var menu = new gui.Menu();
+      menu.append(new gui.MenuItem({
+        label: '执行JSLint',
+        click: function(){
+          action.jslint(file_path);
+        }
+      }));
+      menu.append(new gui.MenuItem({
+        label: '打开文件',
+        click: function(){
+          util.openEdit(file_path);
+        }
+      }));
+      menu.append(new gui.MenuItem({
+        label: '从列表移除',
+        click: function(){
+          action.deleteFile(index);
+        }
+      }));
+      menu.popup(e.pageX - 2, e.pageY - 2);
+    },
+
+    callJslintHistoryDirContextMenu: function(e, action){
+      var $item = $(e.target);
+      var index = $item.attr('data-index');
+      var dir_path = $item.attr('data-dir');
+      var menu = new gui.Menu();
+      menu.append(new gui.MenuItem({
+        label: '打 开',
+        click: function(){
+          action.openDir(dir_path);
+        }
+      }));
+      menu.append(new gui.MenuItem({
+        label: '重命名',
+        click: function(){
+          action.rename($item, index);
+        }
+      }));
+      menu.append(new gui.MenuItem({
+        label: '移除该文件夹',
+        click: function(){
+          action.deleteDir(index);
+        }
+      }));
+      menu.popup(e.pageX - 2, e.pageY - 2);
     }
+
   };
 
   function deleteFile(file_path){
