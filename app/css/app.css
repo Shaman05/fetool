@@ -444,7 +444,7 @@ button:focus, input:focus, textarea:focus{
     font-size: 12px;
 }
 .realtime-preview h4{
-    padding: 20px 0 10px;
+    padding-bottom: 10px;
     border-bottom: 1px dotted #adadad;
 }
 .jslint-log-wrap{

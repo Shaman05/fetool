@@ -3,9 +3,9 @@
   <div class="container-fluid">
     <div class="tool-container markdown-page">
       <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-6">
           <div id="left">
-<textarea name="markdownCode" id="markdownCode" style="font-size: 12px;">
+            <textarea name="markdownCode" id="markdownCode" style="font-size: 12px;">
 Fetool - 前端助手(Beta 0.1)
 ===================================
 
@@ -24,26 +24,27 @@ Fetool - 前端助手(Beta 0.1)
 2. API 文档
 
 3. 其他文档
-</textarea>
+              </textarea>
+            <br/>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <button data-compiling="0" data-ng-click="compile()" type="button" class="btn btn-primary" style="width: 100%;">
+                  <span class="glyphicon glyphicon-chevron-right"></span> HTML
+                </button>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <button class="btn btn-primary" data-toggle="button"  data-ng-click="toggleRealTimeShow()" style="width: 100%; outline: none">实时预览</button>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div id="right">
+                <textarea name="htmlCode" id="htmlCode">/*编译后的HTML*/</textarea>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-sm-2">
-          <div class="form-group">
-            <button data-compiling="0" data-ng-click="compile()" type="button" class="btn btn-primary" style="width: 100%;">
-              <span class="glyphicon glyphicon-chevron-right"></span> HTML
-            </button>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary" data-toggle="button"  data-ng-click="toggleRealTimeShow()" style="width: 100%; outline: none">实时预览</button>
-          </div>
-        </div>
-        <div class="col-sm-5">
-          <div id="right">
-            <textarea name="htmlCode" id="htmlCode">/*编译后的HTML*/</textarea>
-          </div>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-sm-12">
           <div class="form-group realtime-preview" data-ng-show="realTimeShow">
             <h4>实时预览：</h4>
