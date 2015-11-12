@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Fetool by Shaman05</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Fetool</h1>
+        <h2>前端助手工具</h2>
+        <a href="https://github.com/Shaman05/fetool" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="fetool---前端助手beta-01" class="anchor" href="#fetool---%E5%89%8D%E7%AB%AF%E5%8A%A9%E6%89%8Bbeta-01" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fetool - 前端助手(Beta 0.1)</h1>
+
+<p>说明：node-webkit 刚出来的时候做过一个版本，功能比较弱，代码组织结构很乱，扩展起来很吃力，这段时间有点空余时间又想玩玩 node-webkit 加上项目里开始正式加入 angular, 所以又做了个版本。 这次对老版本重构并扩展了一些新的功能，开发环境：</p>
+
+<ul>
+<li>node-webkit <a href="http://dl.node-webkit.org/v0.11.6/node-webkit-v0.11.6-win-x64.zip">v0.11.6</a>: (Jan 21, 2015, based off of Node v0.11.13, Chromium 38.0.2125.104)</li>
+<li>windows7 64位</li>
+</ul>
+
+<h3>
+<a id="实际使用中的部分截图" class="anchor" href="#%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%9A%84%E9%83%A8%E5%88%86%E6%88%AA%E5%9B%BE" aria-hidden="true"><span class="octicon octicon-link"></span></a>实际使用中的部分截图：</h3>
+
+<p>代码碎片
+<img src="https://github.com/Shaman05/fetool/blob/master/app/images/code-fragment.png" alt="image"></p>
+
+<p>文档查询
+<img src="https://github.com/Shaman05/fetool/blob/master/app/images/document.png" alt="image"></p>
+
+<p>工具-正则表达式
+<img src="https://github.com/Shaman05/fetool/blob/master/app/images/regex-page.png" alt="image"></p>
+
+<p>迷你编辑器
+<img src="https://github.com/Shaman05/fetool/blob/master/app/images/mini-code-editor.png" alt="image"></p>
+
+<h2>
+<a id="1-使用" class="anchor" href="#1-%E4%BD%BF%E7%94%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>1 使用</h2>
+
+<p>本工具已绿色打包，只需将 fetool.rar 解压后运行 fetool.exe 即可</p>
+
+<h2>
+<a id="2-功能" class="anchor" href="#2-%E5%8A%9F%E8%83%BD" aria-hidden="true"><span class="octicon octicon-link"></span></a>2 功能</h2>
+
+<h3>
+<a id="21-文档查询" class="anchor" href="#21-%E6%96%87%E6%A1%A3%E6%9F%A5%E8%AF%A2" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.1 文档查询</h3>
+
+<p>说明：本工具所用文档来自 <a href="http://tool.oschina.net/apidocs">开源中国 - 在线API文档</a></p>
+
+<ol>
+<li><p>常用对照表</p></li>
+<li><p>API 文档</p></li>
+<li><p>其他文档</p></li>
+</ol>
+
+<h3>
+<a id="22-插件中心开发中" class="anchor" href="#22-%E6%8F%92%E4%BB%B6%E4%B8%AD%E5%BF%83%E5%BC%80%E5%8F%91%E4%B8%AD" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.2 插件中心（开发中）</h3>
+
+<p>这里将提供各类插件，包括：jquery插件、nodejs模块等</p>
+
+<h3>
+<a id="23-代码碎片" class="anchor" href="#23-%E4%BB%A3%E7%A0%81%E7%A2%8E%E7%89%87" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.3 代码碎片</h3>
+
+<h1>
+<a id="代码碎片功能使用须知" class="anchor" href="#%E4%BB%A3%E7%A0%81%E7%A2%8E%E7%89%87%E5%8A%9F%E8%83%BD%E4%BD%BF%E7%94%A8%E9%A1%BB%E7%9F%A5" aria-hidden="true"><span class="octicon octicon-link"></span></a>代码碎片功能使用须知</h1>
+
+<p>代码碎片的存储位置：与 fetool.exe 同级目录下的 data 文件夹</p>
+
+<p><code>data/config 目录为配置文件目录，操作的时候请注意</code></p>
+
+<p>可编辑的文本文件类型：['html', 'css', 'js', 'txt', 'json', 'xml', 'md', 'php', 'rb', 'py', 'sass', 'scss', 'java', 'jade', 'sh', 'coffee', 'ts', 'txt', 'gitignore']</p>
+
+<h4>
+<a id="关于迷你编辑器" class="anchor" href="#%E5%85%B3%E4%BA%8E%E8%BF%B7%E4%BD%A0%E7%BC%96%E8%BE%91%E5%99%A8" aria-hidden="true"><span class="octicon octicon-link"></span></a>关于迷你编辑器</h4>
+
+<ul>
+<li>由<a href="http://codemirror.net">CodeMirror</a>驱动</li>
+<li>激活编辑器窗口右键菜单可选择主题</li>
+</ul>
+
+<h3>
+<a id="24-工具类" class="anchor" href="#24-%E5%B7%A5%E5%85%B7%E7%B1%BB" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.4 工具类</h3>
+
+<ul>
+<li>正则表达式测试</li>
+</ul>
+
+<h3>
+<a id="25-学习网站" class="anchor" href="#25-%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%AB%99" aria-hidden="true"><span class="octicon octicon-link"></span></a>2.5 学习网站</h3>
+
+<p>收集一些学习参考网站</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/Shaman05/fetool/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/Shaman05/fetool/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/Shaman05/fetool"></a> is maintained by <a href="https://github.com/Shaman05">Shaman05</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
